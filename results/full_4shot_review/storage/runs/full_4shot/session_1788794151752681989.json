@@ -1,0 +1,19 @@
+{
+  "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+  "platform": "Linux-6.14.0-27-generic-x86_64-with-glibc2.39",
+  "gpu": "NVIDIA GeForce RTX 2080 Ti",
+  "gpu_gib": 10.56829833984375,
+  "cuda": "12.6",
+  "disk_free_gib": 15632.03466796875,
+  "slurm_job_id": "865603",
+  "versions": {
+    "torch": "2.14.0+cu126",
+    "transformers": "4.51.3",
+    "huggingface-hub": "0.30.2",
+    "safetensors": "0.5.3",
+    "accelerate": "1.6.0"
+  },
+  "elapsed_seconds": 271.20956207998097,
+  "completed_this_session": 1200,
+  "peak_allocated_gpu_gib": 1.9378371238708496
+}

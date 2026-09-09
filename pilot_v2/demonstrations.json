@@ -1,0 +1,251 @@
+[
+  {
+    "id": "demo_00",
+    "edges": [
+      [
+        "bantrels",
+        "chovaks"
+      ],
+      [
+        "chovaks",
+        "drelpins"
+      ]
+    ],
+    "query": [
+      "bantrels",
+      "drelpins"
+    ],
+    "gold": "Yes",
+    "proof": [
+      "bantrels",
+      "chovaks",
+      "drelpins"
+    ]
+  },
+  {
+    "id": "demo_01",
+    "edges": [
+      [
+        "hestrops",
+        "ilvans"
+      ],
+      [
+        "ilvans",
+        "jondles"
+      ]
+    ],
+    "query": [
+      "jondles",
+      "hestrops"
+    ],
+    "gold": "No",
+    "proof": null
+  },
+  {
+    "id": "demo_02",
+    "edges": [
+      [
+        "naldrops",
+        "omvils"
+      ],
+      [
+        "pruvaks",
+        "quistons"
+      ]
+    ],
+    "query": [
+      "naldrops",
+      "omvils"
+    ],
+    "gold": "Yes",
+    "proof": [
+      "naldrops",
+      "omvils"
+    ]
+  },
+  {
+    "id": "demo_03",
+    "edges": [
+      [
+        "thumlets",
+        "ubnars"
+      ],
+      [
+        "valprets",
+        "werduks"
+      ]
+    ],
+    "query": [
+      "thumlets",
+      "werduks"
+    ],
+    "gold": "No",
+    "proof": null
+  },
+  {
+    "id": "demo_04",
+    "edges": [
+      [
+        "zaltips",
+        "benvorks"
+      ],
+      [
+        "benvorks",
+        "caskrels"
+      ]
+    ],
+    "query": [
+      "zaltips",
+      "caskrels"
+    ],
+    "gold": "Yes",
+    "proof": [
+      "zaltips",
+      "benvorks",
+      "caskrels"
+    ]
+  },
+  {
+    "id": "demo_05",
+    "edges": [
+      [
+        "garnups",
+        "holviks"
+      ],
+      [
+        "holviks",
+        "isprels"
+      ]
+    ],
+    "query": [
+      "isprels",
+      "garnups"
+    ],
+    "gold": "No",
+    "proof": null
+  },
+  {
+    "id": "demo_06",
+    "edges": [
+      [
+        "meldrops",
+        "norvaks"
+      ],
+      [
+        "olprens",
+        "palviks"
+      ]
+    ],
+    "query": [
+      "meldrops",
+      "norvaks"
+    ],
+    "gold": "Yes",
+    "proof": [
+      "meldrops",
+      "norvaks"
+    ]
+  },
+  {
+    "id": "demo_07",
+    "edges": [
+      [
+        "sundrels",
+        "tarveks"
+      ],
+      [
+        "umplits",
+        "velnars"
+      ]
+    ],
+    "query": [
+      "sundrels",
+      "velnars"
+    ],
+    "gold": "No",
+    "proof": null
+  },
+  {
+    "id": "demo_08",
+    "edges": [
+      [
+        "yaldrops",
+        "zenpaks"
+      ],
+      [
+        "zenpaks",
+        "borvils"
+      ]
+    ],
+    "query": [
+      "yaldrops",
+      "borvils"
+    ],
+    "gold": "Yes",
+    "proof": [
+      "yaldrops",
+      "zenpaks",
+      "borvils"
+    ]
+  },
+  {
+    "id": "demo_09",
+    "edges": [
+      [
+        "felquins",
+        "grovaks"
+      ],
+      [
+        "grovaks",
+        "hispels"
+      ]
+    ],
+    "query": [
+      "hispels",
+      "felquins"
+    ],
+    "gold": "No",
+    "proof": null
+  },
+  {
+    "id": "demo_10",
+    "edges": [
+      [
+        "lispaks",
+        "mornets"
+      ],
+      [
+        "nembars",
+        "ovprils"
+      ]
+    ],
+    "query": [
+      "lispaks",
+      "mornets"
+    ],
+    "gold": "Yes",
+    "proof": [
+      "lispaks",
+      "mornets"
+    ]
+  },
+  {
+    "id": "demo_11",
+    "edges": [
+      [
+        "ravnips",
+        "skumlets"
+      ],
+      [
+        "teldrops",
+        "unvaks"
+      ]
+    ],
+    "query": [
+      "ravnips",
+      "unvaks"
+    ],
+    "gold": "No",
+    "proof": null
+  }
+]

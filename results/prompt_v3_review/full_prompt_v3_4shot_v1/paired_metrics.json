@@ -1,0 +1,130 @@
+{
+  "clean_and_broken_correct_first": {
+    "n_families": 100,
+    "rate": 0.0,
+    "ci95": [
+      0.0,
+      0.03699480747600191
+    ]
+  },
+  "margin_decreases_first": {
+    "n_families": 100,
+    "rate": 0.29,
+    "ci95": [
+      0.21014706973984146,
+      0.38539074940007934
+    ]
+  },
+  "clean_and_broken_correct_second": {
+    "n_families": 100,
+    "rate": 0.0,
+    "ci95": [
+      0.0,
+      0.03699480747600191
+    ]
+  },
+  "margin_decreases_second": {
+    "n_families": 100,
+    "rate": 0.32,
+    "ci95": [
+      0.2366901081545688,
+      0.4166280225367919
+    ]
+  },
+  "both_correct_reorder_positive": {
+    "n_families": 100,
+    "rate": 0.0,
+    "ci95": [
+      0.0,
+      0.03699480747600191
+    ]
+  },
+  "prediction_agrees_reorder_positive": {
+    "n_families": 100,
+    "rate": 1.0,
+    "ci95": [
+      0.9630051925239981,
+      0.9999999999999999
+    ]
+  },
+  "both_correct_reorder_negative": {
+    "n_families": 100,
+    "rate": 1.0,
+    "ci95": [
+      0.9630051925239981,
+      0.9999999999999999
+    ]
+  },
+  "prediction_agrees_reorder_negative": {
+    "n_families": 100,
+    "rate": 1.0,
+    "ci95": [
+      0.9630051925239981,
+      0.9999999999999999
+    ]
+  },
+  "both_correct_distractors_positive": {
+    "n_families": 100,
+    "rate": 0.0,
+    "ci95": [
+      0.0,
+      0.03699480747600191
+    ]
+  },
+  "prediction_agrees_distractors_positive": {
+    "n_families": 100,
+    "rate": 0.98,
+    "ci95": [
+      0.9299868370580063,
+      0.9944981477650318
+    ]
+  },
+  "both_correct_distractors_negative": {
+    "n_families": 100,
+    "rate": 0.99,
+    "ci95": [
+      0.9455124752390653,
+      0.9982326134344526
+    ]
+  },
+  "prediction_agrees_distractors_negative": {
+    "n_families": 100,
+    "rate": 0.99,
+    "ci95": [
+      0.9455124752390653,
+      0.9982326134344526
+    ]
+  },
+  "both_correct_rename_positive": {
+    "n_families": 100,
+    "rate": 0.0,
+    "ci95": [
+      0.0,
+      0.03699480747600191
+    ]
+  },
+  "prediction_agrees_rename_positive": {
+    "n_families": 100,
+    "rate": 1.0,
+    "ci95": [
+      0.9630051925239981,
+      0.9999999999999999
+    ]
+  },
+  "both_correct_rename_negative": {
+    "n_families": 100,
+    "rate": 1.0,
+    "ci95": [
+      0.9630051925239981,
+      0.9999999999999999
+    ]
+  },
+  "prediction_agrees_rename_negative": {
+    "n_families": 100,
+    "rate": 1.0,
+    "ci95": [
+      0.9630051925239981,
+      0.9999999999999999
+    ]
+  }
+}

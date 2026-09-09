@@ -1,0 +1,50 @@
+{
+  "seed": 20260909,
+  "task": "name_completion",
+  "status": "passed",
+  "conditions": {
+    "0": {
+      "n": 1200,
+      "token_range": [
+        89,
+        121
+      ],
+      "answer_tokens_including_period": [
+        3,
+        5
+      ],
+      "sha256": "4d7a255c4fc176abb3b4a1e6aeff85eba933658128e782651d5bc43616629b48"
+    },
+    "4": {
+      "n": 1200,
+      "token_range": [
+        354,
+        398
+      ],
+      "answer_tokens_including_period": [
+        3,
+        5
+      ],
+      "sha256": "78e6e03b8723b971d4eb5659db7020969dd251a1b2de49107425c557a418a67a"
+    },
+    "12": {
+      "n": 1200,
+      "token_range": [
+        943,
+        985
+      ],
+      "answer_tokens_including_period": [
+        3,
+        5
+      ],
+      "sha256": "ad2c6eda66b0cbd0c6b041a55ad52f490554b125345e508da4d4b3b6b3c26ca7"
+    }
+  },
+  "note": "1200 shared questions in three shot conditions; not the old Yes/No test.",
+  "checks": {
+    "direct": 200,
+    "twohop": 200,
+    "broken": 200,
+    "robustness": 600
+  }
+}

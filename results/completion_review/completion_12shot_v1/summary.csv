@@ -1,0 +1,8 @@
+check,variant,n,free_accuracy,candidate_accuracy,candidate_ties,valid_candidate_format_rate,mean_gold_minus_other
+broken,first,100,0.2,0.42,0,0.48,-0.19089650228619576
+broken,second,100,0.33,0.68,0,0.45,0.8828106372058392
+direct,base,200,0.77,0.885,0,0.86,1.903340234356001
+robustness,distractors,200,0.275,0.575,0,0.49,0.3147678512334824
+robustness,rename,200,0.34,0.685,0,0.49,0.8880118264630437
+robustness,reorder,200,0.275,0.69,0,0.4,1.0731831753626466
+twohop,base,200,0.35,0.75,0,0.5,1.09961670845747

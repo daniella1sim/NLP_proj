@@ -1,0 +1,289 @@
+{
+  "0": {
+    "issues": [],
+    "groups": {
+      "direct": {
+        "n": 200,
+        "free_accuracy": 0.56,
+        "candidate_accuracy": 0.705,
+        "valid_candidate_rate": 0.785,
+        "errors": {
+          "correct_target": 112,
+          "wrong_candidate": 45,
+          "unreachable_fact_name": 21,
+          "other_reachable": 22
+        },
+        "frequency_baseline_expected_accuracy": 1.0
+      },
+      "twohop": {
+        "n": 200,
+        "free_accuracy": 0.175,
+        "candidate_accuracy": 0.5,
+        "valid_candidate_rate": 0.425,
+        "errors": {
+          "reachable_one_hop": 97,
+          "wrong_candidate": 50,
+          "correct_target": 35,
+          "unreachable_fact_name": 18
+        },
+        "frequency_baseline_expected_accuracy": 1.0
+      },
+      "broken": {
+        "n": 200,
+        "free_accuracy": 0.225,
+        "candidate_accuracy": 0.58,
+        "valid_candidate_rate": 0.38,
+        "errors": {
+          "reachable_one_hop": 94,
+          "correct_target": 45,
+          "unreachable_fact_name": 30,
+          "wrong_candidate": 31
+        },
+        "frequency_baseline_expected_accuracy": 0.5
+      },
+      "robustness": {
+        "n": 600,
+        "free_accuracy": 0.18166666666666667,
+        "candidate_accuracy": 0.555,
+        "valid_candidate_rate": 0.32,
+        "errors": {
+          "unreachable_fact_name": 75,
+          "reachable_one_hop": 333,
+          "wrong_candidate": 83,
+          "correct_target": 109
+        },
+        "frequency_baseline_expected_accuracy": 0.8333333333333334
+      }
+    },
+    "paired": {
+      "broken/first": {
+        "n": 100,
+        "both_free": 0,
+        "both_candidate": 12,
+        "free_semantic_agreement": 45,
+        "candidate_semantic_agreement": 83,
+        "gold_margin_shift_expected": 66
+      },
+      "broken/second": {
+        "n": 100,
+        "both_free": 1,
+        "both_candidate": 21,
+        "free_semantic_agreement": 65,
+        "candidate_semantic_agreement": 67,
+        "gold_margin_shift_expected": 61
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "both_free": 18,
+        "both_candidate": 74,
+        "free_semantic_agreement": 98,
+        "candidate_semantic_agreement": 138
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "both_free": 8,
+        "both_candidate": 73,
+        "free_semantic_agreement": 94,
+        "candidate_semantic_agreement": 134
+      },
+      "robustness/rename": {
+        "n": 200,
+        "both_free": 13,
+        "both_candidate": 74,
+        "free_semantic_agreement": 88,
+        "candidate_semantic_agreement": 137
+      }
+    }
+  },
+  "4": {
+    "issues": [],
+    "groups": {
+      "direct": {
+        "n": 200,
+        "free_accuracy": 0.795,
+        "candidate_accuracy": 0.91,
+        "valid_candidate_rate": 0.865,
+        "errors": {
+          "correct_target": 159,
+          "unreachable_fact_name": 4,
+          "other_reachable": 22,
+          "wrong_candidate": 14,
+          "source_itself": 1
+        },
+        "frequency_baseline_expected_accuracy": 1.0
+      },
+      "twohop": {
+        "n": 200,
+        "free_accuracy": 0.28,
+        "candidate_accuracy": 0.715,
+        "valid_candidate_rate": 0.38,
+        "errors": {
+          "reachable_one_hop": 120,
+          "correct_target": 56,
+          "wrong_candidate": 20,
+          "unreachable_fact_name": 4
+        },
+        "frequency_baseline_expected_accuracy": 1.0
+      },
+      "broken": {
+        "n": 200,
+        "free_accuracy": 0.2,
+        "candidate_accuracy": 0.59,
+        "valid_candidate_rate": 0.375,
+        "errors": {
+          "reachable_one_hop": 122,
+          "correct_target": 40,
+          "wrong_candidate": 35,
+          "unreachable_fact_name": 3
+        },
+        "frequency_baseline_expected_accuracy": 0.5
+      },
+      "robustness": {
+        "n": 600,
+        "free_accuracy": 0.20833333333333334,
+        "candidate_accuracy": 0.67,
+        "valid_candidate_rate": 0.32,
+        "errors": {
+          "reachable_one_hop": 384,
+          "correct_target": 125,
+          "wrong_candidate": 67,
+          "unreachable_fact_name": 24
+        },
+        "frequency_baseline_expected_accuracy": 0.8333333333333334
+      }
+    },
+    "paired": {
+      "broken/first": {
+        "n": 100,
+        "both_free": 0,
+        "both_candidate": 21,
+        "free_semantic_agreement": 25,
+        "candidate_semantic_agreement": 76,
+        "gold_margin_shift_expected": 86
+      },
+      "broken/second": {
+        "n": 100,
+        "both_free": 9,
+        "both_candidate": 42,
+        "free_semantic_agreement": 74,
+        "candidate_semantic_agreement": 58,
+        "gold_margin_shift_expected": 98
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "both_free": 26,
+        "both_candidate": 122,
+        "free_semantic_agreement": 123,
+        "candidate_semantic_agreement": 163
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "both_free": 19,
+        "both_candidate": 98,
+        "free_semantic_agreement": 110,
+        "candidate_semantic_agreement": 136
+      },
+      "robustness/rename": {
+        "n": 200,
+        "both_free": 23,
+        "both_candidate": 115,
+        "free_semantic_agreement": 124,
+        "candidate_semantic_agreement": 140
+      }
+    }
+  },
+  "12": {
+    "issues": [],
+    "groups": {
+      "direct": {
+        "n": 200,
+        "free_accuracy": 0.77,
+        "candidate_accuracy": 0.885,
+        "valid_candidate_rate": 0.86,
+        "errors": {
+          "correct_target": 154,
+          "unreachable_fact_name": 3,
+          "other_reachable": 25,
+          "wrong_candidate": 18
+        },
+        "frequency_baseline_expected_accuracy": 1.0
+      },
+      "twohop": {
+        "n": 200,
+        "free_accuracy": 0.35,
+        "candidate_accuracy": 0.75,
+        "valid_candidate_rate": 0.5,
+        "errors": {
+          "reachable_one_hop": 100,
+          "correct_target": 70,
+          "wrong_candidate": 30
+        },
+        "frequency_baseline_expected_accuracy": 1.0
+      },
+      "broken": {
+        "n": 200,
+        "free_accuracy": 0.265,
+        "candidate_accuracy": 0.55,
+        "valid_candidate_rate": 0.465,
+        "errors": {
+          "reachable_one_hop": 107,
+          "correct_target": 53,
+          "wrong_candidate": 40
+        },
+        "frequency_baseline_expected_accuracy": 0.5
+      },
+      "robustness": {
+        "n": 600,
+        "free_accuracy": 0.2966666666666667,
+        "candidate_accuracy": 0.65,
+        "valid_candidate_rate": 0.46,
+        "errors": {
+          "reachable_one_hop": 302,
+          "correct_target": 178,
+          "wrong_candidate": 98,
+          "unreachable_fact_name": 22
+        },
+        "frequency_baseline_expected_accuracy": 0.8333333333333334
+      }
+    },
+    "paired": {
+      "broken/first": {
+        "n": 100,
+        "both_free": 3,
+        "both_candidate": 19,
+        "free_semantic_agreement": 33,
+        "candidate_semantic_agreement": 81,
+        "gold_margin_shift_expected": 86
+      },
+      "broken/second": {
+        "n": 100,
+        "both_free": 13,
+        "both_candidate": 45,
+        "free_semantic_agreement": 70,
+        "candidate_semantic_agreement": 55,
+        "gold_margin_shift_expected": 95
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "both_free": 35,
+        "both_candidate": 125,
+        "free_semantic_agreement": 120,
+        "candidate_semantic_agreement": 162
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "both_free": 38,
+        "both_candidate": 105,
+        "free_semantic_agreement": 114,
+        "candidate_semantic_agreement": 145
+      },
+      "robustness/rename": {
+        "n": 200,
+        "both_free": 43,
+        "both_candidate": 112,
+        "free_semantic_agreement": 123,
+        "candidate_semantic_agreement": 137
+      }
+    }
+  }
+}

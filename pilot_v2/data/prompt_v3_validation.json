@@ -1,0 +1,31 @@
+{
+  "seed": 20260908,
+  "status": "passed",
+  "test_facts_names_queries_labels_unchanged": true,
+  "unique_prefixes": {
+    "4": 100,
+    "12": 100
+  },
+  "conditions": {
+    "4": {
+      "rows": 1200,
+      "token_range": [
+        264,
+        299
+      ],
+      "sha256": "4c5bd1bdb18672d53030353320260140b7164ffa00e0eb408916b95fde86eec8"
+    },
+    "12": {
+      "rows": 1200,
+      "token_range": [
+        634,
+        671
+      ],
+      "sha256": "aadb2d33ac9a341030ce7eac4448491d58936446168b1138b7c5a092008b2a61"
+    }
+  },
+  "last_label_families": {
+    "No": 50,
+    "Yes": 50
+  }
+}

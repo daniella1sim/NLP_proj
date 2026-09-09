@@ -1,0 +1,18 @@
+{
+  "dataset_version": "distinct_names_v2",
+  "baseline_sha256": "60dc645d31a65c218faea06436cf683e1c3acede472a99c37a44a29fc3099de5",
+  "naming_seed": 20260907,
+  "families": 100,
+  "rows_per_condition": 1200,
+  "conditions": [
+    4,
+    12
+  ],
+  "notes": [
+    "Same graphs, labels and fact order as baseline; names changed.",
+    "Test names reused across independent prompts, roles randomly assigned.",
+    "Demonstration vocabulary disjoint from test vocabulary.",
+    "4-shot demonstrations are the first four of the 12-shot condition.",
+    "Spelling distinctness is verified, tokenizer audit awaits model selection."
+  ]
+}

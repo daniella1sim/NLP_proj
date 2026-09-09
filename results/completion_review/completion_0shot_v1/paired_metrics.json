@@ -1,0 +1,32 @@
+{
+  "broken/first": {
+    "n": 100,
+    "both_free_correct": 0.0,
+    "both_candidate_correct": 0.12,
+    "free_answer_changed": 0.55
+  },
+  "broken/second": {
+    "n": 100,
+    "both_free_correct": 0.01,
+    "both_candidate_correct": 0.21,
+    "free_answer_changed": 0.35
+  },
+  "robustness/reorder": {
+    "n": 200,
+    "both_free_correct": 0.09,
+    "both_candidate_correct": 0.37,
+    "free_answer_changed": 0.51
+  },
+  "robustness/distractors": {
+    "n": 200,
+    "both_free_correct": 0.04,
+    "both_candidate_correct": 0.365,
+    "free_answer_changed": 0.53
+  },
+  "robustness/rename": {
+    "n": 200,
+    "both_free_correct": 0.065,
+    "both_candidate_correct": 0.37,
+    "free_answer_changed": 1.0
+  }
+}

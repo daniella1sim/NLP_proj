@@ -1,0 +1,852 @@
+
+--- PAGE 1 ---
+Natural Language Processing
+Transformers
+Spring 2025/26
+Based on slides from Maor Ivgi, 
+Jonathan Berant, Michael Collins, 
+Chris Manning, Richard Soccer, 
+Dan Jurafsky, Abigail See
+
+--- PAGE 2 ---
+Admin: where we are and what is next Up to minor adjustments
+Week Date Topic Home assignments
+1 Apr 14 Introduction + discrete word representations HW0 released
+2 May 5 Distributed word embeddings HW0 is due, HW1 out
+3 May 12 Language models + contextualized representations 
+4 May 19 RNNs + attention + Hugging Face tutorial 
+5 May 26 Transformers + pretrained language models HW1 due, HW2 out
+6 Jun 2 Fine-tuning + scaling up 
+7 Jun 9 NLG (decoding) + Discussion on final projects 
+8 Jun 16 Guest lecture by Dr. Roee Aharoni (Google) HW2 is due
+9 Jun 23 Guest lecture by Dr. Ori Yoran (Meta) HW3 out
+10 Jun 30 Sparse retrieval methods + RAG 
+11 Jul 5 Guest lecture by Omer Nevo (Irregular) Project proposals due
+12 Jul 14 Post-training and alignment + Interpretability HW3 is due
+13 Cancelled by university 
+
+--- PAGE 3 ---
+● “Brushing over the math”
+● More intuition/examples/details
+● Long HW
+
+--- PAGE 4 ---
+4
+
+--- PAGE 5 ---
+Plan (for the next ~2 classes)
+● Deep diving into the Transformer architecture
+● Pretrained Transformer-based language models
+Then:
+● Fine-tuning
+● Scaling up
+
+--- PAGE 6 ---
+Plan (for the next ~2 classes)
+● Deep diving into the Transformer architecture
+● Pretrained Transformer-based language models
+
+--- PAGE 7 ---
+Pre-trained transformer-based LMs
+● Can be intimidating at first glance, but make a lot of sense.
+● It is just an architecture, but
+○ They are everywhere today
+○ They are part of the current NLP (AI?) revolution
+○ They combine a lot of intuitions we saw before beautifully
+○ They are likely not the end of the road, but understanding them is essential
+
+--- PAGE 8 ---
+The Transformer architecture
+Attention is all you need (Vaswani et al., 2017)
+● Introduced as an encoder-decoder 
+architecture.
+● The encoder and decoder use the 
+same building blocks.
+● A feed-forward NN with fixed horizon, 
+but representations are contextualized!
+● Today we have encoder-only, 
+decoder-only, and encoder-decoder 
+models.
+
+
+--- PAGE 9 ---
+The Transformer architecture
+Attention is all you need (Vaswani et al., 2017)
+Multi-head attention
+
+--- PAGE 10 ---
+Motivation
+● RNNs are hard to parallelize so it takes a lot time to run them on large 
+amounts of data
+● They don’t explicitly model long vs. close range dependencies
+● They have linear interaction distance 
+
+
+--- PAGE 11 ---
+Motivation
+● RNNs are hard to parallelize so it takes a lot time to run them on large 
+amounts of data
+● They don’t explicitly model long vs. close range dependencies
+● They have linear interaction distance
+○ Hard to learn long-distance dependencies
+○ Linear order is hard-wired, but language is not linear..
+Attention contextualizes while sidestepping all of these!
+
+--- PAGE 12 ---
+Self-attention
+ 
+The movie was terribly exciting
+ 
+ 
+Cmp Cmp Cmp Cmp
+ 
+Softmax
+ 
+ 
++
+x x x x x
+Cmp
+
+--- PAGE 13 ---
+Attention as a soft (averaging) lookup table
+
+
+--- PAGE 14 ---
+Attention as a soft (averaging) lookup table
+
+
+--- PAGE 15 ---
+Attention as a soft (averaging) lookup table
+Why would we expect an intermediate representations
+to act as good keys/queries?
+Why does averaging the representation values make sense? 
+
+--- PAGE 16 ---
+Attention as a soft (averaging) lookup table
+Why would we expect an intermediate representations
+to act as good keys/queries?
+Why does averaging the representation values make sense? 
+
+--- PAGE 17 ---
+Attention as a soft (averaging) lookup table
+Why would we expect an intermediate representations
+to act as good keys/queries?
+Why does averaging the representation values make sense? 
+ 
+
+--- PAGE 18 ---
+Attention as a soft (averaging) lookup table
+Why would we expect an intermediate representations
+to act as good keys/queries?
+Why does averaging the representation values make sense? 
+ 
+
+--- PAGE 19 ---
+Attention as a soft (averaging) lookup table
+Why would we expect an intermediate representations
+to act as good keys/queries?
+Why does averaging the representation values make sense? 
+ 
+
+--- PAGE 20 ---
+The illustrated self-attention: https://medium.com/data-science/illustrated-self-attention-2d627e33b20a 
+
+--- PAGE 21 ---
+ 
+The illustrated self-attention: https://medium.com/data-science/illustrated-self-attention-2d627e33b20a 
+
+--- PAGE 22 ---
+ 
+The illustrated self-attention: https://medium.com/data-science/illustrated-self-attention-2d627e33b20a 
+
+--- PAGE 23 ---
+ 
+Done in parallel on all the input tokens with 
+simple matrix multiplications
+What is the complexity?
+The illustrated self-attention: https://medium.com/data-science/illustrated-self-attention-2d627e33b20a 
+
+--- PAGE 24 ---
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 25 ---
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 26 ---
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 27 ---
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 28 ---
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 29 ---
+Matrix calculations 
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 30 ---
+What if a word needs to attend to multiple words?
+Can we allow each token to apply multiple functions?
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 31 ---
+Multi-headed attention
+ 
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 32 ---
+Going multi-head
+ 
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 33 ---
+ 
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 34 ---
+ 
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 35 ---
+ 
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 36 ---
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+--- PAGE 37 ---
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+
+
+--- PAGE 38 ---
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/ 
+Each self-attention block produces a new sequence
+of contextualized representation with 
+the same dimensions
+But what about the order of the tokens? 
+
+--- PAGE 39 ---
+Transformers vs. RNNs: What we gained, what we lost
+● Is parallel training possible with Transformers?
+○ This was an issue with RNNs we wanted to fix
+● What is the context length of a Transformer?
+○ Is it unlimited like in RNNs?
+○ How does the number of parameters grow with the context length? 
+○ How does the running time complexity grow the context length? 
+● Do Transformers know the order of tokens in the sequence?
+○ In RNNs, it was hardwired into the architecture through recurrence
+○ But we got rid of recurrence! (“Attention is all you need”?)
+
+--- PAGE 40 ---
+Transformers vs. RNNs: What we gained, what we lost
+● Is parallel training possible with Transformers?
+○ This was an issue with RNNs we wanted to fix
+● What is the context length of a Transformer?
+○ Is it unlimited like in RNNs?
+○ How does the number of parameters grow with the context length? 
+○ How does the running time complexity grow the context length? 
+● Do Transformers know the order of tokens in the sequence?
+○ In RNNs, it was hardwired into the architecture through recurrence
+○ But we got rid of recurrence! (“Attention is all you need”?)
+
+--- PAGE 41 ---
+Transformers vs. RNNs: What we gained, what we lost
+● Is parallel training possible with Transformers?
+○ This was an issue with RNNs we wanted to fix
+● What is the context length of a Transformer?
+○ Is it unlimited like in RNNs?
+○ How does the number of parameters grow with the context length? 
+○ How does the running time complexity grow the context length? 
+● Do Transformers know the order of tokens in the sequence?
+○ In RNNs, it was hardwired into the architecture through recurrence
+○ But we got rid of recurrence!
+
+--- PAGE 42 ---
+The Transformer architecture
+Attention is all you need (Vaswani et al., 2017)
+Positional embeddings
+
+--- PAGE 43 ---
+Positional embedding
+ 
+https://kazemnejad.com/blog/transformer_architecture_positional_encoding/ 
+
+
+--- PAGE 44 ---
+Positional embedding
+ 
+https://kazemnejad.com/blog/transformer_architecture_positional_encoding/ 
+
+
+--- PAGE 45 ---
+Positional embedding
+https://kazemnejad.com/blog/transformer_architecture_positional_encoding/ 
+ 
+
+
+--- PAGE 46 ---
+The Transformer architecture
+Attention is all you need (Vaswani et al., 2017)
+Feed forward network
+
+--- PAGE 47 ---
+Feed-forward network layers (or MLP layers)
+● Add expressivity to the model
+● Operate on each representation 
+separately
+● Account for most of the model 
+parameters in typical LMs
+
+
+--- PAGE 48 ---
+The Transformer architecture
+Attention is all you need (Vaswani et al., 2017)
+Residual connections and 
+normalization
+
+--- PAGE 49 ---
+Residual connections
+● Problem: In deep-learning neural networks, gradients may vanish or 
+explode during training.
+○ Additionally, some functions H(x) are hard to learn
+● Solution: Residual connections (a.k.a skip connections)
+○ Instead of learning H(x) directly, learn F(x) = H(x) - x
+○ Learn small modifications on x
+○ Gradients propagate freely
+● Residual connections allow training very deep 
+neural networks
+He et al., 2015 - https://arxiv.org/pdf/1512.03385.pdf 
+
+--- PAGE 50 ---
+The residual stream
+https://transformer-circuits.pub/2021/framework/index.html 
+
+--- PAGE 51 ---
+Layer normalization
+● When training NNs, covariate shifts are a big problem
+○ For example, in convolutional neural networks, batch normalization is 
+often used to make sure each batch has the same mean and variance
+○ But what is a batch in recurrent networks?
+● In RNNs and transformers, long sequences can cause significant shifts in 
+output distribution between tokens, making the training unstable (each token 
+is processed in the same way but may vary significantly in statistics)
+● Layer normalization normalizes each of the inputs in the batch independently 
+across all features
+○ The output of each sublayer is LayerNorm(x+SubLayer(x))
+○ Nowadays some transformers perform Pre-LN rather than Post-LN
+Ba et al., 2016 - https://arxiv.org/abs/1607.06450 
+Images from https://www.pinecone.io/learn/batch-layer-normalization
+
+--- PAGE 52 ---
+Layer normalization
+●When training NNs, covariate shifts are a big problem
+○For example, in convolutional neural networks, batch normalization is 
+often used to make sure each batch has the same mean and variance
+○But what is a batch in recurrent networks?
+●In RNNs and transformers, long sequences can cause significant shifts in 
+output distribution between tokens, making the training unstable (each token 
+is processed in the same way but may vary significantly in statistics)
+●Layer normalization normalizes each of the inputs in the batch independently 
+across all features
+○ The output of each sublayer is LayerNorm(x+SubLayer(x))
+○Nowadays some transformers perform Pre-LN rather than Post-LN
+Ba et al., 2016 - https://arxiv.org/abs/1607.06450 
+Images from https://www.pinecone.io/learn/batch-layer-normalization
+
+
+--- PAGE 53 ---
+Layer norm: Post-LN vs Pre-LN 
+Xiong et al., 2020
+Post-LN 
+(original transformer):
+LayerNorm happens 
+after residual addition
+Pre-LN 
+(more common today):
+LayerNorm happens 
+before residual addition
+Why do you 
+think this might 
+work better?
+
+--- PAGE 54 ---
+The transformer encoder
+The illustrated transformer: https://jalammar.github.io/illustrated-transformer/Vaswani et al., 2017 - https://arxiv.org/pdf/1706.03762.pdf 
+
+--- PAGE 55 ---
+Tokenization
+Attention is all you need (Vaswani et al., 2017)
+
+
+--- PAGE 56 ---
+Tokenization
+Attention is all you need (Vaswani et al., 2017)
+  
+
+--- PAGE 57 ---
+Tokenization
+Attention is all you need (Vaswani et al., 2017)
+  
+
+--- PAGE 58 ---
+Tokenization: Use Cases
+● Etymology: believe vs. unbelievable
+● Contractions: do not vs. don’t vs. can’t
+● Variations: Ph.D. vs. PhD vs. phd ; trade off vs. trade-off vs. tradeoff
+● URLs: http://www...
+● Emoticons and emojis: :-),  😄
+, ¯\_(ツ)_/¯, …
+● Code snippets, HTML, Markdown, …
+● Math symbols
+● Languages and writing systems without whitespace segmentation
+● …
+
+
+--- PAGE 59 ---
+Tokenization: Considerations
+Most granular tokenization: 
+character/byte level
+Least granular tokenization: 
+whole word level
+
+--- PAGE 60 ---
+Tokenization: Considerations
+Most granular tokenization: 
+character/byte level
+● Small vocabulary
+● Very long sequences
+○ I am Sam -> [“I”, “ “, “a”, “m”, “ “, “S”, …]
+○ Slow to process
+● No token semantics
+Least granular tokenization: 
+whole word level
+
+--- PAGE 61 ---
+Tokenization: Considerations
+Most granular tokenization: 
+character/byte level
+● Small vocabulary
+● Very long sequences
+○ I am Sam -> [“I”, “ “, “a”, “m”, “ “, “S”, …]
+○ Slow to process
+● No token semantics
+Least granular tokenization: 
+whole word level
+● Short sequences
+● Huge vocabulary
+○ Embedding layer expensive to store
+○ Poor training signal due to sparsity
+○ Unseen tokens due to sparsity
+
+--- PAGE 62 ---
+Tokenization: Considerations
+Most granular tokenization: 
+character/byte level
+● Small vocabulary
+● Very long sequences
+○ I am Sam -> [“I”, “ “, “a”, “m”, “ “, “S”, …]
+○ Slow to process
+● No token semantics
+Least granular tokenization: 
+whole word level
+● Short sequences
+● Huge vocabulary
+○ Embedding layer expensive to store
+○ Poor training signal due to sparsity
+○ Unseen tokens due to sparsity
+Middleground: Subword Tokenization
+
+--- PAGE 63 ---
+Types of Subword Tokenizers (vocabulary selection)
+● “Bottom-up”: [E.g.: BPE (=Byte-Pair Encoding), WordPiece]
+○ Start with granular vocabulary of tokens (letters, bytes)
+○ Iteratively merge pairs of tokens into new tokens based on to corpus
+
+--- PAGE 64 ---
+Types of Subword Tokenizers (vocabulary selection)
+● “Bottom-up”: [E.g.: BPE (=Byte-Pair Encoding), WordPiece]
+○ Start with granular vocabulary of tokens (letters, bytes)
+○ Iteratively merge pairs of tokens into new tokens based on to corpus
+● “Top-down”: [Often called “unigram tokenizer”]
+○ Start with an overly huge vocabulary
+○ Gradually prune it down based on corpus
+
+--- PAGE 65 ---
+Types of Subword Tokenizers (vocabulary selection)
+● “Bottom-up”: [E.g.: BPE (=Byte-Pair Encoding), WordPiece]
+○ Start with granular vocabulary of tokens (letters, bytes)
+○ Iteratively merge pairs of tokens into new tokens based on to corpus
+● “Top-down”: [Often called “unigram tokenizer”]
+○ Start with an overly huge vocabulary
+○ Gradually prune it down based on corpus
+● Unseen tokens? “Byte fallback” (everything is bytes)
+
+--- PAGE 66 ---
+Types of Subword Tokenizers (vocabulary selection)
+● “Bottom-up”: [E.g.: BPE (=Byte-Pair Encoding), WordPiece]
+○ Start with granular vocabulary of tokens (letters, bytes)
+○ Iteratively merge pairs of tokens into new tokens based on to corpus
+● “Top-down”: [Often called “unigram tokenizer”]
+○ Start with an overly huge vocabulary
+○ Gradually prune it down based on corpus
+● Unseen tokens? “Byte fallback” (everything is bytes)
+● Tokenized vocabulary sizes in LLMs today are ~30k -- ~120K
+
+--- PAGE 67 ---
+Subword tokenization: Example
+Image from https://towardsdatascience.com/how-to-build-a-wordpiece-tokenizer-for-bert-f505d97dddbb
+Note that ##board and board are 
+different tokens and will have 
+different embeddings
+
+--- PAGE 68 ---
+The transformer encoder
+Vaswani et al., 2017
+● Sequence to sequence model
+○ Output length is equal to the input length
+○ The representation dimension at each sublayer is 
+the same as the embedding dimension
+● A bi-directional contextual encoder
+● Fully parallelizable (across input tokens)
+● Agnostic to the input length (given appropriate 
+positional embeddings)
+● Quadratic complexity in input length due to 
+self-attention
+● Transformer blocks are stacked vertically
+● Increasing the representation dimension (width) 
+generally improves performance
+
+
+--- PAGE 69 ---
+Plan
+● Deep diving into the Transformer architecture
+● Pretrained Transformer-based language models
+
+--- PAGE 70 ---
+Plan
+● Deep diving into the Transformer architecture
+● Pretrained Transformer-based language models
+
+--- PAGE 71 ---
+Bi-directional RNN Transformer encoder
+
+--- PAGE 72 ---
+Transformer-based LM encoders
+● Pre-trained word representations are great
+○ Leverage large amounts of unlabeled data
+● But, they don’t take context into account
+● We saw how bi-directional RNNs (Tag-LM and ELMo) can 
+create contextualized word representations (inefficiently)
+● Can we use the powerful and parallelizable transformers?
+● Introducing BERT – Bidirectional Encoder Representations from 
+Transformers (Devlin et al., 2019)
+
+
+--- PAGE 73 ---
+How can we train a 
+Transformer encoder?
+
+
+--- PAGE 74 ---
+Image from https://jalammar.github.io/illustrated-bert/  
+Masked language modeling (MLM)
+● Idea: mask some tokens and 
+train the model to predict 
+based on context.
+● Use lots of data
+● Leverage everything we saw!
+
+--- PAGE 75 ---
+Image from https://jalammar.github.io/illustrated-bert/  
+Masked language modeling (MLM)
+● Idea: mask some tokens and 
+train the model to predict 
+based on context.
+● Use lots of data
+● Leverage everything we saw!
+
+--- PAGE 76 ---
+Image from https://jalammar.github.io/illustrated-bert/  
+Masked language modeling (MLM)
+● Idea: mask some tokens and 
+train the model to predict 
+based on context.
+● Use lots of data
+● Leverage everything we saw!
+
+--- PAGE 77 ---
+Next sentence prediction (NSP)
+ Devlin et al., 2019 https://arxiv.org/pdf/1810.04805.pdf
+
+--- PAGE 78 ---
+Fine-tuning BERT
+ Devlin et al., 2019 https://arxiv.org/pdf/1810.04805.pdf
+
+
+--- PAGE 79 ---
+One model to rule them all - a new paradigm is born
+ Devlin et al., 2019 https://arxiv.org/pdf/1810.04805.pdf Liu et al., 2019 https://arxiv.org/pdf/1907.11692.pdf
+
+--- PAGE 80 ---
+One model to rule them all - a new paradigm is born
+ Devlin et al., 2019 https://arxiv.org/pdf/1810.04805.pdf Liu et al., 2019 https://arxiv.org/pdf/1907.11692.pdf
+
+--- PAGE 81 ---
+One model to rule them all - a new paradigm is born
+ Devlin et al., 2019 https://arxiv.org/pdf/1810.04805.pdf Liu et al., 2019 https://arxiv.org/pdf/1907.11692.pdf
+
+--- PAGE 82 ---
+One model to rule them all - a new paradigm is born
+ Devlin et al., 2019 https://arxiv.org/pdf/1810.04805.pdf Liu et al., 2019 https://arxiv.org/pdf/1907.11692.pdf
+
+--- PAGE 83 ---
+Project from the past
+MenakBERT (Ido Cohen, Jacob Gidron, Idan Pinto)
+A character level transformer pretrained on Hebrew 
+text and fine-tuned to produce diacritical marks for 
+Hebrew sentences
+
+
+--- PAGE 84 ---
+Can we use a Transformer 
+encoder to generate text?
+
+
+--- PAGE 85 ---
+A transformer endecoder
+Vaswani et al., 2017
+Encoders are great for creating contextualized token 
+representations, but we also want auto-regressive text 
+generation (e.g., language modeling).
+How can we use this architecture as a decoder?
+
+--- PAGE 86 ---
+How can we use this architecture for language modeling?
+
+--- PAGE 87 ---
+The Transformer architecture
+Attention is all you need (Vaswani et al., 2017)
+Masked attention
+To be revealed after class
+
+--- PAGE 88 ---
+Causal masking
+● Attend only to past tokens! 
+● So, are we back to the sequential processing of RNNs?
+○ No! – Use causal masking
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+To be revealed after class
+
+--- PAGE 89 ---
+Causal masking
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+● Attend only to past tokens! 
+● So, are we back to the sequential processing of RNNs?
+○ No! – Use causal masking
+To be revealed after class
+
+--- PAGE 90 ---
+Generative Pre-trained Transformer
+Radford et al., 2018, Radford et al., 2019
+● Replaced LSTM with a large transformer
+● Trained on a lot of text
+● Used the causal LM objective
+○ The same teacher forcing autoregressive LM,
+supported by the causal masking we just saw
+● Showed a big boost in generative tasks
+○ Got the unicorn example we saw in Lec. 3
+● GPT2 showed seeds of promise in few- or zero-shot
+● The base work for GPT-3/4, ChatGPT etc.
+
+--- PAGE 91 ---
+GPT - decoder only language model
+Radford et al., 2018, Radford et al., 2019
+
+--- PAGE 92 ---
+The Transformer architecture
+Attention is all you need (Vaswani et al., 2017)
+Cross attention
+
+--- PAGE 93 ---
+Cross attention
+● We’ve seen self-attention for 
+the encoder (bi-directional)
+● We’ve seen masked self-attention for the 
+decoder (uni-directional)
+● A natural extension is cross-attention, 
+allowing a decoder block to attend to 
+representations of the encoder, to 
+perform conditional generation
+
+--- PAGE 94 ---
+Cross attention details
+● In self-attention, keys, queries, and 
+values come from the same source.
+● In cross-attention, things look more 
+like what we saw last time.
+● Namely, the keys and values come 
+from the encoder, and the query 
+comes from the decoder (no masking 
+is needed)
+
+
+--- PAGE 95 ---
+Closing the loop
+Attention is all you need 
+(Vaswani et al., 2017)
+So we have the 
+“hardware”, how do we 
+pretrain it?
+
+--- PAGE 96 ---
+Pre-training an encoder-decoder
+There are many ways to do that
+● T5 (Raffel et al., 2019) - Text-to-Text Transfer Transformer
+
+
+--- PAGE 97 ---
+Pre-training an encoder-decoder
+There are many ways to do that
+● T5 (Raffel et al., 2019) - Text-to-Text Transfer Transformer
+
+
+--- PAGE 98 ---
+Pre-training an encoder-decoder
+There are many ways to do that
+● T5 (Raffel et al., 2019) - Text-to-Text Transfer Transformer
+● BART (Lewis et al., 2019) – Denoising Sequence-to-Sequence
+
+
+--- PAGE 99 ---
+Pre-training an encoder-decoder
+There are many ways to do that
+● T5 (Raffel et al., 2019) - Text-to-Text Transfer Transformer
+● BART (Lewis et al., 2019) – Denoising Sequence-to-Sequence
+● XLM-R (Conneau et al., 2019) - Cross-lingual Representation learning
+● Transformer-XL (Dai et al., 2019) - Attentive Language Models Beyond a 
+Fixed-Length Context
+● LongT5 (Guo et al., 2021) - Efficient Text-To-Text Transformer for Long 
+Sequences
+● Many more...
+
+--- PAGE 100 ---
+
+
+--- PAGE 101 ---
+
+
+--- PAGE 102 ---
+Which pretraining to use?
+Raffel et al. 2019 found encoder-decoders to work better than decoders for their 
+tasks, and span corruption (denoising) to work better than language modeling.
+
+
+--- PAGE 103 ---
+Which pretraining to use?
+Encoders are great (at encoding)
+Encoder-Decoders can be extremely powerful when 
+trained properly (e.g. UL2)
+But training them is more compute intensive due to 
+inferior signal to input ratio (Wang et al., 2022, Artexe et al., 2022)
+
+--- PAGE 104 ---
+Yang et al., 2023 - https://arxiv.org/abs/2304.13712 
+ RNNs &
+ Statistical
+models
+Language models evolutionary tree
+
+--- PAGE 105 ---
+Yang et al., 2023 - https://arxiv.org/abs/2304.13712 
+ RNNs &
+ Statistical
+models
+Language models evolutionary tree
+Encoder - 
+only
+
+--- PAGE 106 ---
+Yang et al., 2023 - https://arxiv.org/abs/2304.13712 
+ RNNs &
+ Statistical
+models
+Language models evolutionary tree
+Encoder - 
+only
+Encoder -
+  Decoder
+
+--- PAGE 107 ---
+Yang et al., 2023 - https://arxiv.org/abs/2304.13712 
+ RNNs &
+ Statistical
+models
+Language models evolutionary tree
+Encoder - 
+only
+Encoder -
+  Decoder
+ Decoder -
+only
+
+--- PAGE 108 ---
+Yang et al., 2023 - https://arxiv.org/abs/2304.13712 
+ RNNs &
+ Statistical
+models
+Language models evolutionary tree
+Encoder - 
+only
+Encoder -
+  Decoder
+ Decoder -
+only
+Note that decoder-only models actually encode inputs 
+internally, just auto-regressively (uni-directional 
+contextual encoding) instead of bi-directionally
+
+--- PAGE 109 ---
+Disclaimer
+● I glossed over many fine details
+○ Architecture may slightly vary
+○ Pre-training techniques
+○ Data used
+○ Etc..
+● But they are all similar enough to 
+the main ideas we learned today!
+Source: arXiv
+
+
+--- PAGE 110 ---
+Conclusion
+● Deep contextualized representations replaced word embeddings
+● Models are trained via a two-step process – pre-training on lots of data, 
+then fine-tuning for specific tasks and/or for alignment/instruction following – 
+more on that later in the course
+● We moved from task-specific architectures into “adjustable” general 
+language models
+● Transformers broke some usability threshold and NLP has made it into the 
+industry and our daily lives
+● But they may not be the end of the road

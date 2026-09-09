@@ -1,0 +1,152 @@
+Mon Sep  7 18:13:00 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.64.03              Driver Version: 575.64.03      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 2080 Ti     Off |   00000000:3D:00.0 Off |                  N/A |
+|  0%   37C    P2             60W /  250W |    5100MiB /  11264MiB |     18%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 2080 Ti     Off |   00000000:3E:00.0 Off |                  N/A |
+|  0%   50C    P2            130W /  250W |    7446MiB /  11264MiB |     37%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA GeForce RTX 2080 Ti     Off |   00000000:60:00.0 Off |                  N/A |
+|  0%   40C    P0             75W /  250W |       1MiB /  11264MiB |      6%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA GeForce RTX 2080 Ti     Off |   00000000:61:00.0 Off |                  N/A |
+|  0%   38C    P2             58W /  250W |    4946MiB /  11264MiB |     26%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   4  NVIDIA GeForce RTX 2080 Ti     Off |   00000000:B1:00.0 Off |                  N/A |
+|  0%   23C    P8             12W /  250W |    8578MiB /  11264MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   5  NVIDIA GeForce RTX 2080 Ti     Off |   00000000:B2:00.0 Off |                  N/A |
+|  0%   23C    P8             18W /  250W |       1MiB /  11264MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   6  NVIDIA GeForce RTX 2080 Ti     Off |   00000000:DA:00.0 Off |                  N/A |
+|  0%   23C    P8              1W /  250W |       1MiB /  11264MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   7  NVIDIA GeForce RTX 2080 Ti     Off |   00000000:DB:00.0 Off |                  N/A |
+|  0%   23C    P8             23W /  250W |       1MiB /  11264MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1663425      C   ...onda3/envs/san_env/bin/python       5096MiB |
+|    1   N/A  N/A         1673502      C   ...onda3/envs/san_env/bin/python       7442MiB |
+|    3   N/A  N/A         1652752      C   ...onda3/envs/san_env/bin/python       4954MiB |
+|    4   N/A  N/A         1649939      C   ...a3/envs/graphormer/bin/python       8570MiB |
++-----------------------------------------------------------------------------------------+
+12/1200 prompts; 2.94 s/prompt
+24/1200 prompts; 1.56 s/prompt
+36/1200 prompts; 1.12 s/prompt
+48/1200 prompts; 0.89 s/prompt
+60/1200 prompts; 0.76 s/prompt
+72/1200 prompts; 0.66 s/prompt
+84/1200 prompts; 0.59 s/prompt
+96/1200 prompts; 0.54 s/prompt
+108/1200 prompts; 0.51 s/prompt
+120/1200 prompts; 0.47 s/prompt
+132/1200 prompts; 0.45 s/prompt
+144/1200 prompts; 0.43 s/prompt
+156/1200 prompts; 0.41 s/prompt
+168/1200 prompts; 0.40 s/prompt
+180/1200 prompts; 0.39 s/prompt
+192/1200 prompts; 0.38 s/prompt
+204/1200 prompts; 0.37 s/prompt
+216/1200 prompts; 0.36 s/prompt
+228/1200 prompts; 0.35 s/prompt
+240/1200 prompts; 0.35 s/prompt
+252/1200 prompts; 0.34 s/prompt
+264/1200 prompts; 0.33 s/prompt
+276/1200 prompts; 0.33 s/prompt
+288/1200 prompts; 0.32 s/prompt
+300/1200 prompts; 0.32 s/prompt
+312/1200 prompts; 0.31 s/prompt
+324/1200 prompts; 0.31 s/prompt
+336/1200 prompts; 0.31 s/prompt
+348/1200 prompts; 0.30 s/prompt
+360/1200 prompts; 0.30 s/prompt
+372/1200 prompts; 0.30 s/prompt
+384/1200 prompts; 0.29 s/prompt
+396/1200 prompts; 0.29 s/prompt
+408/1200 prompts; 0.29 s/prompt
+420/1200 prompts; 0.29 s/prompt
+432/1200 prompts; 0.28 s/prompt
+444/1200 prompts; 0.28 s/prompt
+456/1200 prompts; 0.28 s/prompt
+468/1200 prompts; 0.28 s/prompt
+480/1200 prompts; 0.27 s/prompt
+492/1200 prompts; 0.27 s/prompt
+504/1200 prompts; 0.27 s/prompt
+516/1200 prompts; 0.27 s/prompt
+528/1200 prompts; 0.27 s/prompt
+540/1200 prompts; 0.27 s/prompt
+552/1200 prompts; 0.26 s/prompt
+564/1200 prompts; 0.26 s/prompt
+576/1200 prompts; 0.26 s/prompt
+588/1200 prompts; 0.26 s/prompt
+600/1200 prompts; 0.26 s/prompt
+612/1200 prompts; 0.26 s/prompt
+624/1200 prompts; 0.26 s/prompt
+636/1200 prompts; 0.26 s/prompt
+648/1200 prompts; 0.25 s/prompt
+660/1200 prompts; 0.25 s/prompt
+672/1200 prompts; 0.25 s/prompt
+684/1200 prompts; 0.25 s/prompt
+696/1200 prompts; 0.25 s/prompt
+708/1200 prompts; 0.25 s/prompt
+720/1200 prompts; 0.25 s/prompt
+732/1200 prompts; 0.25 s/prompt
+744/1200 prompts; 0.25 s/prompt
+756/1200 prompts; 0.25 s/prompt
+768/1200 prompts; 0.25 s/prompt
+780/1200 prompts; 0.24 s/prompt
+792/1200 prompts; 0.24 s/prompt
+804/1200 prompts; 0.24 s/prompt
+816/1200 prompts; 0.24 s/prompt
+828/1200 prompts; 0.24 s/prompt
+840/1200 prompts; 0.24 s/prompt
+852/1200 prompts; 0.24 s/prompt
+864/1200 prompts; 0.24 s/prompt
+876/1200 prompts; 0.24 s/prompt
+888/1200 prompts; 0.24 s/prompt
+900/1200 prompts; 0.24 s/prompt
+912/1200 prompts; 0.24 s/prompt
+924/1200 prompts; 0.24 s/prompt
+936/1200 prompts; 0.24 s/prompt
+948/1200 prompts; 0.23 s/prompt
+960/1200 prompts; 0.23 s/prompt
+972/1200 prompts; 0.23 s/prompt
+984/1200 prompts; 0.23 s/prompt
+996/1200 prompts; 0.23 s/prompt
+1008/1200 prompts; 0.23 s/prompt
+1020/1200 prompts; 0.23 s/prompt
+1032/1200 prompts; 0.23 s/prompt
+1044/1200 prompts; 0.23 s/prompt
+1056/1200 prompts; 0.23 s/prompt
+1068/1200 prompts; 0.23 s/prompt
+1080/1200 prompts; 0.23 s/prompt
+1092/1200 prompts; 0.23 s/prompt
+1104/1200 prompts; 0.23 s/prompt
+1116/1200 prompts; 0.23 s/prompt
+1128/1200 prompts; 0.23 s/prompt
+1140/1200 prompts; 0.23 s/prompt
+1152/1200 prompts; 0.23 s/prompt
+1164/1200 prompts; 0.23 s/prompt
+1176/1200 prompts; 0.23 s/prompt
+1188/1200 prompts; 0.23 s/prompt
+1200/1200 prompts; 0.23 s/prompt
+1200 completed prompts. Read /home/yandex/DLWorkShop2025b/maximg/pythia_pilot/storage/runs/full_4shot/summary.csv

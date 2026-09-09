@@ -1,0 +1,1087 @@
+
+--- PAGE 1 ---
+Natural Language Processing
+Word Representations
+Spring 2025/26
+Based on slides from Maor Ivgi, 
+Jonathan Berant, Richard Socher, 
+Chris Manning, and Hugo Lachorelle
+
+--- PAGE 2 ---
+Admin
+● HW 0 is due to today!
+● HW 1 is out, due to 26.5
+● Questions and comments on HW should go to the forum
+
+--- PAGE 3 ---
+3
+
+--- PAGE 4 ---
+Plan
+● Word representations
+● Learning word vectors (embeddings)
+○ Skip-gram algorithm
+● Relation to matrix factorization
+● Evaluating word embeddings
+4
+
+--- PAGE 5 ---
+Word representations
+5
+
+--- PAGE 6 ---
+Representing words
+Definition: meaning 
+● The thing one intends to convey especially by language (Merriam Webster’s)
+● The thing or idea that a sound, word, sign, etc. represents (Oxford’s)
+6
+
+--- PAGE 7 ---
+Representing words
+Definition: meaning 
+● The thing one intends to convey especially by language (Merriam Webster’s)
+● The thing or idea that a sound, word, sign, etc. represents (Oxford’s)
+In linguistics:
+signifier (symbol) ⟺ signified (idea or thing)
+7
+
+--- PAGE 8 ---
+Representing words
+In linguistics:
+signifier (symbol) ⟺ signified (idea or thing) = denotation
+Definition: meaning 
+● The thing one intends to convey especially by language (Merriam Webster’s)
+● The thing or idea that a sound, word, sign, etc. represents (Oxford’s)
+8
+
+
+--- PAGE 9 ---
+Representing words
+In linguistics:
+signifier (symbol) ⟺ signified (idea or thing) = denotation
+Can we use existing dictionaries to learn?
+Definition: meaning 
+● The thing one intends to convey especially by language (Merriam Webster’s)
+● The thing or idea that a sound, word, sign, etc. represents (Oxford’s)
+9
+
+
+--- PAGE 10 ---
+Word representation – inject knowledge
+10
+
+--- PAGE 11 ---
+Word representation – inject knowledge
+Synonym: beverage
+11
+
+--- PAGE 12 ---
+Word representation – inject knowledge
+Synonym: beverage
+Antonym: liquid
+12
+
+--- PAGE 13 ---
+Word representation – inject knowledge
+Synonym: beverage
+Antonym: liquid
+Hypernym (”is a”)
+13
+
+--- PAGE 14 ---
+WordNet – lexical DB of semantic relations 
+● A word is the set of meanings it has in a taxonomy (graph of meanings)
+14
+
+--- PAGE 15 ---
+● A word is the set of meanings it has in a taxonomy (graph of meanings)
+● Hypernym: “is-a” relation, Hyponym: the opposite of ‘hypernym’
+WordNet – lexical DB of semantic relations 
+15
+
+--- PAGE 16 ---
+● A word is the set of meanings it has in a taxonomy (graph of meanings)
+● Hypernym: “is-a” relation, Hyponym: the opposite of ‘hypernym’
+WordNet – lexical DB of semantic relations 
+Example
+16
+
+--- PAGE 17 ---
+Drawbacks
+● Expensive to create (more languages?)
+17
+
+--- PAGE 18 ---
+Drawbacks
+● Expensive to create (more languages?)
+● Subjective
+18
+
+--- PAGE 19 ---
+Drawbacks
+● Expensive to create (more languages?)
+● Subjective
+● Static & Incomplete
+○ wicked, badass, nifty, crack, ace, wizard, genius, ninja
+19
+
+--- PAGE 20 ---
+Drawbacks
+● Expensive to create (more languages?)
+● Subjective
+● Static & Incomplete
+○ wicked, badass, nifty, crack, ace, wizard, genius, ninja
+● Lacking functionalities
+○ Word similarity?
+○ Compose meanings?
+○ Nuances (proficient ≠ good, but can be in some contexts)
+20
+
+--- PAGE 21 ---
+Drawbacks
+● Expensive to create (more languages?)
+● Subjective
+● Static & Incomplete
+○ wicked, badass, nifty, crack, ace, wizard, genius, ninja
+● Lacking functionalities
+○ Word similarity?
+○ Compose meanings?
+○ Nuances (proficient ≠ good, but can be in some contexts)
+Can we use it in an ML framework?
+21
+
+--- PAGE 22 ---
+Toy example – sentiment analysis
+1. This is the best movie that I have seen
+2. The acting really makes it unbearable to watch 
+3. I couldn’t stay awake beyond minute 5
+4. A must-watch - buy tickets now!
+5. Overall I enjoyed it.
+...
+Training set
+22
+
+--- PAGE 23 ---
+Toy example – sentiment analysis
+1. This is the best movie that I have seen
+2. The acting really makes it unbearable to watch 
+3. I couldn’t stay awake beyond minute 5
+4. A must-watch - buy tickets now!
+5. Overall I enjoyed it.
+...
+Training set
+23
+
+--- PAGE 24 ---
+Toy example – sentiment analysis
+1. This is the best movie that I have seen
+2. The acting really makes it unbearable to watch 
+3. I couldn’t stay awake beyond minute 5
+4. A must-watch - buy tickets now!
+5. Overall I enjoyed it.
+...
+Training set
+A vector representing the sentence
+Model weights
+24
+
+--- PAGE 25 ---
+Toy example – sentiment analysis
+1. This is the best movie that I have seen
+2. The acting really makes it unbearable to watch 
+3. I couldn’t stay awake beyond minute 5
+4. A must-watch - buy tickets now!
+5. Overall I enjoyed it.
+...
+Training set
+A vector representing the sentence
+Model weights
+We can define:   
+where       is the representation of the i-th word in 
+the sentence. 
+25
+
+--- PAGE 26 ---
+Word representation – discrete vectors
+● Define a vocabulary     – ordered set of words, 
+● A word will be represented by One-hot encoding
+26
+
+--- PAGE 27 ---
+Word representation – discrete vectors
+● Define a vocabulary     – ordered set of words, 
+● A word will be represented by One-hot encoding
+ 
+27
+
+--- PAGE 28 ---
+Word representation – discrete vectors
+● Define a vocabulary     – ordered set of words, 
+● A word will be represented by One-hot encoding
+ 
+● What is the size of such vocabulary?
+● How do we treat unknown words?
+● Capitalization?
+● How would we represent a sentence?
+28
+
+--- PAGE 29 ---
+Word representation – discrete vectors
+● Define a vocabulary     – ordered set of words, 
+● A word will be represented by One-hot encoding
+ 
+● What is the size of such vocabulary?
+● How do we treat unknown words?
+● Capitalization?
+● How would we represent a sentence?
+○ What would happen to the order? repetitions?
+Bag of words
+29
+
+--- PAGE 30 ---
+Discrete representations drawbacks
+A great movie ≈ A great film
+A great movie ≉ A great meal
+But all words vectors are orthogonal and equidistant
+30
+
+--- PAGE 31 ---
+Discrete representations drawbacks
+Goal: word vectors with a natural notion of similarity
+A great movie ≈ A great film
+A great movie ≉ A great meal
+But all words vectors are orthogonal and equidistant
+31
+
+--- PAGE 32 ---
+Discrete representations drawbacks
+ 
+A great movie ≈ A great film
+A great movie ≉ A great meal
+But all words vectors are orthogonal and equidistant
+Goal: word vectors with a natural notion of similarity
+32
+
+--- PAGE 33 ---
+Discrete representations drawbacks
+ 
+ 
+A great movie ≈ A great film
+A great movie ≉ A great meal
+But all words vectors are orthogonal and equidistant
+Goal: word vectors with a natural notion of similarity
+33
+
+--- PAGE 34 ---
+Discrete representations drawbacks
+A great movie ≈ A great film
+A great movie ≉ A great meal
+But all words vectors are orthogonal and equidistant
+Goal: word vectors with a natural notion of similarity
+ 
+ 
+Can we learn a representation with an inherent 
+notion of similarity directly from examples?
+34
+
+--- PAGE 35 ---
+Distributional similarity
+● “You shall know a word by the company it keeps” (J. R. Firth 1957: 11)
+● When a word w appears in a text, its context is the set of words that 
+appear nearby (within a fixed-size widow).
+35
+
+--- PAGE 36 ---
+Distributional similarity
+“… cashed a check at the bank across the street”
+”… played happily on the bank, watching the ducks swim by"
+”… adjusted the controls on the bank to dim the lights in the auditorium.”
+“… she will bank on her quick thinking to overcome the challenges"
+“… the hospital requested donations to replenish their blood bank”
+“… she made a bank shot, pocketing the eight ball in the corner “
+“… the pilot needed to bank the plane sharply to the right”
+● “You shall know a word by the company it keeps” (J. R. Firth 1957: 11)
+● When a word w appears in a text, its context is the set of words that 
+appear nearby (within a fixed-size widow).
+36
+
+--- PAGE 37 ---
+Distributional similarity
+“… cashed a check at the bank across the street ”
+“… played happily on the bank, watching the ducks swim by ”
+“… adjusted the controls on the bank to dim the lights in the auditorium ”
+“… she will bank on her quick thinking to overcome the challenges ”
+“… the hospital requested donations to replenish their blood bank ”
+“… she made a bank shot, pocketing the eight ball in the corner ”
+“… the pilot needed to bank the plane sharply to the right ”
+● “You shall know a word by the company it keeps” (J. R. Firth 1957: 11)
+● When a word w appears in a text, its context is the set of words that 
+appear nearby (within a fixed-size widow).
+37
+
+--- PAGE 38 ---
+Attempt 1 – co-occurrence matrix
+● Given a large corpus, count co-occurrences of words
+○ A word will be represented by its corresponding row
+○ Normalize?
+word context
+father {house: 3, mother: 5, children: 5, kids: 1, …}
+mother {house: 3, father: 5, children: 6, kids: 1, …}
+dad {home: 3, mom: 5, children: 1, kids: 6, …}
+38
+
+--- PAGE 39 ---
+Attempt 1 – co-occurrence matrix
+● Given a large corpus, count co-occurrences of words
+○ A word will be represented by its corresponding row
+○ Normalize?
+word context
+father {house: 3, mother: 5, children: 5, kids: 1, …}
+mother {house: 3, father: 5, children: 6, kids: 1, …}
+dad {home: 3, mom: 5, children: 1, kids: 6, …}● Problems:
+○ home ≈ house, children ≈ kids
+○ Dimension
+39
+
+--- PAGE 40 ---
+Attempt 1 – co-occurrence matrix
+● Given a large corpus, count co-occurrences of words
+○ A word will be represented by its corresponding row
+○ Normalize?
+word context
+father {house: 3, mother: 4, children: 5, kids: 1, …}
+mother {house: 3, father: 5, children: 6, kids: 1, …}
+dad {home: 3, mom: 5, children: 1, kids: 6, …}● Problems:
+○ home ≈ house, children ≈ kids
+○ Dimension
+Solution:
+We will build a dense (low-dimensional) vector for 
+each word, such that it is similar to vectors of words 
+that appear in similar contexts, measuring similarity 
+as the vector dot product
+40
+
+--- PAGE 41 ---
+Dense representations
+● Represent words as low-dimensional vectors
+● Represent similarity with vector similarity metrics
+● Learn them directly from data by looking at their context(s)
+ 
+  
+  
+41
+
+--- PAGE 42 ---
+Dense representations
+● Represent words as low-dimensional vectors
+● Represent similarity with vector similarity metrics
+● Learn them directly from data by looking at their context(s)
+ 
+  
+  
+● A.K.A Word embeddings or distributed representations
+● Word embeddings are widely used
+○ (but also sub-words exist: word-pieces, character-level,…) – Lecture 4
+42
+
+--- PAGE 43 ---
+Plan
+● Word representations
+● Learning word vectors (embeddings)
+○ Skip-gram algorithm
+● Relation to matrix factorization
+● Evaluating word embeddings
+43
+
+--- PAGE 44 ---
+Learning word vectors
+44
+
+--- PAGE 45 ---
+Supervised learning - reminder
+● Input: training set
+● Output: probabilistic model
+45
+
+--- PAGE 46 ---
+Supervised learning - reminder
+Self-supervised learning: collect a lot of unlabeled data, and create a 
+(potentially useless) proxy task, hoping models will learn useful stuff
+● Input: training set
+● Output: probabilistic model
+46
+
+--- PAGE 47 ---
+Word2Vec (Skipgram)
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+“… that bank holds the mortgage on my home…”
+Mikolov et al., 2013
+1. (x, y) = (bank, that)
+2. (x, y) = (bank, holds)
+3. (x, y) = (holds, bank)
+4. (x, y) = (holds, the)
+5. (x, y) = (the, holds)
+6. (x, y) = (the, mortgage)
+7. (x, y) = (mortgage, the)
+8. (x, y) = (mortgage, on)
+9. (x, y) = (on, mortgage),
+10. (x, y) = (on, my)
+11. (x, y) = (my, on)
+12. (x, y) = (my, home) 47
+
+--- PAGE 48 ---
+Word2Vec (Skipgram)
+Mikolov et al., 2013
+Example: 
+p(“holds” | “bank”)
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+vector for “outside” word(s) (context) o
+vector for “center” word c
+parameters
+48
+
+--- PAGE 49 ---
+Word2Vec (Skipgram)
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+Mikolov et al., 2013
+vector for “outside” word(s) (context) o
+vector for “center” word c
+parameters
+Example: 
+p(“holds” | “bank”)
+Dot product compares 
+similarity of o and c. 
+Exponent makes 
+everything positive
+49
+
+--- PAGE 50 ---
+Word2Vec (Skipgram)
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+Mikolov et al., 2013
+vector for “outside” word(s) (context) o
+vector for “center” word c
+parameters
+Example: 
+p(“holds” | “bank”)
+Dot product compares 
+similarity of o and c. 
+Exponent makes 
+everything positive
+Normalize over the 
+entire vocabulary to 
+give a probability 
+distribution
+50
+
+--- PAGE 51 ---
+Word2Vec (Skipgram)
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+Mikolov et al., 2013
+vector for “outside” word(s) (context) o
+vector for “center” word c
+parameters
+Example: 
+p(“holds” | “bank”)
+Dot product compares 
+similarity of o and c. 
+Exponent makes 
+everything positive
+Normalize over the 
+entire vocabulary to 
+give a probability 
+distribution
+“softmax”
+51
+
+--- PAGE 52 ---
+Word2Vec (Skipgram)
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+Mikolov et al., 2013
+Multi-class classification. How many classes?
+Example: 
+p(“holds” | “bank”)
+Dot product compares 
+similarity of o and c. 
+Exponent makes 
+everything positive
+Normalize over the 
+entire vocabulary to 
+give a probability 
+distribution
+“softmax”
+ 
+52
+
+--- PAGE 53 ---
+Word2Vec (Skipgram)
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+Mikolov et al., 2013
+Multi-class classification. How many classes?
+Example: 
+p(“holds” | “bank”)
+Dot product compares 
+similarity of o and c. 
+Exponent makes 
+everything positive
+Normalize over the 
+entire vocabulary to 
+give a probability 
+distribution
+“softmax”
+ 
+Number of model parameters?
+  
+53
+
+--- PAGE 54 ---
+Word2Vec (Skipgram)
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+Mikolov et al., 2013
+Multi-class classification. How many classes?
+Example: 
+p(“holds” | “bank”)
+Dot product compares 
+similarity of o and c. 
+Exponent makes 
+everything positive
+Normalize over the 
+entire vocabulary to 
+give a probability 
+distribution
+“softmax”
+ 
+Number of model parameters?
+  
+Why using separate u and v vectors?
+54
+
+--- PAGE 55 ---
+Word2Vec (Skipgram)
+Mikolov et al., 2013
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+● Define objective function for corpus of length T and window m
+55
+
+--- PAGE 56 ---
+Word2Vec (Skipgram)
+Mikolov et al., 2013
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+● Define objective function for corpus of length T and window m
+Objective to maximize:
+56
+
+--- PAGE 57 ---
+Word2Vec (Skipgram)
+Mikolov et al., 2013
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+● Define objective function for corpus of length T and window m
+Objective to maximize:
+Loss to minimize:
+Negative log-likelihood
+57
+
+--- PAGE 58 ---
+Word2Vec (Skipgram)
+Mikolov et al., 2013
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+● Define objective function for corpus of length T and window m
+What probabilities would maximize the objective (minimize the loss)? 
+The empirical distribution
+#(c,o) is the number of co-occurrences of o and c.
+58
+
+--- PAGE 59 ---
+Word2Vec (Skipgram)
+Mikolov et al., 2013
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+● Define objective function for corpus of length T and window m
+What probabilities would maximize the objective (minimize the loss)? 
+The empirical distribution
+#(c,o) is the number of co-occurrences of o and c.
+Why should similar words have similar vectors?
+59
+
+--- PAGE 60 ---
+Word2Vec (Skipgram)
+Mikolov et al., 2013
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+● Define objective function for corpus of length T and window m
+What probabilities would maximize the objective (minimize the loss)? 
+The empirical distribution
+#(c,o) is the number of co-occurrences of o and c.
+Why should similar words have similar vectors?
+What would happen for different values of m?
+60
+
+--- PAGE 61 ---
+Word2Vec (Skipgram)
+Mikolov et al., 2013
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+● Define objective function for corpus of length T and window m
+● Optimize with SGD (iteratively adjunct the word vectors to minimize NLL)
+61
+
+--- PAGE 62 ---
+Word2Vec (Skipgram)
+Mikolov et al., 2013
+TL;DR: predict words from neighboring words
+● Deﬁne a self-supervised learning task from raw text
+● Define a model for output (context) given input (center)
+● Define objective function for corpus of length T and window m
+● Optimize with SGD (iteratively adjunct the word vectors to minimize NLL)
+ 
+62
+
+--- PAGE 63 ---
+Word2Vec is a Neural Network
+An equivalent way to look at the word2vec model:
+V
+U
+Input:
+One-hot encoding 
+of center word
+First linear layer
+Second linear 
+layer
+Softmax 
+activation
+Output:
+Vector of outside 
+word probabilities 
+
+--- PAGE 64 ---
+Word2Vec is a Neural Network
+An equivalent way to look at the word2vec model:
+V
+U
+Input:
+One-hot encoding 
+of center word
+First linear layer
+Second linear 
+layer
+Softmax 
+activation
+Output:
+Vector of outside 
+word probabilities 
+The columns of V are 
+the center word 
+vectors: 
+The rows of U are 
+the outside word 
+vectors: 
+We don’t care about 
+the network’s output, 
+but about its internal 
+representations
+Our word vectors
+
+--- PAGE 65 ---
+Gradient derivation
+Derive the gradient of a center word given an output word
+65
+
+--- PAGE 66 ---
+Gradient derivation
+Derive the gradient of a center word given an output word
+66
+
+--- PAGE 67 ---
+Gradient derivation
+Derive the gradient of a center word given an output word
+67
+
+--- PAGE 68 ---
+Gradient derivation
+Derive the gradient of a center word given an output word
+68
+
+--- PAGE 69 ---
+Negative Sampling
+Binary classification instead of multi-class classification
+ “… that bank holds the mortgage on my home…”
+Mikolov et al., 2013 69
+
+--- PAGE 70 ---
+Negative Sampling
+Binary classification instead of multi-class classification
+ “… that bank holds the mortgage on my home…”
+1. (x, y) = (bank, that)
+2. (x, y) = (bank, holds)
+3. (x, y) = (holds, bank)
+4. (x, y) = (holds, the)
+5. (x, y) = (the, holds)
+6. (x, y) = (the, mortgage)
+7. (x, y) = (mortgage, the)
+8. …
+Mikolov et al., 2013 70
+
+--- PAGE 71 ---
+Negative Sampling
+Binary classification instead of multi-class classification
+ “… that bank holds the mortgage on my home…”
+1. (x, y) = (bank, that)
+2. (x, y) = (bank, holds)
+3. (x, y) = (holds, bank)
+4. (x, y) = (holds, the)
+5. (x, y) = (the, holds)
+6. (x, y) = (the, mortgage)
+7. (x, y) = (mortgage, the)
+8. …
+1. (x, y) = ((bank, that), 1)
+2. (x, y) = (bank, table), 0)
+3. (x, y) = ((bank, eat), 0)
+4. (x, y) = ((holds, bank), 1)
+5. (x, y) = ((holds, quickly), 0)
+6. (x, y) = ((holds, which), 0)
+7. … 
+Mikolov et al., 2013 71
+
+--- PAGE 72 ---
+Skipgram with negative sampling
+Mikolov et al., 2013
+Intuition: Increase the probability of pairs we saw and decrease 
+the probability for everything else. Why?
+72
+
+--- PAGE 73 ---
+Skipgram with negative sampling
+Mikolov et al., 2013
+Intuition: Increase the probability of pairs we saw and decrease 
+the probability for everything else. Why?
+73
+
+--- PAGE 74 ---
+Skipgram with negative sampling
+Mikolov et al., 2013
+Intuition: Increase the probability of pairs we saw and decrease 
+the probability for everything else. Why?
+Skipgram’s model (reminder):
+74
+
+--- PAGE 75 ---
+Skipgram with negative sampling
+Mikolov et al., 2013
+Intuition: Increase the probability of pairs we saw and decrease 
+the probability for everything else. Why?
+Skipgram’s model (reminder):
+Pairs we saw 
+(positive samples) 75
+
+--- PAGE 76 ---
+Skipgram with negative sampling
+Mikolov et al., 2013
+Intuition: Increase the probability of pairs we saw and decrease 
+the probability for everything else. Why?
+Skipgram’s model (reminder):
+Pairs we saw 
+(positive samples)
+k random words 
+(negative samples)
+ 
+Skipgram’s objective:
+76
+
+--- PAGE 77 ---
+Word2Vec as a Neural Network
+ 
+  
+
+
+--- PAGE 78 ---
+Skipgram with Negative Sampling: Neural Network
+V
+Input:
+One-hot 
+encoding 
+of center 
+word and 
+outside 
+word pair
+linear layer
+Inner 
+product 
+gate
+Sigmoid 
+activation
+Output:
+Probability of 
+input pair 
+appearing in 
+the same 
+window 
+U
+linear layer
+IP
+ 
+To be revealed after class
+
+--- PAGE 79 ---
+Skipgram with negative sampling
+https://talwagner.github.io/teaching/word2vec.html
+
+--- PAGE 80 ---
+Contrastive learning
+● Skipgram with negative sampling is an instance of contrastive learning
+○ Data is pairs (x,y) that are similar to each other
+○ You can assume that random pairs should be dissimilar
+● Very popular nowadays for representation learning in vision (CLIP) and 
+for information retrieval (DPR)
+80
+
+--- PAGE 81 ---
+Word2vec Summary
+● We deﬁned the necessary components.
+○ Model (binary classiﬁcation)
+○ Objective (ML with negative sampling)
+○ Data (any corpora we can gather)
+○ Optimization method (SGD)
+● Many variants
+○ CBOW: predict center word from context
+○ Context definition: window size, stop words, capitalization, 
+punctuation? Dimension? Negative samples? Etc.
+○ …
+● Other methods to address the computational problem exist (for example 
+hierarchical classification)
+81
+
+--- PAGE 82 ---
+82
+
+--- PAGE 83 ---
+Plan
+● Word representations
+● Learning word vectors (embeddings)
+○ Skip-gram algorithm
+● Relation to matrix factorization
+● Evaluating word embeddings
+83
+
+--- PAGE 84 ---
+Relation to matrix factorization
+84
+
+--- PAGE 85 ---
+What does Skipgram learn?
+ 
+
+--- PAGE 86 ---
+What does Skipgram learn?
+ 
+
+--- PAGE 87 ---
+What does Skipgram learn?
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+  
+  
+  
+
+--- PAGE 88 ---
+Matrix Factorization
+ 
+ 
+ 
+ 
+  
+
+--- PAGE 89 ---
+Matrix Factorization
+ 
+ 
+ 
+ 
+  
+
+--- PAGE 90 ---
+Matrix Factorization
+ 
+ 
+ 
+ 
+  
+ 
+
+--- PAGE 91 ---
+Matrix Factorization
+ 
+ 
+  
+  
+ 
+
+--- PAGE 92 ---
+Matrix Factorization
+ 
+ 
+  
+  
+ 
+
+--- PAGE 93 ---
+Matrix Factorization
+ 
+ 
+  
+  
+ 
+
+--- PAGE 94 ---
+Matrix Factorization
+ 
+ 
+  
+  
+ 
+
+--- PAGE 95 ---
+Matrix Factorization
+ 
+ 
+  
+  
+ 
+
+--- PAGE 96 ---
+GloVe Word Embeddings [Pennington, Socher, Manning 2014]
+● Combines ideas from word2vec and matrix factorization
+
+
+--- PAGE 97 ---
+GloVe Word Embeddings [Pennington, Socher, Manning 2014]
+ 
+
+--- PAGE 98 ---
+GloVe Word Embeddings [Pennington, Socher, Manning 2014]
+ 
+ 
+(weight) (auxiliary 
+parameters)
+
+
+--- PAGE 99 ---
+Plan
+● Word representations
+● Learning word vectors (embeddings)
+○ Skip-gram algorithm
+● Relation to matrix factorization
+● Evaluating word embeddings
+99
+
+--- PAGE 100 ---
+Evaluating word embeddings
+100
+
+--- PAGE 101 ---
+Evaluation
+● Intrinsic: deﬁne some artiﬁcial task that tries to directly measure 
+the quality of your learning algorithm.
+● Extrinsic: check whether your output is useful in a real NLP task.
+101
+
+--- PAGE 102 ---
+Intrinsic evaluation – word analogies
+ 
+Normalize all word vectors to 1. Why?
+What if the information is there but not linear?
+102
+
+--- PAGE 103 ---
+103
+
+--- PAGE 104 ---
+104
+
+--- PAGE 105 ---
+105
+
+--- PAGE 106 ---
+Word analogies evaluation
+Pennington et al., 2014 106
+
+--- PAGE 107 ---
+Human correlation intrinsic evaluation
+word 1 word 2 human judgement
+tiger cat 7.35
+book paper 7.46
+computer internet 7.58
+plane car 5.77
+stock phone 1.62
+stock CD 1.31
+stock jaguar 0.92
+107
+
+--- PAGE 108 ---
+Human correlation intrinsic evaluation
+Pennington et al., 2014
+ 108
+
+--- PAGE 109 ---
+Extrinsic evaluation
+Named entity recognition: find mentions of person, location, 
+organization in text.
+109
+
+--- PAGE 110 ---
+Extrinsic evaluation
+110
+
+--- PAGE 111 ---
+Extrinsic side-effects of word representations
+111
+DALLE-2 is Seeing Double: Flaws in Word-to-Concept Mapping in 
+Text2Image Models
+
+--- PAGE 112 ---
+Word Representations: Summary
+● Words are central to language
+● Graph-based representations are difﬁcult to manipulate and compose
+● Vector representations for words are useful and efficient, encoding semantic similarity as 
+inner product similarity.
+● One-hot vectors: useful in some contexts but not all
+● Word2vec: learn representations from data with machine learning
+○ Idea: self-supervised learning for learning from a lot of raw data
+○ Idea: contrastive learning for improved efficiency with negative sampling
+○ Idea: can be viewed as implicit matrix factorization 
+● GloVe: combine self-supervised learning view with matrix factorization view
+● Evaluating word representations: intrinsic, extrinsic; challenging and open-ended

@@ -1,0 +1,49 @@
+
+--- PAGE 1 ---
+Project Proposal: From Heads to Circuits – Identifying Semantic Induction
+Circuits (SICs) for multi-hop Reasoning in LLMs
+Daniella Simonovsky
+ID: 322721705
+simonovsky1@mail.tau.ac.il
+Max Golubkov
+ID: 318676954
+maximg@mail.tau.ac.il
+1. Research Question and Motivation
+LLMs perform ICL largely viaInduction Heads[Olsson et al., 2022]. Recent work identifiedSemantic Induction Heads
+(SIHs) generalizing beyond exact lexical matches [Ren et al., 2024], yet focused on single-hop relations (A→B).
+Real-world reasoning, however, requires multi-hop logic (e.g.,A⊂BandB⊂C⇒A⊂C).
+Research Question:How do LLMs mechanically process multi-hop semantic relations? Are these relations resolved
+by isolated SIHs, or do they require distributed Semantic Induction Circuits (SICs) spanning multiple layers?
+Motivation:As LLMs become an integral part of daily applications, ensuring their reliability requires mechanistic
+interpretability of their complex, inference-time reasoning. Since real-world language inherently relies on multi-hop
+logic rather than sterile single-step associations, discovering distributed Semantic Induction Circuits (SICs) is essential
+to demystify the true mechanical ”thought process” driving everyday AI interactions.
+2. Methodology
+We will use a top-down reverse-engineering approach to isolate these circuits:
+•Models & Tooling:We will analyze model suites such asPythia,OLMo, orLMEnt. These suites are essen-
+tial because they provide access to intermediate training checkpoints and their exact pre-training data distribu-
+tions, allowing us to track the developmental dynamics of the circuits. Interventions will be implemented via
+TransformerLens.
+•Circuit Extraction & Evaluation:Instead of analyzing isolated heads, we aim to map full causal pathways.
+We will useActivation PatchingandPath Patchingto trace the flow of information across layers, identifying the
+sequence of heads forming the SIC. Crucially, to formally evaluate this, we will generalize theRelation Index
+(RI)metric [Ren et al., 2024] originally used for single SIHs into a metric capable of capturing and evaluating
+distributed multi-head circuits.
+3. Evaluation of Success
+Success will be evaluated quantitatively via few-shot ICL prompts. We define the isolated SIC as a sparse subgraph and
+measure itsFaithfulness. This is done by comparing the full model’s probability for the correct multi-hop answer against
+the probability when only the SIC is active. Recovering a significant portion (will be defined in the project) of the baseline
+performance using only a sparse subset of heads will provide strong evidence for the existence and functional role of this
+distributed circuit.
+4. Assumptions and Requirements
+•Compute:Standard GPU access via thestudentkillablepartition on the TAU Slurm cluster is fully sufficient
+for inference and activation patching on models under 1B parameters.
+•Data:We will synthetically generate controlled multi-hop ICL datasets using templates frombAbIandCLUTRR.
+Replacing real nouns with fictitious entities ensures the model relies purely on in-context reasoning rather than
+parametric memory.
+•Codebase:We will rely on open-source libraries, specificallyPyTorchandTransformerLens.
+References
+Catherine Olsson et al. In-context learning and induction heads.Transformer Circuits Thread, 2022.
+Jie Ren et al. Identifying semantic induction heads to understand in-context learning.arXiv preprint arXiv:2402.13055,
+2024.
+1

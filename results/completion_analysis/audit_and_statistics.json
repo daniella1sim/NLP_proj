@@ -1,0 +1,2990 @@
+{
+  "0": {
+    "issues": [],
+    "offset_note": "Local raw tokenizer trims leading whitespace; HF saved offsets include it. IDs and non-whitespace contents verified.",
+    "overall": {
+      "n": 1200,
+      "free_correct": 301,
+      "candidate_correct": 690,
+      "free_accuracy": 0.25083333333333335,
+      "candidate_accuracy": 0.575,
+      "valid_candidate_rate": 0.425,
+      "free_accuracy_given_valid": 0.5901960784313726,
+      "free_ci95": [
+        0.22583333333333333,
+        0.275
+      ],
+      "candidate_ci95": [
+        0.5475,
+        0.6033333333333334
+      ],
+      "errors": {
+        "correct_target": 301,
+        "reachable_one_hop": 524,
+        "unreachable_fact_name": 144,
+        "wrong_candidate": 209,
+        "other_reachable": 22
+      },
+      "mean_score_accuracy": 0.5733333333333334,
+      "mean_vs_sum_disagreements": 98,
+      "candidate_first_rate": 0.72,
+      "candidate_accuracy_by_gold_position": {
+        "0": 0.795,
+        "1": 0.355
+      },
+      "by_answer_length": {
+        "shorter": {
+          "n": 325,
+          "candidate_accuracy": 0.5661538461538461,
+          "free_accuracy": 0.2246153846153846
+        },
+        "equal": {
+          "n": 638,
+          "candidate_accuracy": 0.5924764890282131,
+          "free_accuracy": 0.28056426332288403
+        },
+        "longer": {
+          "n": 237,
+          "candidate_accuracy": 0.540084388185654,
+          "free_accuracy": 0.20675105485232068
+        }
+      },
+      "frequency_baseline_expected_accuracy": 0.8333333333333334,
+      "frequency_choice_agreement": 0.564,
+      "most_common_generated": [
+        [
+          "sprocks",
+          89
+        ],
+        [
+          "vibbles",
+          73
+        ],
+        [
+          "ruspins",
+          57
+        ],
+        [
+          "shalds",
+          55
+        ],
+        [
+          "nufrons",
+          54
+        ],
+        [
+          "zorks",
+          50
+        ],
+        [
+          "yorbits",
+          47
+        ],
+        [
+          "daxes",
+          46
+        ]
+      ],
+      "majority_name_baseline": 0.050833333333333335,
+      "free_wrong_candidate_right": 394,
+      "free_right_candidate_wrong": 5
+    },
+    "groups": {
+      "direct": {
+        "n": 200,
+        "free_correct": 112,
+        "candidate_correct": 141,
+        "free_accuracy": 0.56,
+        "candidate_accuracy": 0.705,
+        "valid_candidate_rate": 0.785,
+        "free_accuracy_given_valid": 0.7133757961783439,
+        "free_ci95": [
+          0.505,
+          0.62
+        ],
+        "candidate_ci95": [
+          0.645,
+          0.765
+        ],
+        "errors": {
+          "correct_target": 112,
+          "wrong_candidate": 45,
+          "unreachable_fact_name": 21,
+          "other_reachable": 22
+        },
+        "mean_score_accuracy": 0.7,
+        "mean_vs_sum_disagreements": 15,
+        "candidate_first_rate": 0.695,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.9,
+          "1": 0.51
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 50,
+            "candidate_accuracy": 0.74,
+            "free_accuracy": 0.56
+          },
+          "equal": {
+            "n": 118,
+            "candidate_accuracy": 0.711864406779661,
+            "free_accuracy": 0.5677966101694916
+          },
+          "longer": {
+            "n": 32,
+            "candidate_accuracy": 0.625,
+            "free_accuracy": 0.53125
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.705,
+        "most_common_generated": [
+          [
+            "sprocks",
+            15
+          ],
+          [
+            "vibbles",
+            14
+          ],
+          [
+            "yorbits",
+            10
+          ],
+          [
+            "nufrons",
+            10
+          ],
+          [
+            "jastles",
+            9
+          ],
+          [
+            "ruspins",
+            9
+          ],
+          [
+            "daxes",
+            9
+          ],
+          [
+            "kelbrins",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 30,
+        "free_right_candidate_wrong": 1
+      },
+      "twohop": {
+        "n": 200,
+        "free_correct": 35,
+        "candidate_correct": 100,
+        "free_accuracy": 0.175,
+        "candidate_accuracy": 0.5,
+        "valid_candidate_rate": 0.425,
+        "free_accuracy_given_valid": 0.4117647058823529,
+        "free_ci95": [
+          0.12,
+          0.23
+        ],
+        "candidate_ci95": [
+          0.44,
+          0.56
+        ],
+        "errors": {
+          "reachable_one_hop": 97,
+          "wrong_candidate": 50,
+          "correct_target": 35,
+          "unreachable_fact_name": 18
+        },
+        "mean_score_accuracy": 0.48,
+        "mean_vs_sum_disagreements": 18,
+        "candidate_first_rate": 0.72,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.72,
+          "1": 0.28
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 63,
+            "candidate_accuracy": 0.5238095238095238,
+            "free_accuracy": 0.1111111111111111
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.46601941747572817,
+            "free_accuracy": 0.20388349514563106
+          },
+          "longer": {
+            "n": 34,
+            "candidate_accuracy": 0.5588235294117647,
+            "free_accuracy": 0.20588235294117646
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.5,
+        "most_common_generated": [
+          [
+            "sprocks",
+            21
+          ],
+          [
+            "vibbles",
+            12
+          ],
+          [
+            "shalds",
+            11
+          ],
+          [
+            "zemples",
+            9
+          ],
+          [
+            "zorks",
+            9
+          ],
+          [
+            "jastles",
+            8
+          ],
+          [
+            "yorbits",
+            8
+          ],
+          [
+            "ruspins",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 67,
+        "free_right_candidate_wrong": 2
+      },
+      "broken": {
+        "n": 200,
+        "free_correct": 45,
+        "candidate_correct": 116,
+        "free_accuracy": 0.225,
+        "candidate_accuracy": 0.58,
+        "valid_candidate_rate": 0.38,
+        "free_accuracy_given_valid": 0.5921052631578947,
+        "free_ci95": [
+          0.16,
+          0.29
+        ],
+        "candidate_ci95": [
+          0.5,
+          0.66
+        ],
+        "errors": {
+          "reachable_one_hop": 94,
+          "correct_target": 45,
+          "unreachable_fact_name": 30,
+          "wrong_candidate": 31
+        },
+        "mean_score_accuracy": 0.605,
+        "mean_vs_sum_disagreements": 15,
+        "candidate_first_rate": 0.74,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.82,
+          "1": 0.34
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 36,
+            "candidate_accuracy": 0.6111111111111112,
+            "free_accuracy": 0.2222222222222222
+          },
+          "equal": {
+            "n": 108,
+            "candidate_accuracy": 0.6203703703703703,
+            "free_accuracy": 0.3148148148148148
+          },
+          "longer": {
+            "n": 56,
+            "candidate_accuracy": 0.48214285714285715,
+            "free_accuracy": 0.05357142857142857
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.5,
+        "frequency_choice_agreement": 0.51,
+        "most_common_generated": [
+          [
+            "sprocks",
+            17
+          ],
+          [
+            "vibbles",
+            14
+          ],
+          [
+            "ruspins",
+            12
+          ],
+          [
+            "zemples",
+            11
+          ],
+          [
+            "tivaks",
+            9
+          ],
+          [
+            "ulvets",
+            9
+          ],
+          [
+            "grivaks",
+            8
+          ],
+          [
+            "yorbits",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.1,
+        "free_wrong_candidate_right": 72,
+        "free_right_candidate_wrong": 1
+      },
+      "robustness": {
+        "n": 600,
+        "free_correct": 109,
+        "candidate_correct": 333,
+        "free_accuracy": 0.18166666666666667,
+        "candidate_accuracy": 0.555,
+        "valid_candidate_rate": 0.32,
+        "free_accuracy_given_valid": 0.5677083333333334,
+        "free_ci95": [
+          0.15,
+          0.215
+        ],
+        "candidate_ci95": [
+          0.515,
+          0.595
+        ],
+        "errors": {
+          "unreachable_fact_name": 75,
+          "reachable_one_hop": 333,
+          "wrong_candidate": 83,
+          "correct_target": 109
+        },
+        "mean_score_accuracy": 0.5516666666666666,
+        "mean_vs_sum_disagreements": 50,
+        "candidate_first_rate": 0.7216666666666667,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.7766666666666666,
+          "1": 0.3333333333333333
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 176,
+            "candidate_accuracy": 0.5227272727272727,
+            "free_accuracy": 0.17045454545454544
+          },
+          "equal": {
+            "n": 309,
+            "candidate_accuracy": 0.5792880258899676,
+            "free_accuracy": 0.18446601941747573
+          },
+          "longer": {
+            "n": 115,
+            "candidate_accuracy": 0.5391304347826087,
+            "free_accuracy": 0.19130434782608696
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.8333333333333334,
+        "frequency_choice_agreement": 0.5525,
+        "most_common_generated": [
+          [
+            "sprocks",
+            36
+          ],
+          [
+            "vibbles",
+            33
+          ],
+          [
+            "nufrons",
+            32
+          ],
+          [
+            "zorks",
+            31
+          ],
+          [
+            "shalds",
+            28
+          ],
+          [
+            "ruspins",
+            28
+          ],
+          [
+            "oskets",
+            23
+          ],
+          [
+            "daxes",
+            23
+          ]
+        ],
+        "majority_name_baseline": 0.04833333333333333,
+        "free_wrong_candidate_right": 225,
+        "free_right_candidate_wrong": 1
+      }
+    },
+    "subgroups": {
+      "broken/first": {
+        "n": 100,
+        "free_correct": 23,
+        "candidate_correct": 57,
+        "free_accuracy": 0.23,
+        "candidate_accuracy": 0.57,
+        "valid_candidate_rate": 0.4,
+        "free_accuracy_given_valid": 0.575,
+        "free_ci95": [
+          0.15,
+          0.31
+        ],
+        "candidate_ci95": [
+          0.47,
+          0.66
+        ],
+        "errors": {
+          "reachable_one_hop": 44,
+          "correct_target": 23,
+          "unreachable_fact_name": 16,
+          "wrong_candidate": 17
+        },
+        "mean_score_accuracy": 0.59,
+        "mean_vs_sum_disagreements": 6,
+        "candidate_first_rate": 0.77,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.84,
+          "1": 0.3
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 18,
+            "candidate_accuracy": 0.6111111111111112,
+            "free_accuracy": 0.3333333333333333
+          },
+          "equal": {
+            "n": 54,
+            "candidate_accuracy": 0.6111111111111112,
+            "free_accuracy": 0.2962962962962963
+          },
+          "longer": {
+            "n": 28,
+            "candidate_accuracy": 0.4642857142857143,
+            "free_accuracy": 0.03571428571428571
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.0,
+        "frequency_choice_agreement": 0.43,
+        "most_common_generated": [
+          [
+            "vibbles",
+            8
+          ],
+          [
+            "sprocks",
+            7
+          ],
+          [
+            "tivaks",
+            6
+          ],
+          [
+            "daxes",
+            6
+          ],
+          [
+            "ulvets",
+            6
+          ],
+          [
+            "grivaks",
+            5
+          ],
+          [
+            "zemples",
+            5
+          ],
+          [
+            "ruspins",
+            4
+          ]
+        ],
+        "majority_name_baseline": 0.1,
+        "free_wrong_candidate_right": 35,
+        "free_right_candidate_wrong": 1
+      },
+      "broken/second": {
+        "n": 100,
+        "free_correct": 22,
+        "candidate_correct": 59,
+        "free_accuracy": 0.22,
+        "candidate_accuracy": 0.59,
+        "valid_candidate_rate": 0.36,
+        "free_accuracy_given_valid": 0.6111111111111112,
+        "free_ci95": [
+          0.14,
+          0.3
+        ],
+        "candidate_ci95": [
+          0.49,
+          0.69
+        ],
+        "errors": {
+          "reachable_one_hop": 50,
+          "correct_target": 22,
+          "unreachable_fact_name": 14,
+          "wrong_candidate": 14
+        },
+        "mean_score_accuracy": 0.62,
+        "mean_vs_sum_disagreements": 9,
+        "candidate_first_rate": 0.71,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.8,
+          "1": 0.38
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 18,
+            "candidate_accuracy": 0.6111111111111112,
+            "free_accuracy": 0.1111111111111111
+          },
+          "equal": {
+            "n": 54,
+            "candidate_accuracy": 0.6296296296296297,
+            "free_accuracy": 0.3333333333333333
+          },
+          "longer": {
+            "n": 28,
+            "candidate_accuracy": 0.5,
+            "free_accuracy": 0.07142857142857142
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.59,
+        "most_common_generated": [
+          [
+            "sprocks",
+            10
+          ],
+          [
+            "ruspins",
+            8
+          ],
+          [
+            "zemples",
+            6
+          ],
+          [
+            "yorbits",
+            6
+          ],
+          [
+            "shalds",
+            6
+          ],
+          [
+            "vibbles",
+            6
+          ],
+          [
+            "oskets",
+            4
+          ],
+          [
+            "brovets",
+            4
+          ]
+        ],
+        "majority_name_baseline": 0.1,
+        "free_wrong_candidate_right": 37,
+        "free_right_candidate_wrong": 0
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "free_correct": 46,
+        "candidate_correct": 110,
+        "free_accuracy": 0.23,
+        "candidate_accuracy": 0.55,
+        "valid_candidate_rate": 0.39,
+        "free_accuracy_given_valid": 0.5897435897435898,
+        "free_ci95": [
+          0.175,
+          0.29
+        ],
+        "candidate_ci95": [
+          0.49,
+          0.615
+        ],
+        "errors": {
+          "unreachable_fact_name": 28,
+          "reachable_one_hop": 94,
+          "wrong_candidate": 32,
+          "correct_target": 46
+        },
+        "mean_score_accuracy": 0.54,
+        "mean_vs_sum_disagreements": 20,
+        "candidate_first_rate": 0.72,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.77,
+          "1": 0.33
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 63,
+            "candidate_accuracy": 0.5873015873015873,
+            "free_accuracy": 0.2222222222222222
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.5631067961165048,
+            "free_accuracy": 0.23300970873786409
+          },
+          "longer": {
+            "n": 34,
+            "candidate_accuracy": 0.4411764705882353,
+            "free_accuracy": 0.23529411764705882
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.55,
+        "most_common_generated": [
+          [
+            "sprocks",
+            16
+          ],
+          [
+            "nufrons",
+            13
+          ],
+          [
+            "ruspins",
+            11
+          ],
+          [
+            "tufas",
+            11
+          ],
+          [
+            "oskets",
+            10
+          ],
+          [
+            "zorks",
+            10
+          ],
+          [
+            "jastles",
+            10
+          ],
+          [
+            "yorbits",
+            9
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 65,
+        "free_right_candidate_wrong": 1
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "free_correct": 27,
+        "candidate_correct": 112,
+        "free_accuracy": 0.135,
+        "candidate_accuracy": 0.56,
+        "valid_candidate_rate": 0.26,
+        "free_accuracy_given_valid": 0.5192307692307693,
+        "free_ci95": [
+          0.09,
+          0.185
+        ],
+        "candidate_ci95": [
+          0.49,
+          0.625
+        ],
+        "errors": {
+          "unreachable_fact_name": 21,
+          "reachable_one_hop": 127,
+          "correct_target": 27,
+          "wrong_candidate": 25
+        },
+        "mean_score_accuracy": 0.55,
+        "mean_vs_sum_disagreements": 18,
+        "candidate_first_rate": 0.67,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.73,
+          "1": 0.39
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 63,
+            "candidate_accuracy": 0.47619047619047616,
+            "free_accuracy": 0.09523809523809523
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.6116504854368932,
+            "free_accuracy": 0.1262135922330097
+          },
+          "longer": {
+            "n": 34,
+            "candidate_accuracy": 0.5588235294117647,
+            "free_accuracy": 0.23529411764705882
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.5,
+        "frequency_choice_agreement": null,
+        "most_common_generated": [
+          [
+            "sprocks",
+            16
+          ],
+          [
+            "vibbles",
+            13
+          ],
+          [
+            "zorks",
+            13
+          ],
+          [
+            "ruspins",
+            12
+          ],
+          [
+            "shalds",
+            12
+          ],
+          [
+            "zemples",
+            10
+          ],
+          [
+            "kelbrins",
+            9
+          ],
+          [
+            "nufrons",
+            9
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 85,
+        "free_right_candidate_wrong": 0
+      },
+      "robustness/rename": {
+        "n": 200,
+        "free_correct": 36,
+        "candidate_correct": 111,
+        "free_accuracy": 0.18,
+        "candidate_accuracy": 0.555,
+        "valid_candidate_rate": 0.31,
+        "free_accuracy_given_valid": 0.5806451612903226,
+        "free_ci95": [
+          0.135,
+          0.23
+        ],
+        "candidate_ci95": [
+          0.5,
+          0.61
+        ],
+        "errors": {
+          "reachable_one_hop": 112,
+          "wrong_candidate": 26,
+          "correct_target": 36,
+          "unreachable_fact_name": 26
+        },
+        "mean_score_accuracy": 0.565,
+        "mean_vs_sum_disagreements": 12,
+        "candidate_first_rate": 0.775,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.83,
+          "1": 0.28
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 50,
+            "candidate_accuracy": 0.5,
+            "free_accuracy": 0.2
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.5631067961165048,
+            "free_accuracy": 0.1941747572815534
+          },
+          "longer": {
+            "n": 47,
+            "candidate_accuracy": 0.5957446808510638,
+            "free_accuracy": 0.1276595744680851
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.555,
+        "most_common_generated": [
+          [
+            "vibbles",
+            13
+          ],
+          [
+            "blickets",
+            12
+          ],
+          [
+            "shalds",
+            10
+          ],
+          [
+            "nufrons",
+            10
+          ],
+          [
+            "plinets",
+            9
+          ],
+          [
+            "daxes",
+            9
+          ],
+          [
+            "lomits",
+            8
+          ],
+          [
+            "zorks",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.05,
+        "free_wrong_candidate_right": 75,
+        "free_right_candidate_wrong": 0
+      }
+    },
+    "paired": {
+      "broken/first": {
+        "n": 100,
+        "both_free": 0,
+        "both_candidate": 12,
+        "free_semantic_agreement": 45,
+        "candidate_semantic_agreement": 83,
+        "gold_margin_shift_expected": 66
+      },
+      "broken/second": {
+        "n": 100,
+        "both_free": 1,
+        "both_candidate": 21,
+        "free_semantic_agreement": 65,
+        "candidate_semantic_agreement": 67,
+        "gold_margin_shift_expected": 61
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "both_free": 18,
+        "both_candidate": 74,
+        "free_semantic_agreement": 98,
+        "candidate_semantic_agreement": 138
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "both_free": 8,
+        "both_candidate": 73,
+        "free_semantic_agreement": 94,
+        "candidate_semantic_agreement": 134
+      },
+      "robustness/rename": {
+        "n": 200,
+        "both_free": 13,
+        "both_candidate": 74,
+        "free_semantic_agreement": 88,
+        "candidate_semantic_agreement": 137
+      }
+    },
+    "elapsed_minutes": 6.076514336311569,
+    "partial_unparsed": 0,
+    "lengths": [
+      89,
+      121
+    ]
+  },
+  "4": {
+    "issues": [],
+    "offset_note": "Local raw tokenizer trims leading whitespace; HF saved offsets include it. IDs and non-whitespace contents verified.",
+    "overall": {
+      "n": 1200,
+      "free_correct": 380,
+      "candidate_correct": 845,
+      "free_accuracy": 0.31666666666666665,
+      "candidate_accuracy": 0.7041666666666667,
+      "valid_candidate_rate": 0.43,
+      "free_accuracy_given_valid": 0.7364341085271318,
+      "free_ci95": [
+        0.29166666666666663,
+        0.3425
+      ],
+      "candidate_ci95": [
+        0.6775,
+        0.7308333333333333
+      ],
+      "errors": {
+        "correct_target": 380,
+        "reachable_one_hop": 626,
+        "unreachable_fact_name": 35,
+        "other_reachable": 22,
+        "wrong_candidate": 136,
+        "source_itself": 1
+      },
+      "mean_score_accuracy": 0.6883333333333334,
+      "mean_vs_sum_disagreements": 57,
+      "candidate_first_rate": 0.3591666666666667,
+      "candidate_accuracy_by_gold_position": {
+        "0": 0.5633333333333334,
+        "1": 0.845
+      },
+      "by_answer_length": {
+        "shorter": {
+          "n": 325,
+          "candidate_accuracy": 0.6307692307692307,
+          "free_accuracy": 0.2923076923076923
+        },
+        "equal": {
+          "n": 638,
+          "candidate_accuracy": 0.7241379310344828,
+          "free_accuracy": 0.322884012539185
+        },
+        "longer": {
+          "n": 237,
+          "candidate_accuracy": 0.7510548523206751,
+          "free_accuracy": 0.3333333333333333
+        }
+      },
+      "frequency_baseline_expected_accuracy": 0.8333333333333334,
+      "frequency_choice_agreement": 0.734,
+      "most_common_generated": [
+        [
+          "vibbles",
+          68
+        ],
+        [
+          "shalds",
+          66
+        ],
+        [
+          "ruspins",
+          66
+        ],
+        [
+          "tufas",
+          66
+        ],
+        [
+          "zorks",
+          57
+        ],
+        [
+          "nufrons",
+          53
+        ],
+        [
+          "sprocks",
+          50
+        ],
+        [
+          "kelbrins",
+          48
+        ]
+      ],
+      "majority_name_baseline": 0.050833333333333335,
+      "free_wrong_candidate_right": 465,
+      "free_right_candidate_wrong": 0
+    },
+    "groups": {
+      "direct": {
+        "n": 200,
+        "free_correct": 159,
+        "candidate_correct": 182,
+        "free_accuracy": 0.795,
+        "candidate_accuracy": 0.91,
+        "valid_candidate_rate": 0.865,
+        "free_accuracy_given_valid": 0.9190751445086706,
+        "free_ci95": [
+          0.74,
+          0.845
+        ],
+        "candidate_ci95": [
+          0.87,
+          0.945
+        ],
+        "errors": {
+          "correct_target": 159,
+          "unreachable_fact_name": 4,
+          "other_reachable": 22,
+          "wrong_candidate": 14,
+          "source_itself": 1
+        },
+        "mean_score_accuracy": 0.905,
+        "mean_vs_sum_disagreements": 5,
+        "candidate_first_rate": 0.45,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.86,
+          "1": 0.96
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 50,
+            "candidate_accuracy": 0.9,
+            "free_accuracy": 0.76
+          },
+          "equal": {
+            "n": 118,
+            "candidate_accuracy": 0.9152542372881356,
+            "free_accuracy": 0.7966101694915254
+          },
+          "longer": {
+            "n": 32,
+            "candidate_accuracy": 0.90625,
+            "free_accuracy": 0.84375
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.91,
+        "most_common_generated": [
+          [
+            "ruspins",
+            13
+          ],
+          [
+            "sprocks",
+            10
+          ],
+          [
+            "tufas",
+            10
+          ],
+          [
+            "shalds",
+            10
+          ],
+          [
+            "snorps",
+            10
+          ],
+          [
+            "vibbles",
+            9
+          ],
+          [
+            "daxes",
+            9
+          ],
+          [
+            "oskets",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 23,
+        "free_right_candidate_wrong": 0
+      },
+      "twohop": {
+        "n": 200,
+        "free_correct": 56,
+        "candidate_correct": 143,
+        "free_accuracy": 0.28,
+        "candidate_accuracy": 0.715,
+        "valid_candidate_rate": 0.38,
+        "free_accuracy_given_valid": 0.7368421052631579,
+        "free_ci95": [
+          0.22,
+          0.34
+        ],
+        "candidate_ci95": [
+          0.655,
+          0.775
+        ],
+        "errors": {
+          "reachable_one_hop": 120,
+          "correct_target": 56,
+          "wrong_candidate": 20,
+          "unreachable_fact_name": 4
+        },
+        "mean_score_accuracy": 0.66,
+        "mean_vs_sum_disagreements": 15,
+        "candidate_first_rate": 0.315,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.53,
+          "1": 0.9
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 63,
+            "candidate_accuracy": 0.6825396825396826,
+            "free_accuracy": 0.1746031746031746
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.7281553398058253,
+            "free_accuracy": 0.30097087378640774
+          },
+          "longer": {
+            "n": 34,
+            "candidate_accuracy": 0.7352941176470589,
+            "free_accuracy": 0.4117647058823529
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.715,
+        "most_common_generated": [
+          [
+            "shalds",
+            15
+          ],
+          [
+            "tufas",
+            12
+          ],
+          [
+            "sprocks",
+            11
+          ],
+          [
+            "ruspins",
+            11
+          ],
+          [
+            "vibbles",
+            10
+          ],
+          [
+            "kelbrins",
+            9
+          ],
+          [
+            "zorks",
+            9
+          ],
+          [
+            "tivaks",
+            9
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 87,
+        "free_right_candidate_wrong": 0
+      },
+      "broken": {
+        "n": 200,
+        "free_correct": 40,
+        "candidate_correct": 118,
+        "free_accuracy": 0.2,
+        "candidate_accuracy": 0.59,
+        "valid_candidate_rate": 0.375,
+        "free_accuracy_given_valid": 0.5333333333333333,
+        "free_ci95": [
+          0.14,
+          0.265
+        ],
+        "candidate_ci95": [
+          0.51,
+          0.67
+        ],
+        "errors": {
+          "reachable_one_hop": 122,
+          "correct_target": 40,
+          "wrong_candidate": 35,
+          "unreachable_fact_name": 3
+        },
+        "mean_score_accuracy": 0.61,
+        "mean_vs_sum_disagreements": 8,
+        "candidate_first_rate": 0.29,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.38,
+          "1": 0.8
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 36,
+            "candidate_accuracy": 0.5277777777777778,
+            "free_accuracy": 0.2777777777777778
+          },
+          "equal": {
+            "n": 108,
+            "candidate_accuracy": 0.5833333333333334,
+            "free_accuracy": 0.18518518518518517
+          },
+          "longer": {
+            "n": 56,
+            "candidate_accuracy": 0.6428571428571429,
+            "free_accuracy": 0.17857142857142858
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.5,
+        "frequency_choice_agreement": 0.62,
+        "most_common_generated": [
+          [
+            "ruspins",
+            15
+          ],
+          [
+            "vibbles",
+            14
+          ],
+          [
+            "shalds",
+            11
+          ],
+          [
+            "zorks",
+            11
+          ],
+          [
+            "tufas",
+            10
+          ],
+          [
+            "sprocks",
+            9
+          ],
+          [
+            "tivaks",
+            9
+          ],
+          [
+            "kelbrins",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.1,
+        "free_wrong_candidate_right": 78,
+        "free_right_candidate_wrong": 0
+      },
+      "robustness": {
+        "n": 600,
+        "free_correct": 125,
+        "candidate_correct": 402,
+        "free_accuracy": 0.20833333333333334,
+        "candidate_accuracy": 0.67,
+        "valid_candidate_rate": 0.32,
+        "free_accuracy_given_valid": 0.6510416666666666,
+        "free_ci95": [
+          0.1716666666666667,
+          0.24666666666666665
+        ],
+        "candidate_ci95": [
+          0.6316666666666667,
+          0.7066666666666667
+        ],
+        "errors": {
+          "reachable_one_hop": 384,
+          "correct_target": 125,
+          "wrong_candidate": 67,
+          "unreachable_fact_name": 24
+        },
+        "mean_score_accuracy": 0.6516666666666666,
+        "mean_vs_sum_disagreements": 29,
+        "candidate_first_rate": 0.36666666666666664,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.5366666666666666,
+          "1": 0.8033333333333333
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 176,
+            "candidate_accuracy": 0.5568181818181818,
+            "free_accuracy": 0.20454545454545456
+          },
+          "equal": {
+            "n": 309,
+            "candidate_accuracy": 0.6990291262135923,
+            "free_accuracy": 0.19741100323624594
+          },
+          "longer": {
+            "n": 115,
+            "candidate_accuracy": 0.7652173913043478,
+            "free_accuracy": 0.24347826086956523
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.8333333333333334,
+        "frequency_choice_agreement": 0.7125,
+        "most_common_generated": [
+          [
+            "vibbles",
+            35
+          ],
+          [
+            "tufas",
+            34
+          ],
+          [
+            "zorks",
+            31
+          ],
+          [
+            "shalds",
+            30
+          ],
+          [
+            "nufrons",
+            28
+          ],
+          [
+            "ruspins",
+            27
+          ],
+          [
+            "kelbrins",
+            24
+          ],
+          [
+            "daxes",
+            23
+          ]
+        ],
+        "majority_name_baseline": 0.04833333333333333,
+        "free_wrong_candidate_right": 277,
+        "free_right_candidate_wrong": 0
+      }
+    },
+    "subgroups": {
+      "broken/first": {
+        "n": 100,
+        "free_correct": 12,
+        "candidate_correct": 47,
+        "free_accuracy": 0.12,
+        "candidate_accuracy": 0.47,
+        "valid_candidate_rate": 0.37,
+        "free_accuracy_given_valid": 0.32432432432432434,
+        "free_ci95": [
+          0.06,
+          0.19
+        ],
+        "candidate_ci95": [
+          0.38,
+          0.57
+        ],
+        "errors": {
+          "reachable_one_hop": 61,
+          "wrong_candidate": 25,
+          "correct_target": 12,
+          "unreachable_fact_name": 2
+        },
+        "mean_score_accuracy": 0.49,
+        "mean_vs_sum_disagreements": 4,
+        "candidate_first_rate": 0.27,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.24,
+          "1": 0.7
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 18,
+            "candidate_accuracy": 0.3888888888888889,
+            "free_accuracy": 0.16666666666666666
+          },
+          "equal": {
+            "n": 54,
+            "candidate_accuracy": 0.48148148148148145,
+            "free_accuracy": 0.1111111111111111
+          },
+          "longer": {
+            "n": 28,
+            "candidate_accuracy": 0.5,
+            "free_accuracy": 0.10714285714285714
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.0,
+        "frequency_choice_agreement": 0.53,
+        "most_common_generated": [
+          [
+            "ruspins",
+            6
+          ],
+          [
+            "vibbles",
+            6
+          ],
+          [
+            "tivaks",
+            6
+          ],
+          [
+            "tufas",
+            6
+          ],
+          [
+            "flomps",
+            5
+          ],
+          [
+            "daxes",
+            5
+          ],
+          [
+            "nufrons",
+            5
+          ],
+          [
+            "sprocks",
+            5
+          ]
+        ],
+        "majority_name_baseline": 0.1,
+        "free_wrong_candidate_right": 35,
+        "free_right_candidate_wrong": 0
+      },
+      "broken/second": {
+        "n": 100,
+        "free_correct": 28,
+        "candidate_correct": 71,
+        "free_accuracy": 0.28,
+        "candidate_accuracy": 0.71,
+        "valid_candidate_rate": 0.38,
+        "free_accuracy_given_valid": 0.7368421052631579,
+        "free_ci95": [
+          0.2,
+          0.37
+        ],
+        "candidate_ci95": [
+          0.62,
+          0.8
+        ],
+        "errors": {
+          "reachable_one_hop": 61,
+          "correct_target": 28,
+          "unreachable_fact_name": 1,
+          "wrong_candidate": 10
+        },
+        "mean_score_accuracy": 0.73,
+        "mean_vs_sum_disagreements": 4,
+        "candidate_first_rate": 0.31,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.52,
+          "1": 0.9
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 18,
+            "candidate_accuracy": 0.6666666666666666,
+            "free_accuracy": 0.3888888888888889
+          },
+          "equal": {
+            "n": 54,
+            "candidate_accuracy": 0.6851851851851852,
+            "free_accuracy": 0.25925925925925924
+          },
+          "longer": {
+            "n": 28,
+            "candidate_accuracy": 0.7857142857142857,
+            "free_accuracy": 0.25
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.71,
+        "most_common_generated": [
+          [
+            "ruspins",
+            9
+          ],
+          [
+            "shalds",
+            8
+          ],
+          [
+            "vibbles",
+            8
+          ],
+          [
+            "zorks",
+            7
+          ],
+          [
+            "kelbrins",
+            5
+          ],
+          [
+            "sprocks",
+            4
+          ],
+          [
+            "oskets",
+            4
+          ],
+          [
+            "lomits",
+            4
+          ]
+        ],
+        "majority_name_baseline": 0.1,
+        "free_wrong_candidate_right": 43,
+        "free_right_candidate_wrong": 0
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "free_correct": 49,
+        "candidate_correct": 138,
+        "free_accuracy": 0.245,
+        "candidate_accuracy": 0.69,
+        "valid_candidate_rate": 0.34,
+        "free_accuracy_given_valid": 0.7205882352941176,
+        "free_ci95": [
+          0.185,
+          0.305
+        ],
+        "candidate_ci95": [
+          0.625,
+          0.75
+        ],
+        "errors": {
+          "reachable_one_hop": 128,
+          "correct_target": 49,
+          "wrong_candidate": 19,
+          "unreachable_fact_name": 4
+        },
+        "mean_score_accuracy": 0.67,
+        "mean_vs_sum_disagreements": 12,
+        "candidate_first_rate": 0.35,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.54,
+          "1": 0.84
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 63,
+            "candidate_accuracy": 0.6190476190476191,
+            "free_accuracy": 0.2698412698412698
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.7184466019417476,
+            "free_accuracy": 0.21359223300970873
+          },
+          "longer": {
+            "n": 34,
+            "candidate_accuracy": 0.7352941176470589,
+            "free_accuracy": 0.29411764705882354
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.69,
+        "most_common_generated": [
+          [
+            "tufas",
+            13
+          ],
+          [
+            "shalds",
+            12
+          ],
+          [
+            "zorks",
+            10
+          ],
+          [
+            "vibbles",
+            9
+          ],
+          [
+            "ruspins",
+            9
+          ],
+          [
+            "tivaks",
+            9
+          ],
+          [
+            "nufrons",
+            9
+          ],
+          [
+            "snorps",
+            9
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 89,
+        "free_right_candidate_wrong": 0
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "free_correct": 32,
+        "candidate_correct": 117,
+        "free_accuracy": 0.16,
+        "candidate_accuracy": 0.585,
+        "valid_candidate_rate": 0.33,
+        "free_accuracy_given_valid": 0.48484848484848486,
+        "free_ci95": [
+          0.11,
+          0.215
+        ],
+        "candidate_ci95": [
+          0.52,
+          0.65
+        ],
+        "errors": {
+          "reachable_one_hop": 120,
+          "correct_target": 32,
+          "wrong_candidate": 34,
+          "unreachable_fact_name": 14
+        },
+        "mean_score_accuracy": 0.57,
+        "mean_vs_sum_disagreements": 9,
+        "candidate_first_rate": 0.325,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.41,
+          "1": 0.76
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 63,
+            "candidate_accuracy": 0.42857142857142855,
+            "free_accuracy": 0.14285714285714285
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.6699029126213593,
+            "free_accuracy": 0.1650485436893204
+          },
+          "longer": {
+            "n": 34,
+            "candidate_accuracy": 0.6176470588235294,
+            "free_accuracy": 0.17647058823529413
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.5,
+        "frequency_choice_agreement": null,
+        "most_common_generated": [
+          [
+            "vibbles",
+            13
+          ],
+          [
+            "ruspins",
+            13
+          ],
+          [
+            "tufas",
+            13
+          ],
+          [
+            "zorks",
+            12
+          ],
+          [
+            "shalds",
+            12
+          ],
+          [
+            "kelbrins",
+            10
+          ],
+          [
+            "lomits",
+            10
+          ],
+          [
+            "nufrons",
+            9
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 85,
+        "free_right_candidate_wrong": 0
+      },
+      "robustness/rename": {
+        "n": 200,
+        "free_correct": 44,
+        "candidate_correct": 147,
+        "free_accuracy": 0.22,
+        "candidate_accuracy": 0.735,
+        "valid_candidate_rate": 0.29,
+        "free_accuracy_given_valid": 0.7586206896551724,
+        "free_ci95": [
+          0.165,
+          0.28
+        ],
+        "candidate_ci95": [
+          0.68,
+          0.79
+        ],
+        "errors": {
+          "reachable_one_hop": 136,
+          "correct_target": 44,
+          "wrong_candidate": 14,
+          "unreachable_fact_name": 6
+        },
+        "mean_score_accuracy": 0.715,
+        "mean_vs_sum_disagreements": 8,
+        "candidate_first_rate": 0.425,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.66,
+          "1": 0.81
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 50,
+            "candidate_accuracy": 0.64,
+            "free_accuracy": 0.2
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.7087378640776699,
+            "free_accuracy": 0.21359223300970873
+          },
+          "longer": {
+            "n": 47,
+            "candidate_accuracy": 0.8936170212765957,
+            "free_accuracy": 0.2553191489361702
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.735,
+        "most_common_generated": [
+          [
+            "vibbles",
+            13
+          ],
+          [
+            "nufrons",
+            10
+          ],
+          [
+            "wugs",
+            10
+          ],
+          [
+            "daxes",
+            10
+          ],
+          [
+            "vromps",
+            9
+          ],
+          [
+            "zorks",
+            9
+          ],
+          [
+            "blickets",
+            8
+          ],
+          [
+            "zemples",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.05,
+        "free_wrong_candidate_right": 103,
+        "free_right_candidate_wrong": 0
+      }
+    },
+    "paired": {
+      "broken/first": {
+        "n": 100,
+        "both_free": 0,
+        "both_candidate": 21,
+        "free_semantic_agreement": 25,
+        "candidate_semantic_agreement": 76,
+        "gold_margin_shift_expected": 86
+      },
+      "broken/second": {
+        "n": 100,
+        "both_free": 9,
+        "both_candidate": 42,
+        "free_semantic_agreement": 74,
+        "candidate_semantic_agreement": 58,
+        "gold_margin_shift_expected": 98
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "both_free": 26,
+        "both_candidate": 122,
+        "free_semantic_agreement": 123,
+        "candidate_semantic_agreement": 163
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "both_free": 19,
+        "both_candidate": 98,
+        "free_semantic_agreement": 110,
+        "candidate_semantic_agreement": 136
+      },
+      "robustness/rename": {
+        "n": 200,
+        "both_free": 23,
+        "both_candidate": 115,
+        "free_semantic_agreement": 124,
+        "candidate_semantic_agreement": 140
+      }
+    },
+    "elapsed_minutes": 18.616381715983152,
+    "partial_unparsed": 0,
+    "lengths": [
+      354,
+      398
+    ]
+  },
+  "12": {
+    "issues": [],
+    "offset_note": "Local raw tokenizer trims leading whitespace; HF saved offsets include it. IDs and non-whitespace contents verified.",
+    "overall": {
+      "n": 1200,
+      "free_correct": 455,
+      "candidate_correct": 827,
+      "free_accuracy": 0.37916666666666665,
+      "candidate_accuracy": 0.6891666666666667,
+      "valid_candidate_rate": 0.5341666666666667,
+      "free_accuracy_given_valid": 0.7098283931357254,
+      "free_ci95": [
+        0.34916666666666674,
+        0.40916666666666673
+      ],
+      "candidate_ci95": [
+        0.6625,
+        0.7166666666666666
+      ],
+      "errors": {
+        "correct_target": 455,
+        "reachable_one_hop": 509,
+        "wrong_candidate": 186,
+        "unreachable_fact_name": 25,
+        "other_reachable": 25
+      },
+      "mean_score_accuracy": 0.6766666666666666,
+      "mean_vs_sum_disagreements": 57,
+      "candidate_first_rate": 0.30083333333333334,
+      "candidate_accuracy_by_gold_position": {
+        "0": 0.49,
+        "1": 0.8883333333333333
+      },
+      "by_answer_length": {
+        "shorter": {
+          "n": 325,
+          "candidate_accuracy": 0.64,
+          "free_accuracy": 0.3384615384615385
+        },
+        "equal": {
+          "n": 638,
+          "candidate_accuracy": 0.7021943573667712,
+          "free_accuracy": 0.4122257053291536
+        },
+        "longer": {
+          "n": 237,
+          "candidate_accuracy": 0.7215189873417721,
+          "free_accuracy": 0.3459915611814346
+        }
+      },
+      "frequency_baseline_expected_accuracy": 0.8333333333333334,
+      "frequency_choice_agreement": 0.728,
+      "most_common_generated": [
+        [
+          "vibbles",
+          77
+        ],
+        [
+          "shalds",
+          72
+        ],
+        [
+          "tufas",
+          62
+        ],
+        [
+          "nufrons",
+          60
+        ],
+        [
+          "ruspins",
+          57
+        ],
+        [
+          "daxes",
+          56
+        ],
+        [
+          "sprocks",
+          51
+        ],
+        [
+          "zorks",
+          50
+        ]
+      ],
+      "majority_name_baseline": 0.050833333333333335,
+      "free_wrong_candidate_right": 375,
+      "free_right_candidate_wrong": 3
+    },
+    "groups": {
+      "direct": {
+        "n": 200,
+        "free_correct": 154,
+        "candidate_correct": 177,
+        "free_accuracy": 0.77,
+        "candidate_accuracy": 0.885,
+        "valid_candidate_rate": 0.86,
+        "free_accuracy_given_valid": 0.8953488372093024,
+        "free_ci95": [
+          0.72,
+          0.82
+        ],
+        "candidate_ci95": [
+          0.84,
+          0.925
+        ],
+        "errors": {
+          "correct_target": 154,
+          "unreachable_fact_name": 3,
+          "other_reachable": 25,
+          "wrong_candidate": 18
+        },
+        "mean_score_accuracy": 0.865,
+        "mean_vs_sum_disagreements": 4,
+        "candidate_first_rate": 0.405,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.79,
+          "1": 0.98
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 50,
+            "candidate_accuracy": 0.86,
+            "free_accuracy": 0.7
+          },
+          "equal": {
+            "n": 118,
+            "candidate_accuracy": 0.8898305084745762,
+            "free_accuracy": 0.8050847457627118
+          },
+          "longer": {
+            "n": 32,
+            "candidate_accuracy": 0.90625,
+            "free_accuracy": 0.75
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.885,
+        "most_common_generated": [
+          [
+            "shalds",
+            12
+          ],
+          [
+            "ruspins",
+            12
+          ],
+          [
+            "sprocks",
+            11
+          ],
+          [
+            "vibbles",
+            10
+          ],
+          [
+            "daxes",
+            9
+          ],
+          [
+            "tufas",
+            9
+          ],
+          [
+            "flomps",
+            9
+          ],
+          [
+            "snorps",
+            9
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 23,
+        "free_right_candidate_wrong": 0
+      },
+      "twohop": {
+        "n": 200,
+        "free_correct": 70,
+        "candidate_correct": 150,
+        "free_accuracy": 0.35,
+        "candidate_accuracy": 0.75,
+        "valid_candidate_rate": 0.5,
+        "free_accuracy_given_valid": 0.7,
+        "free_ci95": [
+          0.29,
+          0.41
+        ],
+        "candidate_ci95": [
+          0.695,
+          0.805
+        ],
+        "errors": {
+          "reachable_one_hop": 100,
+          "correct_target": 70,
+          "wrong_candidate": 30
+        },
+        "mean_score_accuracy": 0.705,
+        "mean_vs_sum_disagreements": 13,
+        "candidate_first_rate": 0.31,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.56,
+          "1": 0.94
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 63,
+            "candidate_accuracy": 0.7142857142857143,
+            "free_accuracy": 0.2698412698412698
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.7475728155339806,
+            "free_accuracy": 0.3883495145631068
+          },
+          "longer": {
+            "n": 34,
+            "candidate_accuracy": 0.8235294117647058,
+            "free_accuracy": 0.38235294117647056
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.75,
+        "most_common_generated": [
+          [
+            "shalds",
+            14
+          ],
+          [
+            "sprocks",
+            11
+          ],
+          [
+            "vibbles",
+            11
+          ],
+          [
+            "tufas",
+            11
+          ],
+          [
+            "daxes",
+            9
+          ],
+          [
+            "zorks",
+            9
+          ],
+          [
+            "lomits",
+            9
+          ],
+          [
+            "nufrons",
+            9
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 80,
+        "free_right_candidate_wrong": 0
+      },
+      "broken": {
+        "n": 200,
+        "free_correct": 53,
+        "candidate_correct": 110,
+        "free_accuracy": 0.265,
+        "candidate_accuracy": 0.55,
+        "valid_candidate_rate": 0.465,
+        "free_accuracy_given_valid": 0.5698924731182796,
+        "free_ci95": [
+          0.195,
+          0.34
+        ],
+        "candidate_ci95": [
+          0.47,
+          0.63
+        ],
+        "errors": {
+          "reachable_one_hop": 107,
+          "correct_target": 53,
+          "wrong_candidate": 40
+        },
+        "mean_score_accuracy": 0.575,
+        "mean_vs_sum_disagreements": 9,
+        "candidate_first_rate": 0.24,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.29,
+          "1": 0.81
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 36,
+            "candidate_accuracy": 0.5555555555555556,
+            "free_accuracy": 0.3055555555555556
+          },
+          "equal": {
+            "n": 108,
+            "candidate_accuracy": 0.5370370370370371,
+            "free_accuracy": 0.26851851851851855
+          },
+          "longer": {
+            "n": 56,
+            "candidate_accuracy": 0.5714285714285714,
+            "free_accuracy": 0.23214285714285715
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.5,
+        "frequency_choice_agreement": 0.63,
+        "most_common_generated": [
+          [
+            "ruspins",
+            15
+          ],
+          [
+            "vibbles",
+            14
+          ],
+          [
+            "tivaks",
+            11
+          ],
+          [
+            "tufas",
+            10
+          ],
+          [
+            "zorks",
+            10
+          ],
+          [
+            "shalds",
+            10
+          ],
+          [
+            "nufrons",
+            10
+          ],
+          [
+            "daxes",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.1,
+        "free_wrong_candidate_right": 57,
+        "free_right_candidate_wrong": 0
+      },
+      "robustness": {
+        "n": 600,
+        "free_correct": 178,
+        "candidate_correct": 390,
+        "free_accuracy": 0.2966666666666667,
+        "candidate_accuracy": 0.65,
+        "valid_candidate_rate": 0.46,
+        "free_accuracy_given_valid": 0.644927536231884,
+        "free_ci95": [
+          0.255,
+          0.34166666666666656
+        ],
+        "candidate_ci95": [
+          0.6116666666666666,
+          0.6883333333333335
+        ],
+        "errors": {
+          "reachable_one_hop": 302,
+          "correct_target": 178,
+          "wrong_candidate": 98,
+          "unreachable_fact_name": 22
+        },
+        "mean_score_accuracy": 0.6383333333333333,
+        "mean_vs_sum_disagreements": 31,
+        "candidate_first_rate": 0.2833333333333333,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.43333333333333335,
+          "1": 0.8666666666666667
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 176,
+            "candidate_accuracy": 0.5681818181818182,
+            "free_accuracy": 0.26704545454545453
+          },
+          "equal": {
+            "n": 309,
+            "candidate_accuracy": 0.6731391585760518,
+            "free_accuracy": 0.32038834951456313
+          },
+          "longer": {
+            "n": 115,
+            "candidate_accuracy": 0.7130434782608696,
+            "free_accuracy": 0.2782608695652174
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.8333333333333334,
+        "frequency_choice_agreement": 0.6875,
+        "most_common_generated": [
+          [
+            "vibbles",
+            42
+          ],
+          [
+            "shalds",
+            36
+          ],
+          [
+            "nufrons",
+            33
+          ],
+          [
+            "tufas",
+            32
+          ],
+          [
+            "daxes",
+            30
+          ],
+          [
+            "zorks",
+            27
+          ],
+          [
+            "grivaks",
+            23
+          ],
+          [
+            "ruspins",
+            22
+          ]
+        ],
+        "majority_name_baseline": 0.04833333333333333,
+        "free_wrong_candidate_right": 215,
+        "free_right_candidate_wrong": 3
+      }
+    },
+    "subgroups": {
+      "broken/first": {
+        "n": 100,
+        "free_correct": 20,
+        "candidate_correct": 42,
+        "free_accuracy": 0.2,
+        "candidate_accuracy": 0.42,
+        "valid_candidate_rate": 0.48,
+        "free_accuracy_given_valid": 0.4166666666666667,
+        "free_ci95": [
+          0.13,
+          0.28
+        ],
+        "candidate_ci95": [
+          0.33,
+          0.52
+        ],
+        "errors": {
+          "reachable_one_hop": 52,
+          "wrong_candidate": 28,
+          "correct_target": 20
+        },
+        "mean_score_accuracy": 0.44,
+        "mean_vs_sum_disagreements": 6,
+        "candidate_first_rate": 0.2,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.12,
+          "1": 0.72
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 18,
+            "candidate_accuracy": 0.4444444444444444,
+            "free_accuracy": 0.2222222222222222
+          },
+          "equal": {
+            "n": 54,
+            "candidate_accuracy": 0.4074074074074074,
+            "free_accuracy": 0.2037037037037037
+          },
+          "longer": {
+            "n": 28,
+            "candidate_accuracy": 0.42857142857142855,
+            "free_accuracy": 0.17857142857142858
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.0,
+        "frequency_choice_agreement": 0.58,
+        "most_common_generated": [
+          [
+            "ruspins",
+            8
+          ],
+          [
+            "tufas",
+            7
+          ],
+          [
+            "tivaks",
+            7
+          ],
+          [
+            "vibbles",
+            6
+          ],
+          [
+            "nufrons",
+            5
+          ],
+          [
+            "flomps",
+            4
+          ],
+          [
+            "zemples",
+            4
+          ],
+          [
+            "oskets",
+            4
+          ]
+        ],
+        "majority_name_baseline": 0.1,
+        "free_wrong_candidate_right": 22,
+        "free_right_candidate_wrong": 0
+      },
+      "broken/second": {
+        "n": 100,
+        "free_correct": 33,
+        "candidate_correct": 68,
+        "free_accuracy": 0.33,
+        "candidate_accuracy": 0.68,
+        "valid_candidate_rate": 0.45,
+        "free_accuracy_given_valid": 0.7333333333333333,
+        "free_ci95": [
+          0.24,
+          0.42
+        ],
+        "candidate_ci95": [
+          0.59,
+          0.77
+        ],
+        "errors": {
+          "correct_target": 33,
+          "reachable_one_hop": 55,
+          "wrong_candidate": 12
+        },
+        "mean_score_accuracy": 0.71,
+        "mean_vs_sum_disagreements": 3,
+        "candidate_first_rate": 0.28,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.46,
+          "1": 0.9
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 18,
+            "candidate_accuracy": 0.6666666666666666,
+            "free_accuracy": 0.3888888888888889
+          },
+          "equal": {
+            "n": 54,
+            "candidate_accuracy": 0.6666666666666666,
+            "free_accuracy": 0.3333333333333333
+          },
+          "longer": {
+            "n": 28,
+            "candidate_accuracy": 0.7142857142857143,
+            "free_accuracy": 0.2857142857142857
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.68,
+        "most_common_generated": [
+          [
+            "shalds",
+            8
+          ],
+          [
+            "vibbles",
+            8
+          ],
+          [
+            "ruspins",
+            7
+          ],
+          [
+            "zorks",
+            6
+          ],
+          [
+            "daxes",
+            5
+          ],
+          [
+            "nufrons",
+            5
+          ],
+          [
+            "sprocks",
+            4
+          ],
+          [
+            "flomps",
+            4
+          ]
+        ],
+        "majority_name_baseline": 0.1,
+        "free_wrong_candidate_right": 35,
+        "free_right_candidate_wrong": 0
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "free_correct": 55,
+        "candidate_correct": 138,
+        "free_accuracy": 0.275,
+        "candidate_accuracy": 0.69,
+        "valid_candidate_rate": 0.4,
+        "free_accuracy_given_valid": 0.6875,
+        "free_ci95": [
+          0.215,
+          0.335
+        ],
+        "candidate_ci95": [
+          0.635,
+          0.745
+        ],
+        "errors": {
+          "reachable_one_hop": 117,
+          "correct_target": 55,
+          "wrong_candidate": 25,
+          "unreachable_fact_name": 3
+        },
+        "mean_score_accuracy": 0.67,
+        "mean_vs_sum_disagreements": 6,
+        "candidate_first_rate": 0.27,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.46,
+          "1": 0.92
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 63,
+            "candidate_accuracy": 0.5714285714285714,
+            "free_accuracy": 0.2857142857142857
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.7184466019417476,
+            "free_accuracy": 0.2815533980582524
+          },
+          "longer": {
+            "n": 34,
+            "candidate_accuracy": 0.8235294117647058,
+            "free_accuracy": 0.23529411764705882
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.69,
+        "most_common_generated": [
+          [
+            "nufrons",
+            13
+          ],
+          [
+            "shalds",
+            12
+          ],
+          [
+            "vibbles",
+            11
+          ],
+          [
+            "tufas",
+            11
+          ],
+          [
+            "sprocks",
+            10
+          ],
+          [
+            "zorks",
+            10
+          ],
+          [
+            "grivaks",
+            9
+          ],
+          [
+            "flomps",
+            9
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 83,
+        "free_right_candidate_wrong": 0
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "free_correct": 55,
+        "candidate_correct": 115,
+        "free_accuracy": 0.275,
+        "candidate_accuracy": 0.575,
+        "valid_candidate_rate": 0.49,
+        "free_accuracy_given_valid": 0.5612244897959183,
+        "free_ci95": [
+          0.215,
+          0.335
+        ],
+        "candidate_ci95": [
+          0.505,
+          0.645
+        ],
+        "errors": {
+          "wrong_candidate": 43,
+          "reachable_one_hop": 89,
+          "correct_target": 55,
+          "unreachable_fact_name": 13
+        },
+        "mean_score_accuracy": 0.58,
+        "mean_vs_sum_disagreements": 15,
+        "candidate_first_rate": 0.265,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.34,
+          "1": 0.81
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 63,
+            "candidate_accuracy": 0.5079365079365079,
+            "free_accuracy": 0.23809523809523808
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.6407766990291263,
+            "free_accuracy": 0.3300970873786408
+          },
+          "longer": {
+            "n": 34,
+            "candidate_accuracy": 0.5,
+            "free_accuracy": 0.17647058823529413
+          }
+        },
+        "frequency_baseline_expected_accuracy": 0.5,
+        "frequency_choice_agreement": null,
+        "most_common_generated": [
+          [
+            "vibbles",
+            17
+          ],
+          [
+            "tufas",
+            13
+          ],
+          [
+            "shalds",
+            13
+          ],
+          [
+            "zorks",
+            13
+          ],
+          [
+            "daxes",
+            12
+          ],
+          [
+            "nufrons",
+            10
+          ],
+          [
+            "kelbrins",
+            8
+          ],
+          [
+            "ruspins",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.06,
+        "free_wrong_candidate_right": 62,
+        "free_right_candidate_wrong": 2
+      },
+      "robustness/rename": {
+        "n": 200,
+        "free_correct": 68,
+        "candidate_correct": 137,
+        "free_accuracy": 0.34,
+        "candidate_accuracy": 0.685,
+        "valid_candidate_rate": 0.49,
+        "free_accuracy_given_valid": 0.6938775510204082,
+        "free_ci95": [
+          0.275,
+          0.405
+        ],
+        "candidate_ci95": [
+          0.63,
+          0.74
+        ],
+        "errors": {
+          "correct_target": 68,
+          "reachable_one_hop": 96,
+          "wrong_candidate": 30,
+          "unreachable_fact_name": 6
+        },
+        "mean_score_accuracy": 0.665,
+        "mean_vs_sum_disagreements": 10,
+        "candidate_first_rate": 0.315,
+        "candidate_accuracy_by_gold_position": {
+          "0": 0.5,
+          "1": 0.87
+        },
+        "by_answer_length": {
+          "shorter": {
+            "n": 50,
+            "candidate_accuracy": 0.64,
+            "free_accuracy": 0.28
+          },
+          "equal": {
+            "n": 103,
+            "candidate_accuracy": 0.6601941747572816,
+            "free_accuracy": 0.34951456310679613
+          },
+          "longer": {
+            "n": 47,
+            "candidate_accuracy": 0.7872340425531915,
+            "free_accuracy": 0.3829787234042553
+          }
+        },
+        "frequency_baseline_expected_accuracy": 1.0,
+        "frequency_choice_agreement": 0.685,
+        "most_common_generated": [
+          [
+            "vibbles",
+            14
+          ],
+          [
+            "wugs",
+            11
+          ],
+          [
+            "shalds",
+            11
+          ],
+          [
+            "nufrons",
+            10
+          ],
+          [
+            "daxes",
+            10
+          ],
+          [
+            "blickets",
+            9
+          ],
+          [
+            "vromps",
+            8
+          ],
+          [
+            "zeltrons",
+            8
+          ]
+        ],
+        "majority_name_baseline": 0.05,
+        "free_wrong_candidate_right": 70,
+        "free_right_candidate_wrong": 1
+      }
+    },
+    "paired": {
+      "broken/first": {
+        "n": 100,
+        "both_free": 3,
+        "both_candidate": 19,
+        "free_semantic_agreement": 33,
+        "candidate_semantic_agreement": 81,
+        "gold_margin_shift_expected": 86
+      },
+      "broken/second": {
+        "n": 100,
+        "both_free": 13,
+        "both_candidate": 45,
+        "free_semantic_agreement": 70,
+        "candidate_semantic_agreement": 55,
+        "gold_margin_shift_expected": 95
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "both_free": 35,
+        "both_candidate": 125,
+        "free_semantic_agreement": 120,
+        "candidate_semantic_agreement": 162
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "both_free": 38,
+        "both_candidate": 105,
+        "free_semantic_agreement": 114,
+        "candidate_semantic_agreement": 145
+      },
+      "robustness/rename": {
+        "n": 200,
+        "both_free": 43,
+        "both_candidate": 112,
+        "free_semantic_agreement": 123,
+        "candidate_semantic_agreement": 137
+      }
+    },
+    "elapsed_minutes": 53.267786833426605,
+    "partial_unparsed": 0,
+    "lengths": [
+      943,
+      985
+    ]
+  },
+  "changes": {
+    "4_minus_0": {
+      "direct": {
+        "free_correct": {
+          "delta": 0.235,
+          "ci95": [
+            0.165,
+            0.305
+          ],
+          "gains": 62,
+          "losses": 15
+        },
+        "correct": {
+          "delta": 0.205,
+          "ci95": [
+            0.145,
+            0.265
+          ],
+          "gains": 50,
+          "losses": 9
+        }
+      },
+      "twohop": {
+        "free_correct": {
+          "delta": 0.105,
+          "ci95": [
+            0.03,
+            0.18
+          ],
+          "gains": 44,
+          "losses": 23
+        },
+        "correct": {
+          "delta": 0.215,
+          "ci95": [
+            0.14,
+            0.29
+          ],
+          "gains": 70,
+          "losses": 27
+        }
+      },
+      "broken": {
+        "free_correct": {
+          "delta": -0.025,
+          "ci95": [
+            -0.11,
+            0.065
+          ],
+          "gains": 28,
+          "losses": 33
+        },
+        "correct": {
+          "delta": 0.01,
+          "ci95": [
+            -0.11,
+            0.13
+          ],
+          "gains": 51,
+          "losses": 49
+        }
+      },
+      "robustness": {
+        "free_correct": {
+          "delta": 0.026666666666666665,
+          "ci95": [
+            -0.019999999999999993,
+            0.07333333333333333
+          ],
+          "gains": 97,
+          "losses": 81
+        },
+        "correct": {
+          "delta": 0.115,
+          "ci95": [
+            0.06995833333333334,
+            0.16
+          ],
+          "gains": 176,
+          "losses": 107
+        }
+      }
+    },
+    "12_minus_4": {
+      "direct": {
+        "free_correct": {
+          "delta": -0.025,
+          "ci95": [
+            -0.07,
+            0.02
+          ],
+          "gains": 10,
+          "losses": 15
+        },
+        "correct": {
+          "delta": -0.025,
+          "ci95": [
+            -0.06,
+            0.01
+          ],
+          "gains": 6,
+          "losses": 11
+        }
+      },
+      "twohop": {
+        "free_correct": {
+          "delta": 0.07,
+          "ci95": [
+            0.02,
+            0.125
+          ],
+          "gains": 23,
+          "losses": 9
+        },
+        "correct": {
+          "delta": 0.035,
+          "ci95": [
+            -0.02,
+            0.09
+          ],
+          "gains": 21,
+          "losses": 14
+        }
+      },
+      "broken": {
+        "free_correct": {
+          "delta": 0.065,
+          "ci95": [
+            0.015,
+            0.12
+          ],
+          "gains": 18,
+          "losses": 5
+        },
+        "correct": {
+          "delta": -0.04,
+          "ci95": [
+            -0.1,
+            0.015
+          ],
+          "gains": 10,
+          "losses": 18
+        }
+      },
+      "robustness": {
+        "free_correct": {
+          "delta": 0.08833333333333332,
+          "ci95": [
+            0.04999999999999999,
+            0.12666666666666668
+          ],
+          "gains": 84,
+          "losses": 31
+        },
+        "correct": {
+          "delta": -0.02,
+          "ci95": [
+            -0.055,
+            0.015
+          ],
+          "gains": 47,
+          "losses": 59
+        }
+      }
+    },
+    "12_minus_0": {
+      "direct": {
+        "free_correct": {
+          "delta": 0.21,
+          "ci95": [
+            0.14,
+            0.275
+          ],
+          "gains": 61,
+          "losses": 19
+        },
+        "correct": {
+          "delta": 0.18,
+          "ci95": [
+            0.115,
+            0.24
+          ],
+          "gains": 52,
+          "losses": 16
+        }
+      },
+      "twohop": {
+        "free_correct": {
+          "delta": 0.175,
+          "ci95": [
+            0.1,
+            0.245
+          ],
+          "gains": 56,
+          "losses": 21
+        },
+        "correct": {
+          "delta": 0.25,
+          "ci95": [
+            0.18,
+            0.32
+          ],
+          "gains": 74,
+          "losses": 24
+        }
+      },
+      "broken": {
+        "free_correct": {
+          "delta": 0.04,
+          "ci95": [
+            -0.055,
+            0.135
+          ],
+          "gains": 38,
+          "losses": 30
+        },
+        "correct": {
+          "delta": -0.03,
+          "ci95": [
+            -0.155,
+            0.1
+          ],
+          "gains": 52,
+          "losses": 58
+        }
+      },
+      "robustness": {
+        "free_correct": {
+          "delta": 0.115,
+          "ci95": [
+            0.06333333333333332,
+            0.16666666666666669
+          ],
+          "gains": 149,
+          "losses": 80
+        },
+        "correct": {
+          "delta": 0.095,
+          "ci95": [
+            0.05000000000000001,
+            0.13833333333333336
+          ],
+          "gains": 184,
+          "losses": 127
+        }
+      }
+    }
+  }
+}

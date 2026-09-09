@@ -1,0 +1,299 @@
+{
+  "4": {
+    "issues": [],
+    "rows": 1200,
+    "manifest": {
+      "model": {
+        "model_id": "EleutherAI/pythia-6.9b",
+        "revision": "c0e3eee36dc47af0c49f361c74cfe459c09f7f23",
+        "requested_revision": "main"
+      },
+      "data_sha256": "67a2c12b72d80623ec2b36e2492f0aa0af489080c1183e37e5926850c219d393",
+      "code_sha256": "b9bcee5c2230ac5a2c09bec20f196fcaab2994c0a49fe186f18cf810f3859a3f",
+      "shots": 4,
+      "limit_families": 0,
+      "shard_index": 0,
+      "shard_count": 1,
+      "dtype": "float16",
+      "attention": "sdpa_math",
+      "versions": {
+        "torch": "2.14.0+cu126",
+        "transformers": "4.51.3",
+        "huggingface-hub": "0.30.2",
+        "safetensors": "0.5.3",
+        "accelerate": "1.6.0"
+      },
+      "generation_max_new_tokens": 8
+    },
+    "predictions": {
+      "No": 1200
+    },
+    "free_predictions": {
+      "No": 1200
+    },
+    "gold": {
+      "Yes": 500,
+      "No": 700
+    },
+    "candidate_correct": 700,
+    "free_correct": 700,
+    "token_range": [
+      222,
+      250
+    ],
+    "elapsed_minutes": 15.618292526279886,
+    "peak_gpu_gib": [
+      6.44700288772583,
+      6.444491863250732
+    ],
+    "generated_counts": [
+      [
+        " No\n\nAll zemples are",
+        159
+      ],
+      [
+        " No\n\nAll kelbrins",
+        127
+      ],
+      [
+        " No\n\nAll bantrels are",
+        85
+      ],
+      [
+        " No\n\nAll zeltrons",
+        78
+      ],
+      [
+        " No\n\nAll ruspins are",
+        66
+      ],
+      [
+        " No\n\nAll oskets are",
+        62
+      ],
+      [
+        " No\n\nAll vibbles are",
+        52
+      ],
+      [
+        " No\n\nAll shalds are",
+        43
+      ]
+    ],
+    "metrics": {
+      "direct/base": {
+        "n": 200,
+        "candidate_accuracy": 0.5,
+        "free_accuracy": 0.5,
+        "auc": 0.5759,
+        "positive_mean": -0.5087500011920929,
+        "negative_mean": -0.5365625005960465,
+        "paired_positive_higher": 0.6
+      },
+      "twohop/base": {
+        "n": 200,
+        "candidate_accuracy": 0.5,
+        "free_accuracy": 0.5,
+        "auc": 0.4583,
+        "positive_mean": -0.5596874976158142,
+        "negative_mean": -0.5432812488079071,
+        "paired_positive_higher": 0.46
+      },
+      "broken/first": {
+        "n": 100,
+        "candidate_accuracy": 1.0,
+        "free_accuracy": 1.0,
+        "auc": null,
+        "positive_mean": null,
+        "negative_mean": -0.5581250023841858,
+        "paired_positive_higher": null
+      },
+      "broken/second": {
+        "n": 100,
+        "candidate_accuracy": 1.0,
+        "free_accuracy": 1.0,
+        "auc": null,
+        "positive_mean": null,
+        "negative_mean": -0.5637499997019768,
+        "paired_positive_higher": null
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "candidate_accuracy": 0.5,
+        "free_accuracy": 0.5,
+        "auc": 0.47895,
+        "positive_mean": -0.5570312479138374,
+        "negative_mean": -0.5443749976158142,
+        "paired_positive_higher": 0.38
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "candidate_accuracy": 0.5,
+        "free_accuracy": 0.5,
+        "auc": 0.4614,
+        "positive_mean": -0.33437500029802325,
+        "negative_mean": -0.31859375089406966,
+        "paired_positive_higher": 0.42
+      },
+      "robustness/rename": {
+        "n": 200,
+        "candidate_accuracy": 0.5,
+        "free_accuracy": 0.5,
+        "auc": 0.4707,
+        "positive_mean": -0.5465624976158142,
+        "negative_mean": -0.5423437502980232,
+        "paired_positive_higher": 0.42
+      }
+    }
+  },
+  "12": {
+    "issues": [],
+    "rows": 1200,
+    "manifest": {
+      "model": {
+        "model_id": "EleutherAI/pythia-6.9b",
+        "revision": "c0e3eee36dc47af0c49f361c74cfe459c09f7f23",
+        "requested_revision": "main"
+      },
+      "data_sha256": "48de0b21a6d1f03d1faf866eacafb4121aac3d67da8024135ddf71b50c43b535",
+      "code_sha256": "b9bcee5c2230ac5a2c09bec20f196fcaab2994c0a49fe186f18cf810f3859a3f",
+      "shots": 12,
+      "limit_families": 0,
+      "shard_index": 0,
+      "shard_count": 1,
+      "dtype": "float16",
+      "attention": "sdpa_math",
+      "versions": {
+        "torch": "2.14.0+cu126",
+        "transformers": "4.51.3",
+        "huggingface-hub": "0.30.2",
+        "safetensors": "0.5.3",
+        "accelerate": "1.6.0"
+      },
+      "generation_max_new_tokens": 8
+    },
+    "predictions": {
+      "No": 1150,
+      "Yes": 46,
+      "Tie": 4
+    },
+    "free_predictions": {
+      "No": 1154,
+      "Yes": 46
+    },
+    "gold": {
+      "Yes": 500,
+      "No": 700
+    },
+    "candidate_correct": 696,
+    "free_correct": 698,
+    "token_range": [
+      550,
+      578
+    ],
+    "elapsed_minutes": 39.608512292833375,
+    "peak_gpu_gib": [
+      6.5649871826171875,
+      6.559566020965576
+    ],
+    "generated_counts": [
+      [
+        " No\n\nAll zaltips are",
+        841
+      ],
+      [
+        " No\n\nAll zemples are",
+        118
+      ],
+      [
+        " No\n\nAll kelbrins",
+        73
+      ],
+      [
+        " No\n\nAll zeltrons",
+        72
+      ],
+      [
+        " No\n\nAll zorps are",
+        17
+      ],
+      [
+        " Yes\n\nAll zaltips are",
+        14
+      ],
+      [
+        " No\n\nAll zandles are",
+        14
+      ],
+      [
+        " Yes\n\nAll zeltrons",
+        12
+      ]
+    ],
+    "metrics": {
+      "direct/base": {
+        "n": 200,
+        "candidate_accuracy": 0.5,
+        "free_accuracy": 0.5,
+        "auc": 0.59145,
+        "positive_mean": -0.5562500005960465,
+        "negative_mean": -0.5906250074505806,
+        "paired_positive_higher": 0.62
+      },
+      "twohop/base": {
+        "n": 200,
+        "candidate_accuracy": 0.5,
+        "free_accuracy": 0.5,
+        "auc": 0.5029,
+        "positive_mean": -0.5954687517881393,
+        "negative_mean": -0.5889062511920929,
+        "paired_positive_higher": 0.5
+      },
+      "broken/first": {
+        "n": 100,
+        "candidate_accuracy": 1.0,
+        "free_accuracy": 1.0,
+        "auc": null,
+        "positive_mean": null,
+        "negative_mean": -0.6171874934434891,
+        "paired_positive_higher": null
+      },
+      "broken/second": {
+        "n": 100,
+        "candidate_accuracy": 1.0,
+        "free_accuracy": 1.0,
+        "auc": null,
+        "positive_mean": null,
+        "negative_mean": -0.6210937437415123,
+        "paired_positive_higher": null
+      },
+      "robustness/reorder": {
+        "n": 200,
+        "candidate_accuracy": 0.5,
+        "free_accuracy": 0.5,
+        "auc": 0.511,
+        "positive_mean": -0.5964062455296516,
+        "negative_mean": -0.5949999949336052,
+        "paired_positive_higher": 0.45
+      },
+      "robustness/distractors": {
+        "n": 200,
+        "candidate_accuracy": 0.48,
+        "free_accuracy": 0.49,
+        "auc": 0.49445,
+        "positive_mean": -0.09703125,
+        "negative_mean": -0.09515625059604645,
+        "paired_positive_higher": 0.46
+      },
+      "robustness/rename": {
+        "n": 200,
+        "candidate_accuracy": 0.5,
+        "free_accuracy": 0.5,
+        "auc": 0.5537,
+        "positive_mean": -0.5696875,
+        "negative_mean": -0.5910937514901161,
+        "paired_positive_higher": 0.58
+      }
+    }
+  }
+}

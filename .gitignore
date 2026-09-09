@@ -1,0 +1,18 @@
+# Archives — duplicates of extracted content (kept on OneDrive, not in git)
+*.tar.gz
+*.zip
+
+# Raw per-question model outputs — large; metrics/summaries are committed instead.
+# Full copies live on OneDrive and on the cluster (storage/runs).
+results/**/results.jsonl
+results/**/workers/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OneDrive / OS noise
+~$*
+*.tmp
+Thumbs.db
+desktop.ini

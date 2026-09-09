@@ -1,0 +1,138 @@
+{
+  "integrity": "1200 unique rows; hashes, data matching, gold reachability and scoring fields verified",
+  "groups": {
+    "direct/base": {
+      "n": 200,
+      "predictions": {
+        "Yes": 168,
+        "No": 24,
+        "Tie": 8
+      },
+      "free_predictions": {
+        "Yes": 169,
+        "No": 31
+      },
+      "candidate_accuracy": 0.51,
+      "free_accuracy": 0.535,
+      "non_tie_disagreements": 0,
+      "tie_free_correct": 5
+    },
+    "twohop/base": {
+      "n": 200,
+      "predictions": {
+        "Yes": 124,
+        "No": 56,
+        "Tie": 20
+      },
+      "free_predictions": {
+        "Yes": 126,
+        "No": 74
+      },
+      "candidate_accuracy": 0.555,
+      "free_accuracy": 0.61,
+      "non_tie_disagreements": 0,
+      "tie_free_correct": 11
+    },
+    "broken/first": {
+      "n": 100,
+      "predictions": {
+        "Yes": 77,
+        "No": 14,
+        "Tie": 9
+      },
+      "free_predictions": {
+        "Yes": 80,
+        "No": 20
+      },
+      "candidate_accuracy": 0.14,
+      "free_accuracy": 0.2,
+      "non_tie_disagreements": 0,
+      "tie_free_correct": 6
+    },
+    "broken/second": {
+      "n": 100,
+      "predictions": {
+        "Yes": 82,
+        "No": 11,
+        "Tie": 7
+      },
+      "free_predictions": {
+        "Yes": 83,
+        "No": 17
+      },
+      "candidate_accuracy": 0.11,
+      "free_accuracy": 0.17,
+      "non_tie_disagreements": 0,
+      "tie_free_correct": 6
+    },
+    "robustness/reorder": {
+      "n": 200,
+      "predictions": {
+        "Yes": 134,
+        "No": 49,
+        "Tie": 17
+      },
+      "free_predictions": {
+        "Yes": 133,
+        "No": 67
+      },
+      "candidate_accuracy": 0.585,
+      "free_accuracy": 0.625,
+      "non_tie_disagreements": 3,
+      "tie_free_correct": 9
+    },
+    "robustness/distractors": {
+      "n": 200,
+      "predictions": {
+        "Yes": 196,
+        "No": 3,
+        "Tie": 1
+      },
+      "free_predictions": {
+        "Yes": 196,
+        "No": 4
+      },
+      "candidate_accuracy": 0.515,
+      "free_accuracy": 0.52,
+      "non_tie_disagreements": 0,
+      "tie_free_correct": 1
+    },
+    "robustness/rename": {
+      "n": 200,
+      "predictions": {
+        "Yes": 189,
+        "No": 8,
+        "Tie": 3
+      },
+      "free_predictions": {
+        "Yes": 189,
+        "No": 11
+      },
+      "candidate_accuracy": 0.445,
+      "free_accuracy": 0.445,
+      "non_tie_disagreements": 0,
+      "tie_free_correct": 0
+    }
+  },
+  "paired": {
+    "first": {
+      "free_both_correct": 4,
+      "candidate_both_correct": 2,
+      "mean_margin_change": 0.01
+    },
+    "second": {
+      "free_both_correct": 3,
+      "candidate_both_correct": 0,
+      "mean_margin_change": 0.01109375
+    }
+  },
+  "prompt_token_length": [
+    214,
+    234
+  ],
+  "entity_token_counts": {
+    "3": 8000
+  },
+  "non_tie_disagreements": 3,
+  "ties": 65
+}

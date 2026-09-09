@@ -1,0 +1,21 @@
+{
+  "model": {
+    "model_id": "EleutherAI/pythia-1b",
+    "revision": "f73d7dcc545c8bd326d8559c8ef84ffe92fea6b2",
+    "requested_revision": "main"
+  },
+  "data_sha256": "60dc645d31a65c218faea06436cf683e1c3acede472a99c37a44a29fc3099de5",
+  "code_sha256": "06da142d1ed99b249812e49daa4913e65871958c6add9d518764c9ccabb8f6de",
+  "shots": 4,
+  "limit_families": 0,
+  "dtype": "float16",
+  "attention": "eager",
+  "versions": {
+    "torch": "2.14.0+cu126",
+    "transformers": "4.51.3",
+    "huggingface-hub": "0.30.2",
+    "safetensors": "0.5.3",
+    "accelerate": "1.6.0"
+  },
+  "generation_max_new_tokens": 8
+}

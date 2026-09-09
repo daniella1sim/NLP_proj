@@ -1,0 +1,915 @@
+
+--- PAGE 1 ---
+Natural Language Processing
+Post-Training and Alignment
+Spring 2025/26
+Based on slides from Tal Wagner, 
+Maor Ivgi, Jesse Mu and Chris 
+Manning
+1
+
+--- PAGE 2 ---
+Plan (informal)
+How did we get from 
+“The cat sat on the <MASK>”
+To
+2
+
+--- PAGE 3 ---
+Plan
+● Key capabilities of large pretrained LMs
+○ The (mis)-alignment problem
+● Instruction tuning / SFT
+● RLHF
+● DPO
+● RLAIF
+3
+
+--- PAGE 4 ---
+4
+
+--- PAGE 5 ---
+LLMs: what happens at scale
+
+--- PAGE 6 ---
+Scaling Up: Putting the Large in LLMs
+GPT
+June 2018
+117M params
+240 GPU days
+BERT-Large
+Oct 2018
+340M params
+256 TPU days
+~ 320-560 GPU 
+days
+GPT2-XL
+Feb 2019
+1.5B params
+~2048 TPUv3 days
+T5-XXL
+Oct 2019
+11B params
+~10K GPU days
+GPT3
+May 2020
+175B params
+~100K GPU days
+PaLM
+Apr 2021
+540B params
+10M-20M$
+Kaplan et al., 2020 - https://arxiv.org/abs/2001.08361, Hoffmann et al., 2022 https://arxiv.org/abs/2203.15556
+GPT4
+Mar 23
+??
+100M$
+And then they 
+stopped 
+revealing 
+parameter 
+counts 
+¯\_(ツ)_/¯
+
+--- PAGE 7 ---
+Emergent abilities of large language models – GPT
+● In 2018, OpenAI released the first GPT model
+○ 117M parameters, Transformer-based, 12 layers decoder-only model
+○ Trained on 7000 books (<5Gb of text)
+● Showed that language modelling at scale can be an effective pretraining 
+technique for downstream tasks like question answering and common 
+sense reasoning. .
+“We demonstrate that large gains on these tasks can be realized by generative 
+pre-training of a language model on a diverse corpus of unlabeled text, 
+followed by discriminative fine-tuning on each specific task.”
+[Radford et al, 2018]
+
+--- PAGE 8 ---
+● In 2019, OpenAI released GPT-2
+○ Same architecture, but with 1.5B parameters
+○ Similar training, but with >40Gb of internet text data
+Emergent abilities of large language models – GPT-2
+“Our largest model, GPT-2, is a 1.5B parameter Transformer that achieves 
+state of the art results on 7 out of 8 tested language modeling datasets 
+in a zero-shot setting”
+Radford et al. 2019
+
+--- PAGE 9 ---
+● What about tasks beyond language modelling?
+● Possible with prompt access only, however:
+Emergent abilities of large language models – GPT-2
+“Even on common tasks that we evaluated on, such as question answering 
+and translation, language models only begin to outperform trivial baselines 
+when they have sufficient capacity.”
+Radford et al. 2019
+
+--- PAGE 10 ---
+● Question answering:
+Emergent abilities of large language models – GPT-2
+Prompt cueing:
+Radford et al. 2019
+Result (anecdotal):
+
+--- PAGE 11 ---
+● Translation:
+Emergent abilities of large language models – GPT-2
+“On the WMT-14 French-English test set, GPT-2 […] outperforms several 
+unsupervised machine translation baselines […] but is still much worse 
+than […] the current best
+Radford et al. 2019
+Prompt cueing:
+Result :
+Why would this work?
+Examples of naturally occurring 
+English-French translation in GPT-2’s 
+generic WebText pretraining corpus:
+ 
+
+--- PAGE 12 ---
+● What about tasks beyond language modelling?
+● Possible with prompt access only, however:
+Emergent abilities of large language models – GPT-2
+“Even on common tasks that we evaluated on, such as question answering 
+and translation, language models only begin to outperform trivial baselines 
+when they have sufficient capacity.”
+“While suggestive as a research result, in terms of practical applications, the 
+zero-shot performance of GPT-2 is still far from useable.”
+Radford et al. 2019
+
+--- PAGE 13 ---
+● In 2020, OpenAI released GPT-3
+○ Same architecture, but with 175B 
+parameters
+○ Similar training, but with >600Gb 
+of internet text data
+● Systemized few-shot (ICL) learning:
+○ Specify a task by simply 
+prepending examples of the task 
+before your example
+○ More examples (“shots”) lead to 
+better performance
+Emergent abilities of large language models – GPT-3
+[Brown et al., 2020]
+
+--- PAGE 14 ---
+Few-shot learning is an emergent property of model scale
+14
+
+--- PAGE 15 ---
+Schaeffer et al., 2023
+“Emergent ability”: 
+ability not present at 
+smaller scale that 
+“suddenly” shows up 
+at larger scale.
+Attested by an 
+unpredictable sharp 
+surge in performance.
+“Emergent”?
+
+--- PAGE 16 ---
+Schaeffer et al., 2023:
+“Emergent abilities of large language models are created by the 
+researcher’s chosen metrics, not unpredictable changes in model 
+behavior with scale.“
+“Emergent”?
+
+--- PAGE 17 ---
+Schaeffer et al., 2023:
+“Emergent abilities of large language models are created by the 
+researcher’s chosen metrics, not unpredictable changes in model 
+behavior with scale.“
+“Emergent”?
+”Emergent” 
+or not, the 
+abilities are 
+there
+
+--- PAGE 18 ---
+Schaeffer et al., 2023
+ 18
+
+--- PAGE 19 ---
+Intermediate Summary
+● At large scale, pre-training on next-token-prediction alone leads to 
+diverse abilities
+○ Variety of NLP tasks
+● They can be accessed through carefully constructed prompts, without 
+any fine-tuning
+
+--- PAGE 20 ---
+20
+
+--- PAGE 21 ---
+21
+
+--- PAGE 22 ---
+“Large Language Models 
+are Zero-Shot Reasoners”
+
+--- PAGE 23 ---
+23
+
+--- PAGE 24 ---
+24
+
+--- PAGE 25 ---
+Language models as world models
+Andreas Jacob, 2022 25
+
+--- PAGE 26 ---
+Language models as world models
+Andreas Jacob, 2022 26
+
+--- PAGE 27 ---
+Intermediate Summary
+● At large scale, pre-training on next-token-prediction alone leads to 
+diverse abilities
+○ Variety of NLP tasks
+○ Chain-of-thought reasoning
+○ World modelling
+● They can be accessed through carefully constructed prompts, without 
+any fine-tuning
+
+--- PAGE 28 ---
+Why is this useful?
+https://github.com/features/copilot 
+ 28
+
+--- PAGE 29 ---
+Language models as world models
+https://sites.research.google/med-palm/ 29
+
+--- PAGE 30 ---
+Why is this useful?
+
+
+--- PAGE 31 ---
+Why is this useful?
+
+
+--- PAGE 32 ---
+https://openai.com/blog/introducing-gpts
+32
+
+--- PAGE 33 ---
+AutoGPT
+https://writesonic.com/blog/what-is-autogpt/ 
+https://huggingface.co/docs/transformers/transformers_agents 
+33
+
+--- PAGE 34 ---
+https://writesonic.com/blog/what-is-autogpt/ 
+https://huggingface.co/docs/transformers/transformers_agents 
+34
+AutoGPT
+
+--- PAGE 35 ---
+D’arcy et al., 2024
+ 35
+
+--- PAGE 36 ---
+Park et al., 2023 36
+
+--- PAGE 37 ---
+https://agents4science.stanford.edu/
+
+
+--- PAGE 38 ---
+Language models as world models (?)
+Andreas Jacob, 2022
+ 38
+
+--- PAGE 39 ---
+● Better generalization
+● In-context learning
+● Some signals of world models
+● Variety of abilities that can be 
+accessed by prompt engineering
+LLMs after pre-training at scale:
+Summary
+But these do not necessarily entail general usability
+
+--- PAGE 40 ---
+Ouyang et al., 2022
+ 40
+Language modeling ≠ assisting users
+
+--- PAGE 41 ---
+Ouyang et al., 2022
+ 41
+Language modeling ≠ assisting users
+
+--- PAGE 42 ---
+Summary
+● Better generalization
+● In-context learning
+● Some signals of world models
+● Variety of abilities that can be 
+accessed by prompt engineering
+● They’re not directly useful 
+(they’re not trying to be useful, but to 
+predict the next token)
+● They’re not aligned with our 
+objectives
+● Prompts might be insufficient 
+to induce desired behaviors
+LLMs after pre-training at scale: However:
+
+--- PAGE 43 ---
+Useful LLMs – objectives
+What would you optimize for? How?
+
+
+--- PAGE 44 ---
+Useful LLMs – objectives
+● Helpful
+○ Follow instructions
+○ Provide assistance (rephrase, information, generate content, etc.)
+○ Provide well-reasoned, well-phrased complete answers
+● Harmless
+○ Do not generate toxic content
+○ Do not be biased towards any group (gender, race, orientation etc.)
+○ Do not assist in malintent (murder, theft, hacking, phishing etc.)
+■ Self-harm?
+● Honest
+○ Do not make up facts (”hallucinations”)
+○ Do not hold out important information
+https://www.aask-ehs.com/blog/take-the-place-of-humans-in-the-field-of-industrial-safety/ 
+44
+To be revealed after class
+
+--- PAGE 45 ---
+https://www.ask-ehs.com/blog/take-the-place-of-humans-in-the-field-of-industrial-safety/ 
+45
+To be revealed after class
+
+--- PAGE 46 ---
+Plan
+● Key capabilities of large pretrained LMs
+○ The (mis)-alignment problem
+● Instruction tuning / SFT
+● RLHF
+● DPO
+● RLAIF
+46
+
+--- PAGE 47 ---
+The road to instruction tuning
+● Supervised learning (i.e. ”fine-tuning”) on one task
+● Pre-training + fine-tuning
+● Pre-training + multi-task fine-tuning
+47
+
+--- PAGE 48 ---
+The road to instruction tuning
+● Supervised learning (i.e. ”fine-tuning”) on one task
+● Pre-training + fine-tuning
+● Pre-training + multi-task fine-tuning
+● Pre-training + massive multi-task instruction tuning
+○ Phrasing tasks as “instructions” – encourage 
+ZS/FS performance
+○ Scaling number of tasks
+○ Scaling model size
+○ Fine-tuning with CoT
+○ = Instruction pretraining (Wang et al., 2022)? 
+Chuang et al., 2022 48
+
+--- PAGE 49 ---
+Chuang et al., 2022
+ 49
+
+--- PAGE 50 ---
+Chuang et al., 2022 50
+
+--- PAGE 51 ---
+Chuang et al., 2022 51
+How to evaluate 
+these models?
+
+--- PAGE 52 ---
+Chuang et al., 2022 52
+
+--- PAGE 53 ---
+Massive Multitask Language Understanding (MMLU)
+New benchmarks for measuring LM 
+performance on 57 diverse 
+knowledge intensive tasks
+Hendrycks et al., 2021 53
+
+--- PAGE 54 ---
+BIG-Bench
+Over 200 tasks spanning many verticals
+Srivastava et al., 2022
+ 54
+
+--- PAGE 55 ---
+Flan-T5
+Chuang et al., 2022
+ 55
+
+--- PAGE 56 ---
+Flan-T5
+56Chuang et al., 2022
+
+--- PAGE 57 ---
+Flan-T5
+57Chuang et al., 2022
+
+--- PAGE 58 ---
+Instruction tuning
+58Chuang et al., 2022
+
+--- PAGE 59 ---
+Instruction tuning
+Are we done?
+59Chuang et al., 2022
+
+--- PAGE 60 ---
+Limitations of instruction tuning
+● It’s expensive to collect ground-truth data for tasks.
+● Tasks like creative generation have no right answer.
+○ Write me a story about a dog and her pet grasshopper.
+● Language modeling penalizes all token-level mistakes equally, but some 
+errors are worse than others.
+● Even with instruction finetuning, there a mismatch between the LM 
+objective and the objective of “satisfy human preferences”
+● The model never learns what it really needs to avoid!
+60
+
+--- PAGE 61 ---
+Intermediate recap
+● Pre-training + fine-tuning
+○ Works well for well defined tasks, even with smaller models
+○ Easier to train, evaluate and control
+○ Expensive (collect data, design architecture, deploy multiple models)
+○ Not general purpose!
+● Zero-Shot (ZS) and Few-Shot (FS) In-Context Learning
+○ No finetuning needed, prompt engineering (e.g. CoT) can improve performance 
+○ Limits to what you can fit in context
+○ Complex tasks will probably need gradient steps
+● Instruction finetuning
+○ Simple and straightforward, generalize to unseen tasks
+○ Collecting demonstrations for so many tasks is expensive
+○ Mismatch between LM objective and human preferences
+● Reinforcement Learning from Human Feedback (RLHF)
+61
+
+--- PAGE 62 ---
+Plan
+● Key capabilities of large pretrained LMs
+○ The (mis)-alignment problem
+● Instruction tuning / SFT
+● RLHF
+● DPO
+● RLAIF
+62
+
+--- PAGE 63 ---
+Improving alignment with RLHF
+Can you explain to me what a language model is?
+Yes
+F*** you
+A language model is an advanced artificial intelligence system 
+based on machine learning, designed to understand, generate and 
+process natural language automatically.
+A language model is a physical device used to measure 
+spoken words and translate them into sign language for 
+better communication.
+An artificial intelligence system that generates text
+63
+
+--- PAGE 64 ---
+Optimizing for human preferences
+64
+● Imagine we have a way to obtain a human reward for every LM response s:
+
+
+--- PAGE 65 ---
+Optimizing for human preferences
+65
+● Imagine we have a way to obtain a human reward for every LM response s:
+● Now we want to maximize the expected reward of responses from our LM:
+
+
+--- PAGE 66 ---
+Optimizing for human preferences
+66
+● Imagine we have a way to obtain a human reward for every LM response s:
+● Now we want to maximize the expected reward of responses from our LM:
+● The reward function can be non-differentiable
+● There could be multiple “good” answers
+
+
+--- PAGE 67 ---
+Reinforcement learning to the rescue
+Deep-RL for Atari 
+Mnih et al., 2013
+Williams, 1992; Sutton 
+and Barto, 1998
+RL for NLP
+Ziegler et al., 2019; Stiennon et 
+al., 2020; Ouyang et al., 2022
+PPO algorithm
+Schulman et al., 2017
+DPO algorithm
+Rafailov et al., 2023
+67
+
+--- PAGE 68 ---
+Optimizing for human preferences
+68
+Why can’t we just take gradient steps?
+Maximization 
+objective!
+
+--- PAGE 69 ---
+Optimizing for human preferences
+69
+Why can’t we just take gradient steps?
+● How to estimate the expectation?
+● What if R(s) is non-differentiable (e.g., a human evaluator)?
+Maximization 
+objective!
+
+--- PAGE 70 ---
+Optimizing for human preferences
+70
+Why can’t we just take gradient steps?
+● How to estimate the expectation?
+● What if R(s) is non-differentiable (e.g., a human evaluator)?
+Policy gradient methods in RL (e.g., REINFORCE; Williams, 1992) give us tools 
+for estimating and optimizing such objectives.
+Maximization 
+objective!
+
+--- PAGE 71 ---
+71
+
+--- PAGE 72 ---
+72
+
+--- PAGE 73 ---
+73
+
+--- PAGE 74 ---
+74
+
+--- PAGE 75 ---
+75
+
+--- PAGE 76 ---
+76
+
+--- PAGE 77 ---
+77
+
+--- PAGE 78 ---
+78
+
+--- PAGE 79 ---
+79
+
+--- PAGE 80 ---
+80
+
+--- PAGE 81 ---
+81
+
+--- PAGE 82 ---
+82
+
+--- PAGE 83 ---
+83
+Can you see any problems with this 
+alignment approach?
+
+--- PAGE 84 ---
+How to model human preferences?
+● Human-in-the-loop is expensive
+● Instead of directly asking humans for preferences, model their 
+preferences as a separate (NLP) problem! [Knox and Stone, 2009]
+84
+
+--- PAGE 85 ---
+How to model human preferences?
+85
+● Human judgments are noisy and miscalibrated
+● Instead of asking for direct ratings, ask for pairwise comparisons 
+[Phelps et al., 2015; Clark et al., 2018]
+
+--- PAGE 86 ---
+How to model human preferences?
+● Human judgments are noisy and miscalibrated
+● Instead of asking for direct ratings, ask for pairwise comparisons 
+[Phelps et al., 2015; Clark et al., 2018]
+86
+
+--- PAGE 87 ---
+Evaluate your reward model
+87
+
+--- PAGE 88 ---
+Stiennon et al., 2020 88
+
+--- PAGE 89 ---
+Stiennon et al., 2020 89
+
+--- PAGE 90 ---
+Stiennon et al., 2020 90
+
+--- PAGE 91 ---
+Stiennon et al., 2020 91
+
+--- PAGE 92 ---
+92
+
+--- PAGE 93 ---
+93
+
+--- PAGE 94 ---
+94
+
+--- PAGE 95 ---
+95
+
+--- PAGE 96 ---
+96
+
+--- PAGE 97 ---
+Ouyang et al., 2022, https://openai.com/research/instruction-following 
+97
+
+--- PAGE 98 ---
+InstructGPT – scaling up RLHF
+Over 30K tasks
+98
+
+--- PAGE 99 ---
+InstructGPT – scaling up RLHF
+99
+
+--- PAGE 100 ---
+InstructGPT – scaling up RLHF
+100
+
+--- PAGE 101 ---
+ChatGPT (OpenAI, 2022)
+● Post-trained for dialogue:
+https://openai.com/blog/chatgpt/ 
+“We trained this model using Reinforcement 
+Learning from Human Feedback (RLHF), 
+using the same methods as InstructGPT, but 
+with slight differences in the data collection 
+setup. We trained an initial model using 
+supervised fine-tuning: human AI trainers 
+provided conversations in which they played 
+both sides—the user and an AI assistant.”
+
+
+--- PAGE 102 ---
+ChatGPT – Optimizing Language Models for Dialogue
+https://openai.com/blog/chatgpt/ 
+ 102
+
+--- PAGE 103 ---
+ChatGPT – Avoiding Harmful Responses
+https://openai.com/blog/chatgpt/ 
+ 103
+
+--- PAGE 104 ---
+ChatGPT – Avoiding Harmful Responses
+https://openai.com/blog/chatgpt/ 
+“While we’ve made efforts to make the model refuse inappropriate requests, it 
+will sometimes respond to harmful instructions or exhibit biased behavior.
+[…] we expect it to have some false negatives and positives for now.”
+
+
+--- PAGE 105 ---
+Plan
+● Key capabilities of large pretrained LMs
+○ The (mis)-alignment problem
+● Instruction tuning
+● RLHF
+● DPO
+● RLAIF
+105
+
+--- PAGE 106 ---
+Stiennon et al., 2020
+ Recently, this part was
+replaced with DPO
+106
+
+--- PAGE 107 ---
+Direct Preference Optimization
+Rafailov et al., 2023
+With RLHF, we ended up with a somewhat 
+complicated pipeline:
+
+--- PAGE 108 ---
+Direct Preference Optimization
+Rafailov et al., 2023
+With RLHF, we ended up with a somewhat 
+complicated pipeline: Can we simplify it?
+
+--- PAGE 109 ---
+Direct Preference Optimization
+Rafailov et al., 2023
+With RLHF, we ended up with a somewhat 
+complicated pipeline: Can we simplify it?
+● Goal: cut out the reward model and the RL; post-train the LLM directly on the 
+human preferences we’ve collected
+
+--- PAGE 110 ---
+Direct Preference Optimization
+Rafailov et al., 2023
+With RLHF, we ended up with a somewhat 
+complicated pipeline: Can we simplify it?
+● Goal: cut out the reward model and the RL; post-train the LLM directly on the 
+human preferences we’ve collected
+● Idea: define an implicit reward model directly from the LLM 
+○ “Your language model is secretly a reward model”
+
+--- PAGE 111 ---
+DPO: Direct Preference Optimization
+ 
+ 
+Rafailov et al., 2023
+
+--- PAGE 112 ---
+DPO: Direct Preference Optimization
+ 
+ 
+ 
+ 
+Rafailov et al., 2023
+
+--- PAGE 113 ---
+DPO: Direct Preference Optimization
+ 
+ 
+ 
+ 
+Rafailov et al., 2023
+
+--- PAGE 114 ---
+Direct Preference Optimization
+Rafailov et al., 2023, image from  João Lages
+ 
+ 
+ 
+ 
+
+--- PAGE 115 ---
+DPO: Summary
+● Paper reports it outperforms PPO in alignment
+● Increasingly popular in open-parameter LLMs
+● But RL with policy gradient algorithms is still 
+widely used in LLMs
+Rafailov et al., 2023
+● Cuts out the reward model training and the policy gradient algorithm (PPO) from 
+the RLHF pipeline; optimizes LLM policy with standard gradient descent
+○ Less tricky to train than RL methods like PPO
+
+--- PAGE 116 ---
+LIMA – Less is More for Alignment 
+Ghosh et al., 2023
+ 116
+
+--- PAGE 117 ---
+LIMA – Less is More for Alignment 
+Ghosh et al., 2023
+ 117
+
+--- PAGE 118 ---
+Plan
+● Key capabilities of large pretrained LMs
+○ The (mis)-alignment problem
+● Instruction tuning
+● RLHF
+● DPO
+● RLAIF
+118
+
+--- PAGE 119 ---
+RL from AI Feedback
+Bai et al., 202214
+ 119
+
+--- PAGE 120 ---
+RL from AI Feedback
+Bai et al., 2022
+Instruction tuned model to be “helpful”, but not 
+tuned not to be harmless
+120
+
+--- PAGE 121 ---
+RL from AI Feedback
+Bai et al., 2022
+Instruction tuned model to be “helpful”, but not 
+tuned not to be harmless
+121
+
+--- PAGE 122 ---
+RL from AI Feedback
+Bai et al., 2022
+Instruction tuned model to be “helpful”, but not 
+tuned not to be harmless
+122
+
+--- PAGE 123 ---
+Bai et al., 2022
+123
+
+--- PAGE 124 ---
+RL from AI Feedback
+Bai et al., 2022
+Instruction tuned model to be “helpful”, but not 
+tuned not to be harmless
+124
+
+--- PAGE 125 ---
+RL from AI Feedback
+Bai et al., 2022
+Instruction tuned model to be “helpful”, but not 
+tuned not to be harmless
+125
+
+--- PAGE 126 ---
+RL from AI Feedback
+126Bai et al., 2022
+
+--- PAGE 127 ---
+127
+Bai et al., 2022
+
+--- PAGE 128 ---
+RL from AI Feedback
+128Bai et al., 2022
+
+--- PAGE 129 ---
+RL from AI Feedback
+Korbak et al., 2023 129
+
+--- PAGE 130 ---
+Self Refine
+Madaan et al., 2023 130
+
+--- PAGE 131 ---
+Self Refine
+Madaan et al., 2023
+ 131
+
+--- PAGE 132 ---
+Self Training
+Huang et al., 2022 132
+
+--- PAGE 133 ---
+Self-Taught Reasoner
+Zelikman et al., 2022 133
+
+--- PAGE 134 ---
+Limitations of RL
+● RL is very tricky to optimize
+● Human preferences are unreliable
+○ ”Reward hacking” is a common problem in RL
+○ Chatbots are rewarded to produce responses that seem 
+authoritative and helpful, regardless of truth
+■ This can result in making up facts + hallucinations
+○ Models of human preferences are even more unreliable!
+134
+
+--- PAGE 135 ---
+Challenges in LLM Alignment
+● Many different, sometimes conflicting, often not well-defined goals
+○ Whose values do we impose on the LLM?
+○ Many, many gray areas
+● Behavior “in the wild” remains unexpected and uncontrollable
+○ Alignment methods are never (and currently, far from) perfect
+○ Suppression of undesired behaviors might be “shallow”
+○ Behaviors can re-surface unintentionally 
+○ Behaviors can be induced adversarially by attackers (“jailbreaking”)
+
+--- PAGE 136 ---
+Alignment seems to be shallow
+136
+The 2025 AI Index Report by The Stanford Institute for Human-Centered AI (HAI)
+
+--- PAGE 137 ---
+Alignment seems to be shallow
+137Hu et al., 2024
+
+
+--- PAGE 138 ---
+Wrap-up
+● Large pretrained language models are powerful
+○ Emergent or not, they demonstrate remarkable capabilities
+● Their abilities “leak” to other areas as they are treated as the 
+“puppeteers” or “brain behind the scenes”
+● Alignment is still a key issue
+○ Philosophical and ethical debate
+● Factuality and consistency are another issue
+● Very active research area!
+○ This talk will probably look different next year…
+138

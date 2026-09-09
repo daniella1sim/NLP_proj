@@ -1,0 +1,873 @@
+
+--- PAGE 1 ---
+Natural Language Processing
+Information Retrieval
+Spring 2025/26
+Based on slides from Tal Wagner, 
+Maor Ivgi, Xiang Lisa Li, Antoine 
+Bosselut and Chris Manning 1
+
+--- PAGE 2 ---
+Admin
+● HW3 is out, due to 14.7
+● Projects should be done in groups of 3-4
+● Guest lectures in the following two weeks:
+○ 30.6: Dr. Ori Yoran (Meta) on reasoning and agents
+○ 7.7: Omer Nevo (co-founder & CTO at Irregular) on AI security
+● Teaching survey is open!
+2
+
+--- PAGE 3 ---
+Plan
+● Problem setting and motivation
+● Sparse retrieval
+● Re-ranking
+● Dense retrieval
+● Retrieval-augmented language models
+3
+
+--- PAGE 4 ---
+Textual Search
+● Basic problem setting:
+○ We have a dataset (knowledge base) with many text 
+documents
+○ We get a textual query
+○ We need to return semantically relevant documents
+
+--- PAGE 5 ---
+Textual Search
+● Basic problem setting:
+○ We have a dataset (knowledge base) with many text 
+documents
+○ We get a textual query
+○ We need to return semantically relevant documents
+● Constraints and requirements:
+○ Large scale: millions/billions+ of documents
+○ Efficiency: minimize query latency – can we avoid exhaustive search?
+○ Accuracy: return relevant documents
+[Yes!]
+
+--- PAGE 6 ---
+Textual Search: Application Variants
+
+--- PAGE 7 ---
+Textual Search: Application Variants
+Semantic search
+e.g.: web search, 
+Wikipedia search
+
+--- PAGE 8 ---
+Textual Search: Application Variants
+Semantic search
+e.g.: web search, 
+Wikipedia search
+Q&A systems
+Pipeline: retrieve document 
+containing answer -> extract 
+answer
+
+--- PAGE 9 ---
+Textual Search: Application Variants
+Semantic search
+e.g.: web search, 
+Wikipedia search
+Q&A systems
+Pipeline: retrieve document 
+containing answer -> extract 
+answer
+Deduplication
+Identifying 
+near-duplicate 
+documents in dataset
+
+
+--- PAGE 10 ---
+Why not just use LLMs?
+“Hey LLM, get me the most relevant documents on this query”
+
+--- PAGE 11 ---
+Why not just use LLMs?
+“Hey LLM, get me the most relevant documents on this query”
+● Parametric knowledge is limited and frozen
+● Context length is very limited
+○ We cannot shove all the dataset in the prompt
+● LLM inference is expensive
+○ Too slow and too costly for LLM to iterate over large dataset
+
+--- PAGE 12 ---
+Textual Search for LLMs (1): RAG
+Augment the prompt 
+with relevant chunks of 
+texts in order to 
+generate a better 
+response
+
+
+--- PAGE 13 ---
+Textual Search for LLMs (2): Deduplication
+● Causes of dupes in corpus:
+○ Mirrors
+○ Syndicated content
+○ Boilerplates
+○ Spam
+○ Overlapping sources
+● Why is this bad?
+○ Wasted compute
+○ Overfitting
+○ Train/eval contamination
+
+
+--- PAGE 14 ---
+Textual Search for LLMs (2): Deduplication
+● Causes of dupes in corpus:
+○ Mirrors
+○ Syndicated content
+○ Boilerplates
+○ Spam
+○ Overlapping sources
+● Why is this bad?
+○ Wasted compute
+○ Overfitting
+○ Train/eval contamination
+
+
+--- PAGE 15 ---
+Textual Search for LLMs (2): Deduplication
+● Causes of dupes in corpus:
+○ Mirrors
+○ Syndicated content
+○ Boilerplates
+○ Spam
+○ Overlapping sources
+● Why is this bad?
+○ Wasted compute
+○ Overfitting
+○ Train/eval contamination
+
+
+--- PAGE 16 ---
+Textual Search for LLMs (2): Deduplication
+● Causes of dupes in corpus:
+○ Mirrors
+○ Syndicated content
+○ Boilerplates
+○ Spam
+○ Overlapping sources
+● Why is this bad?
+○ Wasted compute
+○ Overfitting
+○ Train/eval contamination
+
+
+--- PAGE 17 ---
+Textual Search: How to Quantify Relevance?
+● Sparse retrieval:
+○ Based on lexical overlap
+○ Relevance measures: TF-IDF, BM25, Jaccard, …
+● Dense retrieval:
+○ Based on document embeddings (with encoder models)
+○ Relevance measures: Euclidean distance, cosine similarity, inner 
+product, …
+???
+
+--- PAGE 18 ---
+Plan
+● Problem setting and motivation
+● Sparse retrieval
+● Re-ranking
+● Dense retrieval
+● Retrieval-augmented language models
+18
+
+--- PAGE 19 ---
+TF-IDF: Term Frequency – Inverse Document Frequency
+● Classical technique in textual information retrieval
+● Based on exact lexical matching, oblivious to word ordering (“bag of words”)
+● Still widely used, even in the age of LLMs
+○ Exact word matches are still a desideratum in many use cases
+○ Supports very efficient implementations
+● Basic idea:
+○ How many terms does my query share with this document?
+○ Are these terms important for relevance?
+● There are many TF-IDF variants, we will see the basic one
+
+--- PAGE 20 ---
+TF-IDF: Term Frequency – Inverse Document Frequency
+● Classical technique in textual information retrieval
+● Based on exact lexical matching, oblivious to word ordering (“bag of words”)
+● Still widely used, even in the age of LLMs
+○ Exact word matches are still a desideratum in many use cases
+○ Supports very efficient implementations
+● Basic idea:
+○ How many terms does my query share with this document?
+○ Are these terms important for relevance?
+● Many TF-IDF variants, we will see the basic one and highly popular one BM25
+
+--- PAGE 21 ---
+Scoring – attempt 1
+Query: Shiba Inu
+● Solution: just count!
+● Index each document as a dictionary of word to count
+https://en.wikipedia.org/wiki/Shiba_Inu 
+91 appearances of Shiba, 58 appearances Inu
+21
+
+--- PAGE 22 ---
+Scoring – attempt 1
+Query: Shiba Inu
+● Solution: just count!
+● Index each document as a dictionary of word to count
+● Given a query Q = (w1, …, wn), rank documents by sum of TF
+https://en.wikipedia.org/wiki/Shiba_Inu 
+91 appearances of Shiba, 58 appearances Inu
+22
+
+--- PAGE 23 ---
+Scoring – attempt 1
+Query: Shiba Inu
+● Solution: just count!
+● Index each document as a dictionary of word to count
+● Given a query Q = (w1, …, wn), rank documents by sum of TF
+https://en.wikipedia.org/wiki/Shiba_Inu 
+91 appearances of Shiba, 58 appearances Inu
+23
+● Return the top k documents by their scores
+● Problem: What if the query is What is the origin of Shiba Inu?
+○ “is” appears over 1000 times in Elvis Presley’s page
+
+--- PAGE 24 ---
+Scoring – attempt 2
+Query: What is the origin of Shiba Inu
+● Idea: Rare words are more indicative
+● Solution intuition: Reweight term frequency by its “rarity”
+https://en.wikipedia.org/wiki/Shiba_Inu 
+We get the same score, regardless
+of the size of the corpus!
+24
+
+--- PAGE 25 ---
+Scoring – attempt 2
+Query: What is the origin of Shiba Inu
+● Idea: Rare words are more indicative
+● Solution intuition: Reweight term frequency by its “rarity”
+● Wait, does this tell us if a term is rare?
+https://en.wikipedia.org/wiki/Shiba_Inu 
+We get the same score, regardless
+of the size of the corpus!
+25
+
+--- PAGE 26 ---
+Scoring – attempt 3
+Query: What is the origin of Shiba Inu
+● Idea: Rare words are more indicative
+● Solution intuition: Reweight term frequency by its “rarity”
+○ Use relative frequency, not absolute
+https://en.wikipedia.org/wiki/Shiba_Inu 
+ 26
+
+--- PAGE 27 ---
+Scoring – attempt 3
+Query: What is the origin of Shiba Inu
+● Idea: Rare words are more indicative
+● Solution intuition: Reweight term frequency by its “rarity”
+○ Use relative frequency, not absolute
+What happens when DF(w) is large?
+What if it is very small?
+https://en.wikipedia.org/wiki/Shiba_Inu 
+ 27
+
+--- PAGE 28 ---
+Scoring – attempt 4
+ 
+ 
+  
+28
+
+--- PAGE 29 ---
+Scoring – attempt 4
+ 
+  
+29
+
+--- PAGE 30 ---
+Scoring – attempt 4
+ 
+ 
+30
+
+--- PAGE 31 ---
+Scoring – attempt 4
+ 
+ 
+ 
+31
+
+--- PAGE 32 ---
+Scoring with TF-IDF
+● Putting it all together, we get the TF-IDF scoring
+● Given a query                           and a corpus 
+● Define:
+32
+
+--- PAGE 33 ---
+Scoring with TF-IDF
+● Putting it all together, we get the TF-IDF scoring
+● Given a query                           and a corpus 
+● Define:
+● Score the documents with
+33
+
+--- PAGE 34 ---
+TF-IDF recap
+● TF-IDF is very popular and empirically works well
+○ It is easy to understand and very efficient
+● But it has limitations
+○ TF is unbounded, while intuitively should saturate over term
+○ Does not encourage full query match
+○ Does not account for document length (TF is still absolute)
+○ Does not account for word ordering
+34
+
+--- PAGE 35 ---
+Improving TF-IDF – saturation
+68 appearances of space, 57 appearances of dog
+0 appearances of space, 472 appearances of dog
+606 appearances of space, 0 appearances of dog
+Query: Who was the first dog in space?
+Assume
+35
+
+--- PAGE 36 ---
+Improving TF-IDF – saturation
+68 appearances of space, 57 appearances of dog
+0 appearances of space, 472 appearances of dog
+606 appearances of space, 0 appearances of dog
+Query: Who was the first dog in space?
+Assume
+Then
+36
+
+--- PAGE 37 ---
+Improving TF-IDF – saturation
+https://kmwllc.com/index.php/2020/03/20/understanding-tf-idf-and-bm-25
+● Introduce a saturation hyperparameter k and define
+37
+
+--- PAGE 38 ---
+Improving TF-IDF – saturation
+https://kmwllc.com/index.php/2020/03/20/understanding-tf-idf-and-bm-25
+● Introduce a saturation hyperparameter k and define
+● 
+● k controls how quickly TF “saturates”
+38
+
+--- PAGE 39 ---
+Improving TF-IDF – saturation
+https://kmwllc.com/index.php/2020/03/20/understanding-tf-idf-and-bm-25
+● Introduce a saturation hyperparameter k and define
+● 
+● k controls how quickly TF “saturates”
+ 
+39
+
+--- PAGE 40 ---
+Improving TF-IDF – doc length
+“meme” appears twice in both!
+“shiba” & “inu” appear >20 times in both
+ 
+ 
+Query: Shiba Inu meme
+Assume
+Thus
+40
+
+--- PAGE 41 ---
+Improving TF-IDF – doc length
+“meme” appears twice in both!
+“shiba” & “inu” appear >20 times in both
+ 
+ 
+Query: Shiba Inu meme
+Assume
+Thus
+But clearly d2 is more relevant
+41
+
+--- PAGE 42 ---
+Improving TF-IDF – doc length
+● We want to “penalize” long documents
+○ But how do we know what “long” is?
+○ Use the corpus statistics!
+● Instead of normalizing with |di|, we use
+42
+
+--- PAGE 43 ---
+Improving TF-IDF – doc length
+● We want to “penalize” long documents
+○ But how do we know what “long” is?
+○ Use the corpus statistics!
+● Instead of normalizing with |di|, we use
+● Wait, we already modified TF so we can’t just use TF/z
+○ We saw that large k decreases the contribution of
+○ So we will use z to adjust k
+43
+
+--- PAGE 44 ---
+Improving TF-IDF – doc length
+● We want to “penalize” long documents
+○ But how do we know what “long” is?
+○ Use the corpus statistics!
+● Instead of normalizing with |di|, we use
+● Wait, we already modified TF so we can’t just use TF/z
+○ We saw that large k decreases the contribution of
+○ So we will use z to adjust k
+● Shorter documents will reach saturation faster
+44
+
+--- PAGE 45 ---
+Improving TF-IDF – doc length
+45
+● Is the document length always important in the same way?
+○ What is we want to search over sentences that are 6-12 
+words long? Articles that are 8-12 pages long?
+○ In more homogenous corpora, length penalty may cause 
+more harm than good, so we want to be flexible about it
+● Introduce another hyperparameter b ∈ [0,1] and define
+
+
+--- PAGE 46 ---
+BM25 – putting it all together
+46
+Okapi BM25 uses everything we saw to create a very strong and efficient 
+baseline, which is still heavily in use (e.g., ElasticSearch)
+Default values are
+Correcting for DF(w)=0
+
+--- PAGE 47 ---
+TF-IDF: Efficient Search
+● We construct an index mapping 
+every vocabulary term to a 
+“posting list” of documents 
+containing it with TF-IDF scores
+● Given a query:
+○ Access only documents with 
+overlapping terms (sublinear!)
+○ Sum pre-computed TF-IDF 
+scores (fast!)
+
+
+--- PAGE 48 ---
+Sparse retrieval
+● Efficient even in large corpora
+● Emphasize lexical match of indicative words
+● Generalize well across domains
+● Do not need training (though hyperparameters may be tuned)
+● Drawbacks?
+48
+
+--- PAGE 49 ---
+Plan
+● Motivation
+● Sparse retrieval
+● Re-ranking
+● Dense retrieval
+● Retrieval-augmented language models
+49
+
+--- PAGE 50 ---
+Re-ranking
+Nogueira and Cho, 2019
+ 50
+● Use BM25 to collect large candidate pool (~1000)
+● Use a fine-tuned LM (e.g., BERT) on q,<SEP>,di to predict a relevance 
+score and re-rank
+
+--- PAGE 51 ---
+Re-ranking
+Nogueira and Cho, 2019
+ 51
+
+--- PAGE 52 ---
+Re-ranking
+Nogueira and Cho, 2019
+Works well, but requires a lot 
+of computation per query!
+Also, recall is bounded by BM25
+52
+
+--- PAGE 53 ---
+Plan
+● Motivation
+● Sparse retrieval
+● Re-ranking
+● Dense retrieval
+● Retrieval-augmented language models
+53
+
+--- PAGE 54 ---
+Motivation
+“Who is the bad guy in lord of the rings?”
+ 
+54
+
+--- PAGE 55 ---
+Textual Search with Dense Embeddings
+ 
+
+
+--- PAGE 56 ---
+Textual Search with Dense Embeddings
+○ Common choices of similarity measures:
+○ Note: if all vectors are normalized to norm 1, all three are equivalent
+ 
+  
+  
+ 
+Inner product Cosine similarity Euclidean distance
+ 
+
+--- PAGE 57 ---
+Dense Passage Retrieval (DPR)
+Karpukhin et al., 2020 57
+● Reuse pretrained encoders
+○ Define            encoders for the query and passage respectively
+● Define similarity score between a query q and passage p
+
+
+--- PAGE 58 ---
+Dense Passage Retrieval (DPR)
+Karpukhin et al., 2020 58
+● Reuse pretrained encoders
+○ Define            encoders for the query and passage respectively
+● Define similarity score between a query q and passage p
+● Train the dual encoders by collecting a set of examples
+
+
+--- PAGE 59 ---
+Dense Passage Retrieval (DPR)
+Karpukhin et al., 2020 59
+● Reuse pretrained encoders
+○ Define            encoders for the query and passage respectively
+● Define similarity score between a query q and passage p
+● Train the dual encoders by collecting a set of examples
+● Use in-batch examples as negative passages
+
+
+--- PAGE 60 ---
+ 
+Euclidean Vector Search
+
+
+--- PAGE 61 ---
+IVF: Inverted File Index
+● Idea 1:
+○ Split the dataset space into 
+pieces
+○ Search only through the 
+”relevant” pieces
+
+
+--- PAGE 62 ---
+IVF: Inverted File Index
+● Idea 1:
+○ Split the dataset space into 
+pieces
+○ Search only through the 
+”relevant” pieces
+● How do we split the dataset?
+● How do we identify the relevant 
+pieces for a query?
+
+
+--- PAGE 63 ---
+IVF with k-Means
+ 
+
+
+--- PAGE 64 ---
+IVF with k-Means
+ 
+
+
+--- PAGE 65 ---
+IVF with k-Means
+
+
+--- PAGE 66 ---
+IVF with k-Means
+
+
+--- PAGE 67 ---
+Graph-Based Search
+● Idea 2: Build a “navigation map” 
+through the dataset
+● Index construction: Build a graph 
+on the dataset vectors
+● Query:
+○ Start at some entry point in 
+the graph
+○ Greedily walk to neighbor 
+closest to query; repeat 
+
+
+--- PAGE 68 ---
+Graph-Based Search
+● Idea 2: Build a “navigation map” 
+through the dataset
+● Index construction: Build a graph 
+on the dataset vectors
+● Query:
+○ Start at some entry point in 
+the graph
+○ Greedily walk to neighbor 
+closest to query; repeat 
+
+
+--- PAGE 69 ---
+Graph-Based Search
+● Idea 2: Build a “navigation map” 
+through the dataset
+● Index construction: Build a graph 
+on the dataset vectors
+● Query:
+○ Start at some entry point in 
+the graph
+○ Greedily walk to neighbor 
+closest to query; repeat 
+See an 
+issue here?
+
+--- PAGE 70 ---
+Shorter Search Paths
+Solution 1: add long-range and 
+mid-range edges to the graph
+
+
+--- PAGE 71 ---
+Shorter Search Paths
+Solution 2: build a 
+hierarchy of increasingly 
+refined graphs
+● “HNSW”: Hierarchical 
+navigable small worlds 
+(Malkov & Yashunin 2016)
+Both solutions are widely 
+used
+
+
+--- PAGE 72 ---
+Dense Passage Retrieval (DPR)
+Karpukhin et al., 2020 72
+
+--- PAGE 73 ---
+GTR (Generalizable T5-based dense Retrievers) 
+Ni et al., 2021
+ 73
+
+--- PAGE 74 ---
+Dual-encoder retrievers
+Karpukhin et al., 2020
+Works well and E2E.
+Most of the compute is spent AoT 
+and is reused, but missing fine 
+grained (token-level) information
+74
+
+--- PAGE 75 ---
+DPR+BM25 hybrid
+ 
+Karpukhin et al., 2020
+Can we go fully dense but keep the 
+fine-grained capabilities?
+75
+
+--- PAGE 76 ---
+ColBERT – using late interaction
+Khattab and Zaharia, 2020
+ 76
+
+--- PAGE 77 ---
+ColBERT – “Late Interaction”
+Khattab and Zaharia, 2020
+● “Peel off” the encoder’s 
+pooling layer
+● Each document/query is 
+represented as a dense 
+matrix of contextualized 
+token embeddings
+● Compute similarity 
+between the two 
+collections
+
+--- PAGE 78 ---
+ColBERT – using late interaction
+Khattab and Zaharia, 2020
+ 78
+
+--- PAGE 79 ---
+ColBERT – using late interaction
+ColBERT re-ranks a candidate pool. 
+Use BM25/ColBERT approximation to retrieve 
+the initial pool.
+79Khattab and Zaharia, 2020
+
+--- PAGE 80 ---
+Lee et al., 2023 80
+
+--- PAGE 81 ---
+Lee et al., 2023 81
+
+--- PAGE 82 ---
+Lee et al., 2023
+Lee et al., 2023 82
+
+--- PAGE 83 ---
+Lee et al., 2023 83
+
+--- PAGE 84 ---
+Intermediate summary
+● Sparse retrievers are 
+○ Very efficient to compute
+○ Good when lexical match plays a key role, good at OOD generalization
+○ Do not take context into account, have simple failure cases (e.g., synonyms)
+● Re-ranking is expensive, but very useful
+○ Bounded by recall of base retriever
+● Dual-encoder dense retrievers need supervised data to train
+○ Compute-intensive AoT, but efficient at inference time
+○ Generalize to other domains poorly
+○ Lack fine-grained resolution (especially for long documents)
+○ Often benefit from a hybrid approach
+● Dense token-based retrievers are expensive at inference time, but generally work very well 84
+
+--- PAGE 85 ---
+Plan
+● Motivation
+● Sparse retrieval
+● Re-ranking
+● Dense retrieval
+● Retrieval-augmented language models
+85
+
+--- PAGE 86 ---
+How can we augment language models with retrieval?
+86
+● Incorporate retrieval in the architecture
+● Use the retrieved paragraph encodings as inputs to the LM
+● “Standard” RAG: Use the retrieved paragraphs as inputs to the LM
+● Incorporate retrieval calls during generation
+● Agentic RAG: Let the model execute retrieval calls during generation (tool-use)
+
+--- PAGE 87 ---
+How can we augment language models with retrieval?
+87
+● Incorporate retrieval in the architecture
+● Use the retrieved paragraph encodings as inputs to the LM
+● “Standard” RAG: Use the retrieved paragraphs as inputs to the LM
+● Incorporate retrieval calls during generation
+● Agentic RAG: Let the model execute retrieval calls during generation (tool-use)
+
+--- PAGE 88 ---
+Retrieval-Enhanced Transformer
+http://jalammar.github.io/illustrated-retrieval-transformer/ 88
+
+--- PAGE 89 ---
+Retrieval-Enhanced Transformer
+Borgeaud et al., 2022 89
+
+--- PAGE 90 ---
+Retrieval-Enhanced Transformer
+Borgeaud et al., 2022
+ 90
+
+--- PAGE 91 ---
+Retrieval-Enhanced Transformer
+Borgeaud et al., 2022
+ 91
+
+--- PAGE 92 ---
+MultiHop QA
+Yang et al., 2018 92
+Q: The telenovela "El Ardiente Secreto" was based 
+on a novel published under what pen name?
+El Ardiente Secreto (English The 
+impassioned secret) is a telenovela 
+made by Mexican TV network Televisa. 
+This telenovela was broadcast in 1978. 
+This soap opera was televised on 
+weekends only. It was based on the 
+Charlotte Brontë's novel "Jane Eyre".
+A: Currer Bell
+Jane Eyre (originally published as Jane 
+Eyre: An Autobiography) is a novel by 
+English writer Charlotte Brontë. It was 
+published on 16 October 1847, by Smith, 
+Elder & Co. of London, England, under 
+the pen name "Currer Bell". The first 
+American edition was published …
+
+--- PAGE 93 ---
+MultiHop QA
+Trivedi et al., 2022 93
+
+--- PAGE 94 ---
+94Trivedi et al., 2022
+
+--- PAGE 95 ---
+95Trivedi et al., 2022
+
+--- PAGE 96 ---
+96Trivedi et al., 2022
+
+--- PAGE 97 ---
+97Trivedi et al., 2022
+
+--- PAGE 98 ---
+98Trivedi et al., 2022
+
+--- PAGE 99 ---
+99Trivedi et al., 2022
+
+--- PAGE 100 ---
+Trivedi et al., 2022
+ 100
+
+--- PAGE 101 ---
+Trivedi et al., 2022
+ 101
+But if we think the interim CoT is no 
+good (recreating it), why not do it on 
+the fly and improve retrieval?
+
+--- PAGE 102 ---
+Jian et al., 2023
+ 102
+
+--- PAGE 103 ---
+Jian et al., 2023
+ 103
+
+--- PAGE 104 ---
+Jian et al., 2023
+ 104
+
+--- PAGE 105 ---
+Jian et al., 2023
+ 105
+
+--- PAGE 106 ---
+Jian et al., 2023
+ 106
+
+--- PAGE 107 ---
+Conclusion
+● Information retrieval remains an important task
+○ Even more so in the era LLMs?
+● Part of many pipelines, some are surprising (e.g. ICL)
+● Major improvements have been made, but far from solved
+○ OOD generalization
+○ Latency-Accuracy tradeoff
+● With improvements, requirements also grew over the years
+○ Understand semantics and context
+○ Understand objectives
+○ Fine-grained retrieval (e.g. relevant passage/sentence)
+107

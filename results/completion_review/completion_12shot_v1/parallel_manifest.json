@@ -1,0 +1,17 @@
+{
+  "model": {
+    "model_id": "EleutherAI/pythia-6.9b",
+    "revision": "c0e3eee36dc47af0c49f361c74cfe459c09f7f23",
+    "requested_revision": "main"
+  },
+  "data_sha256": "ad2c6eda66b0cbd0c6b041a55ad52f490554b125345e508da4d4b3b6b3c26ca7",
+  "pilot_sha256": "86fc44b2a1b453f86b7ae43fc068c9bcf545d7f18d90a4621c23a59402439f79",
+  "launcher_sha256": "35b3fce846f8f8acef09b47116908339781382790080f8a55eccdb67f64dec4f",
+  "shots": 12,
+  "limit_families": 0,
+  "gpus": 2,
+  "group_sizes": [
+    2
+  ],
+  "completion_code_sha256": "e8b5876e5af414ec28a66b6f517695cbd77f7df55a4da73bb21d2a5740a06c24"
+}

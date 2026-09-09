@@ -1,0 +1,203 @@
+{
+  "4": {
+    "rows": 1200,
+    "counts": {
+      "direct": 200,
+      "twohop": 200,
+      "broken": 200,
+      "robustness": 600
+    },
+    "token_length_min": 222,
+    "token_length_max": 250,
+    "data_sha256": "67a2c12b72d80623ec2b36e2492f0aa0af489080c1183e37e5926850c219d393"
+  },
+  "12": {
+    "rows": 1200,
+    "counts": {
+      "direct": 200,
+      "twohop": 200,
+      "broken": 200,
+      "robustness": 600
+    },
+    "token_length_min": 550,
+    "token_length_max": 578,
+    "data_sha256": "48de0b21a6d1f03d1faf866eacafb4121aac3d67da8024135ddf71b50c43b535"
+  },
+  "status": "passed",
+  "context_limit": 2048,
+  "name_tokens": {
+    "daxes": [
+      "\u0120d",
+      "axes"
+    ],
+    "wugs": [
+      "\u0120w",
+      "ugs"
+    ],
+    "blickets": [
+      "\u0120b",
+      "lick",
+      "ets"
+    ],
+    "lomits": [
+      "\u0120l",
+      "om",
+      "its"
+    ],
+    "sprocks": [
+      "\u0120sp",
+      "ro",
+      "cks"
+    ],
+    "vibbles": [
+      "\u0120v",
+      "ib",
+      "bles"
+    ],
+    "zorks": [
+      "\u0120z",
+      "orks"
+    ],
+    "tufas": [
+      "\u0120t",
+      "uf",
+      "as"
+    ],
+    "nerps": [
+      "\u0120ner",
+      "ps"
+    ],
+    "plinets": [
+      "\u0120pl",
+      "in",
+      "ets"
+    ],
+    "korvas": [
+      "\u0120kor",
+      "vas"
+    ],
+    "zemples": [
+      "\u0120z",
+      "em",
+      "ples"
+    ],
+    "nufrons": [
+      "\u0120nu",
+      "fr",
+      "ons"
+    ],
+    "shalds": [
+      "\u0120sh",
+      "al",
+      "ds"
+    ],
+    "brovets": [
+      "\u0120bro",
+      "v",
+      "ets"
+    ],
+    "crundles": [
+      "\u0120cr",
+      "und",
+      "les"
+    ],
+    "flomps": [
+      "\u0120fl",
+      "om",
+      "ps"
+    ],
+    "grivaks": [
+      "\u0120g",
+      "riv",
+      "aks"
+    ],
+    "helpons": [
+      "\u0120help",
+      "ons"
+    ],
+    "jastles": [
+      "\u0120j",
+      "ast",
+      "les"
+    ],
+    "kelbrins": [
+      "\u0120k",
+      "el",
+      "br",
+      "ins"
+    ],
+    "murdles": [
+      "\u0120mur",
+      "dles"
+    ],
+    "oskets": [
+      "\u0120o",
+      "sk",
+      "ets"
+    ],
+    "prandils": [
+      "\u0120pr",
+      "and",
+      "ils"
+    ],
+    "quavels": [
+      "\u0120qu",
+      "av",
+      "els"
+    ],
+    "ruspins": [
+      "\u0120r",
+      "usp",
+      "ins"
+    ],
+    "snorps": [
+      "\u0120sn",
+      "or",
+      "ps"
+    ],
+    "tivaks": [
+      "\u0120t",
+      "iv",
+      "aks"
+    ],
+    "ulvets": [
+      "\u0120ul",
+      "v",
+      "ets"
+    ],
+    "vromps": [
+      "\u0120v",
+      "rom",
+      "ps"
+    ],
+    "welbins": [
+      "\u0120wel",
+      "bins"
+    ],
+    "xandles": [
+      "\u0120x",
+      "and",
+      "les"
+    ],
+    "yorbits": [
+      "\u0120y",
+      "or",
+      "bits"
+    ],
+    "zeltrons": [
+      "\u0120z",
+      "el",
+      "tr",
+      "ons"
+    ]
+  },
+  "answer_tokens": {
+    " Yes": [
+      6279
+    ],
+    " No": [
+      1621
+    ]
+  },
+  "no_model_inference_performed": true
+}

@@ -1,0 +1,560 @@
+
+--- PAGE 1 ---
+Natural Language Processing
+Natural Language Generation
+Spring 2025/26
+Based on slides from Maor Ivgi, 
+Xiang Lisa Li, Antoine Bosselut 
+and Chris Manning
+
+--- PAGE 2 ---
+Admin
+● HW 2 is due next week (16.6)
+● HW 3 will be released in two weeks (23.6)
+● Project guidelines are available on Moodle!
+● Next week we will have Dr. Roee Aharoni from Google
+
+
+--- PAGE 3 ---
+Plan
+● Motivation for NLG
+● Greedy decoding methods
+● Sampling decoding methods
+● Approaches for improving decoding
+● Evaluation
+
+--- PAGE 4 ---
+Goal of NLP
+● Develop methods for processing, analyzing and understanding 
+the structure and meaning of natural (human) language.
+● For all languages
+● Many types of language: news, social media, literature, …
+NLPLanguage (text)
+Structure
+Meaning
+4
+
+--- PAGE 5 ---
+Goal of NLP
+● Develop methods for processing, analyzing and understanding 
+the structure and meaning of natural (human) language.
+● For all languages
+● Many types of language: news, social media, literature, …
+NLPLanguage (text)
+Structure
+Meaning
+5
+
+--- PAGE 6 ---
+Goal of NLP
+● Develop methods for processing, analyzing and understanding 
+the structure and meaning of natural (human) language.
+● For all languages
+● Many types of language: news, social media, literature, …
+NLPLanguage (text)
+Structure
+Meaning
+6
+
+--- PAGE 7 ---
+NLG
+We want systems that produce fluent, 
+coherent and useful texts.
+● NMT, digital assistants, summarization, 
+open-ended question answering
+● Creative stories, captioning, ideation
+
+
+--- PAGE 8 ---
+
+
+--- PAGE 9 ---
+
+
+--- PAGE 10 ---
+
+
+--- PAGE 11 ---
+
+
+--- PAGE 12 ---
+
+
+--- PAGE 13 ---
+
+
+--- PAGE 14 ---
+
+
+--- PAGE 15 ---
+
+
+--- PAGE 16 ---
+
+
+--- PAGE 17 ---
+
+
+--- PAGE 18 ---
+Side note – exposure bias
+Training with teacher forcing leads to exposure bias at generation time
+● During training, our model’s inputs are gold context tokens from real, 
+human-generated texts
+● At generation time, our inputs are previously–decoded tokens
+
+
+--- PAGE 19 ---
+Exposure Bias Solutions
+● Scheduled sampling (Bengio et al., 2015)
+○ With some probability p, decode a token and feed that as the text input 
+rather than the gold token.
+○ Increase p over the course of training
+○ Leads to improvements but can create strange training objectives.
+● Reinforcement learning: cast your text generation model as a Markov 
+decision process
+○ Rewards are provided by an external source (e.g., BLEU, ROUGE)
+○ Learn behaviors by rewarding the model when it exhibits them
+○ Be careful about optimizing for the task vs. “gaming” the reward!
+■ Evaluation metrics are merely proxies for generation quality!
+
+--- PAGE 20 ---
+Greedy decoding
+
+
+--- PAGE 21 ---
+Greedy decoding
+Greedy decoding has no way 
+to undo decisions
+
+--- PAGE 22 ---
+Beam Search
+● We want to find a sequence with maximum likelihood
+○ But exhaustive search is infeasible (exponential with T)
+● Core idea: On each step of decoder, keep track of the k most probable 
+partial sequences (which we call hypotheses)
+○ Score them by their log-probability
+○ Scores are all negative, and higher score is better
+● Beam search is not guaranteed to find optimal solution
+○ But much more efficient than exhaustive search!
+
+--- PAGE 23 ---
+
+
+--- PAGE 24 ---
+
+
+--- PAGE 25 ---
+
+
+--- PAGE 26 ---
+
+
+--- PAGE 27 ---
+
+
+--- PAGE 28 ---
+
+
+--- PAGE 29 ---
+
+
+--- PAGE 30 ---
+
+
+--- PAGE 31 ---
+
+
+--- PAGE 32 ---
+
+
+--- PAGE 33 ---
+
+
+--- PAGE 34 ---
+
+
+--- PAGE 35 ---
+
+
+--- PAGE 36 ---
+Beam search: stopping criteria
+● In greedy decoding, usually we decode until the model produces an 
+<END> token. For example: <START>he hit me with a pie<END>
+● In beam search decoding, different hypotheses may produce <END> 
+tokens on different timesteps
+○ When a hypothesis produces <END>, that hypothesis is complete.
+○ Place it aside & continue exploring other hypotheses via beam search.
+● Usually we continue beam search until:
+○ We reach timestep T (where T is some a predefined cutoff),or
+○ We have at least n completed hypotheses (n is a predefined cutoff)
+● Problem: longer hypotheses have lower scores. Why?
+○ Fix: Normalize by length 
+
+
+--- PAGE 37 ---
+The most likely string is repetitive
+In a shocking finding, scientist discovered a herd of unicorns living in a remote, 
+previously unexplored valley, in the Andes Mountains. Even more surprising to 
+the researchers was the fact that the unicorns spoke perfect English. 
+The study, published in the Proceedings of the National Academy of Sciences 
+of the United States of America (PNAS), was conducted by researchers from 
+the Universidad Nacional Autónoma de México (UNAM) and the 
+Universidad Nacional Autónoma de México (UNAM/Universidad Nacional 
+Autónoma de México/ Universidad Nacional Autónoma de México/ Universidad 
+Nacional Autónoma de México/ Universidad Nacional Autónoma de México...
+Holzman et al., ICLR 2020
+
+--- PAGE 38 ---
+The most likely string is repetitive
+In a shocking finding, scientist discovered a herd of unicorns living in a remote, 
+previously unexplored valley, in the Andes Mountains. Even more surprising to 
+the researchers was the fact that the unicorns spoke perfect English. 
+The study, published in the Proceedings of the National Academy of Sciences 
+of the United States of America (PNAS), was conducted by researchers from 
+the Universidad Nacional Autónoma de México (UNAM) and the Universidad 
+Nacional Autónoma de México (UNAM/Universidad Nacional Autónoma de 
+México/ Universidad Nacional Autónoma de México/ Universidad Nacional 
+Autónoma de México/ Universidad Nacional Autónoma de México...
+Holzman et al., ICLR 2020
+
+--- PAGE 39 ---
+The most likely string is repetitive
+
+
+--- PAGE 40 ---
+The most likely string is repetitive
+Holzman et al., ICLR 2020
+
+--- PAGE 41 ---
+The most likely string is repetitive
+Holzman et al., ICLR 2020
+
+--- PAGE 42 ---
+The most likely string is repetitive
+Holtzman et. al., ICLR 2020
+
+
+--- PAGE 43 ---
+How can we reduce repetitions?
+● Heuristic: don’t repeat n-grams
+● Use a different training objective:
+○ Unlikelihood objective (Welleck et al., 2020) penalize generation of 
+already-seen tokens
+○ Coverage loss (See et al., 2017) prevents attention mechanism from 
+attending to the same words
+● Use a different decoding objective:
+○ Contrastive decoding (Li et al,. 2022) searches for strings x that 
+maximize:
+
+
+--- PAGE 44 ---
+Does finding the most reasonable string in open-ended 
+generation make sense?
+Holtzman et. al., ICLR 2020
+
+--- PAGE 45 ---
+Plan
+● Motivation for NLG
+● Greedy decoding methods
+● Sampling decoding methods
+● Approaches for improving decoding
+● Evaluation
+
+--- PAGE 46 ---
+
+
+--- PAGE 47 ---
+
+
+--- PAGE 48 ---
+Top-k sampling
+Problem: Vanilla sampling makes every token in the vocabulary an option
+● If the probability to get ”bad” tokens is 1%, after 500 tokens, the probability we 
+only sampled good tokens is less than 1% 
+● Once a “bad” token is chosen, things spiral fast..
+● Even if most of the probability mass in the distribution is over a limited set of 
+options, the tail of the distribution could be very long and in aggregate have 
+considerable mass (statistics speak: we have “heavy tailed” distributions)
+● Many tokens are probably really wrong in the current context
+Solution: Only sample from the top-k tokens
+
+--- PAGE 49 ---
+
+
+--- PAGE 50 ---
+
+
+--- PAGE 51 ---
+
+
+--- PAGE 52 ---
+
+
+--- PAGE 53 ---
+Top-p (nucleus) sampling
+Problem: Probability distributions are dynamic
+● When P is flatter, a limited k removes many viable options
+● When P it peakier, a high k allows for too many options to have a chance of 
+being selected
+Solution: Top-p sampling
+● Sample from all tokens in the top-p cumulative probability mass (i.e., where 
+mass is concentrated)
+● Varies k depending on the uniformity of P
+
+
+--- PAGE 54 ---
+Problem: Probability distributions are dynamic
+● When P is flatter, a limited k removes many viable options
+● When P it peakier, a high k allows for too many options to have a chance of 
+being selected
+Solution: Top-p sampling
+● Sample from all tokens in the top-p cumulative probability mass (i.e., where 
+mass is concentrated)
+● Varies k depending on the uniformity of P
+Top-p (nucleus) sampling
+
+
+--- PAGE 55 ---
+Scaling randomness: Temperature
+● On timestamp t, the model computes a probability distribution Pt by 
+applying the softmax function to a vector of scores
+
+
+--- PAGE 56 ---
+Scaling randomness: Temperature
+● On timestamp t, the model computes a probability distribution Pt by 
+applying the softmax function to a vector of scores
+● Re-distribute the probability with the temperature coefficient 𝜏
+
+
+--- PAGE 57 ---
+Scaling randomness: Temperature
+● On timestamp t, the model computes a probability distribution Pt by 
+applying the softmax function to a vector of scores
+● Re-distribute the probability with the temperature coefficient 𝜏
+● Large 𝜏 values result in more diverse outputs
+○ For any 𝜏 < 1 we start getting less diverse outputs
+○ When 𝜏 → ∞ we get a uniform distribution over the vocabulary
+○ When 𝜏 → 0 we get the argmax distribution
+
+
+--- PAGE 58 ---
+Scaling randomness: Temperature
+https://medium.com/mlearning-ai/softmax-temperature-5492e4007f71 
+
+
+--- PAGE 59 ---
+Random sampling can lead to more hallucinations
+Ivgi et al., 2024
+
+--- PAGE 60 ---
+Plan
+● Motivation for NLG
+● Greedy decoding methods
+● Sampling decoding methods
+● Approaches for improving decoding
+● Evaluation
+
+--- PAGE 61 ---
+Improving decoding with re-ranking
+● Problem: What if I decode a bad sequence from my model?
+● Solution: Decode a bunch of sequences!
+○ 10 candidates is a common number, but it’s up to you
+● Define a score to approximate quality of sequences and
+○ Simplest is to use (low) perplexity!
+○ Careful! repetitive utterances generally get low perplexity
+● Re-rankers can score a variety of properties:
+○ Style (Holtzman et al., 2018) ,discourse(Gabriel et al., 2021), 
+entailment/factuality(Goyal et al., 2020), logical consistency (Lu et al., 2020)
+○ Beware of poorly-calibrated re-rankers
+● Can compose multiple re-rankers together.
+
+--- PAGE 62 ---
+Improving decoding with aggregation
+Yona et al., 2024Yoran et al., 2023
+
+--- PAGE 63 ---
+Speculative decoding
+Xia et al., 2022
+
+--- PAGE 64 ---
+Inspecting intermediate hidden states
+Logit lens
+● Next-token predictions are formed gradually.
+● Different inputs require different amount of computation.
+● Some predictions are “ready” early on.
+
+--- PAGE 65 ---
+Early exit (CALM)
+Schuster et al., 2022
+
+--- PAGE 66 ---
+Late extension?
+Biran et al., 2024
+
+
+--- PAGE 67 ---
+Late extension?
+Biran et al., 2024
+
+
+--- PAGE 68 ---
+Decoding: Takeaways
+● Decoding is still a problem in NLG, each task has its own challenges
+● Different decoding algorithms can allow us to inject biases that 
+encourage different properties of coherent natural language generation
+● Some of the most impactful advances in NLG of the last few years have 
+come from simple but effective modifications to decoding algorithms
+
+--- PAGE 69 ---
+Plan
+● Motivation for NLG
+● Greedy decoding methods
+● Sampling decoding methods
+● Approaches for improving decoding
+● Evaluation
+
+--- PAGE 70 ---
+Evaluation methods for text generation
+
+
+--- PAGE 71 ---
+Evaluation methods for text generation
+This is what we really want
+
+--- PAGE 72 ---
+Content overlap metrics
+● Compute a score that indicates the lexical similarity between generated 
+and gold (human-written) text
+● Fast, efficient, automatic and widely used
+● N-gram overlap metrics (e.g., BLEU, ROUGE, METEOR, CIDEr, etc.)
+● Fine for short-text translation with multiple references.
+○ Unaligned for long-text generations such as summarization, even 
+worse for dialog or story generation
+○ But still widely used ☹
+ 
+
+
+--- PAGE 73 ---
+ROUGE
+● Recall-Oriented Understudy for Gisting Evaluation (Lin 2004) 
+○ A set of metrics and a software package specifically designed for 
+evaluating automatic summarization
+● ROUGE-N measures the number of matching n-grams between the 
+model-generated text and a human-produced reference.
+○ Computes both precision and recall to get an F1 score.
+
+--- PAGE 74 ---
+ROUGE
+Reference: The cat is on the mat ↔ Candidate: The cat and the dog
+ 
+  
+  
+Rouge-L: Longest common subsequence, i.e. the longest sequence of words 
+(not necessarily consecutive, but still in order) that is shared between both.
+- ROUGE-L precision is the ratio of the length of the LCS, over the unigrams in C
+- ROUGE-L recall is the ratio of the length of the LCS, over the unigrams in R.
+
+--- PAGE 75 ---
+ROUGE
+
+
+--- PAGE 76 ---
+ROUGE
+
+
+--- PAGE 77 ---
+Failure case example
+Are you enjoying this class?
+Goyal et al., 2022 - https://arxiv.org/abs/2209.12356 
+
+
+--- PAGE 78 ---
+Failure case example
+Are you enjoying this class?
+Goyal et al., 2022 - https://arxiv.org/abs/2209.12356 
+
+
+--- PAGE 79 ---
+Goyal et al., 2022 - https://arxiv.org/abs/2209.12356 
+Goal: Capture more semantics, less bias towards phrasing.
+Solution (?) – Model-based metrics!
+
+--- PAGE 80 ---
+
+
+--- PAGE 81 ---
+
+
+--- PAGE 82 ---
+
+
+--- PAGE 83 ---
+QAEval
+Deutsch et al., 2020
+Intuition: Evaluate summaries by the ability to answer questions 
+that are answerable using the reference summary
+
+--- PAGE 84 ---
+Q^2 (factual consistency)
+Honovich et al., 2021
+Compares answer spans using 
+natural language inference
+(NLI) instead of token-based 
+matching, for automatically 
+generated question-answer pairs.
+
+
+--- PAGE 85 ---
+LLM as a judge
+Use strong LLMs instead of human evaluators.
+Questions:
+1. When can we replace humans with LLMs? When not?
+2. Is answer verification easier than answering?
+3. How to evaluate models on tasks that humans cannot solve 
+(scalable oversight)?
+
+--- PAGE 86 ---
+LLM as a judge
+Calderon et al., 2025
+
+--- PAGE 87 ---
+Human evaluations
+● Automatic metrics fall short of matching human decisions
+● Ask humans to evaluate the quality of generated text
+○ Fluency
+○ Coherence / consistency
+○ Factuality and correctness
+○ Commonsense
+○ Style / formality
+○ Grammaticality
+○ Typicality
+○ Redundancy
+● Don’t compare human evaluation scores across differently conducted studies
+
+--- PAGE 88 ---
+Community-driven Evaluations
+ https://lmarena.ai/?leaderboard 
+
+--- PAGE 89 ---
+Evaluation: Takeaways
+● Content overlap metrics provide a good starting point for evaluating the 
+quality of generated text, but they’re not good enough on their own.
+● Model-based metrics are often more correlated with human judgment, 
+but behavior is not interpretable.
+● Human judgments are critical, but humans are inconsistent!
+● Using LLMs as judges seems like a promising direction.
+● In many cases, the best judge of output quality is YOU!
+○ Look at your model generations. Don’t just rely on numbers!
+○ Publish many samples of the output of systems that you create!
+
+--- PAGE 90 ---
+Concluding thoughts
+● Interacting with NLG systems can reveal their limitations
+● Even in tasks with more progress, there are still much room for improvement
+● Evaluation remains a major challenge
+○ Need better ways to automatically evaluate NLG systems
+● With the advent of large-scale language models, deep NLG research has 
+been reset
+○ It’s never been easier to jump into this space!
+● One of the most exciting and fun areas of NLP to work in!

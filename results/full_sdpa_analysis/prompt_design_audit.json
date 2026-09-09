@@ -1,0 +1,168 @@
+{
+  "4": {
+    "rows": 1200,
+    "unique_prompts": 1200,
+    "unique_targets": 1200,
+    "extra_duplicate_targets": 0,
+    "duplicate_groups": [],
+    "unique_prefixes": 1,
+    "groups": {
+      "direct/base": 200,
+      "twohop/base": 200,
+      "broken/first": 100,
+      "broken/second": 100,
+      "robustness/reorder": 200,
+      "robustness/distractors": 200,
+      "robustness/rename": 200
+    },
+    "family_count": 100
+  },
+  "12": {
+    "rows": 1200,
+    "unique_prompts": 1200,
+    "unique_targets": 1200,
+    "extra_duplicate_targets": 0,
+    "duplicate_groups": [],
+    "unique_prefixes": 1,
+    "groups": {
+      "direct/base": 200,
+      "twohop/base": 200,
+      "broken/first": 100,
+      "broken/second": 100,
+      "robustness/reorder": 200,
+      "robustness/distractors": 200,
+      "robustness/rename": 200
+    },
+    "family_count": 100
+  },
+  "old_new": {
+    "old_unique_prompts": 1200,
+    "aligned_ids": true,
+    "same_graphs_up_to_renaming": true,
+    "same_gold": true
+  },
+  "old_test": {
+    "count": 900,
+    "min_tokens": 3,
+    "max_tokens": 3,
+    "mean_tokens": 3,
+    "examples": {
+      "class000u": [
+        "Ġclass",
+        "000",
+        "u"
+      ],
+      "class000v": [
+        "Ġclass",
+        "000",
+        "v"
+      ],
+      "class000w": [
+        "Ġclass",
+        "000",
+        "w"
+      ],
+      "class001u": [
+        "Ġclass",
+        "001",
+        "u"
+      ],
+      "class001v": [
+        "Ġclass",
+        "001",
+        "v"
+      ],
+      "class001w": [
+        "Ġclass",
+        "001",
+        "w"
+      ]
+    }
+  },
+  "new_test": {
+    "count": 34,
+    "min_tokens": 2,
+    "max_tokens": 4,
+    "mean_tokens": 2.823529411764706,
+    "examples": {
+      "blickets": [
+        "Ġb",
+        "lick",
+        "ets"
+      ],
+      "brovets": [
+        "Ġbro",
+        "v",
+        "ets"
+      ],
+      "crundles": [
+        "Ġcr",
+        "und",
+        "les"
+      ],
+      "daxes": [
+        "Ġd",
+        "axes"
+      ],
+      "flomps": [
+        "Ġfl",
+        "om",
+        "ps"
+      ],
+      "grivaks": [
+        "Ġg",
+        "riv",
+        "aks"
+      ]
+    }
+  },
+  "selected_tokens": {
+    "group000a": [
+      "Ġgroup",
+      "000",
+      "a"
+    ],
+    "group000e": [
+      "Ġgroup",
+      "000",
+      "e"
+    ],
+    "wugs": [
+      "Ġw",
+      "ugs"
+    ],
+    "daxes": [
+      "Ġd",
+      "axes"
+    ],
+    "tufas": [
+      "Ġt",
+      "uf",
+      "as"
+    ],
+    "kelbrins": [
+      "Ġk",
+      "el",
+      "br",
+      "ins"
+    ],
+    "bantrels": [
+      "Ġb",
+      "ant",
+      "rels"
+    ],
+    "cats": [
+      "Ġcats"
+    ],
+    "dogs": [
+      "Ġdogs"
+    ],
+    "B": [
+      "ĠB"
+    ],
+    "C": [
+      "ĠC"
+    ]
+  },
+  "shared_targets_across_shots": 1200
+}
