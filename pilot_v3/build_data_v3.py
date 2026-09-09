@@ -133,21 +133,27 @@ def block(world, fam, facts, hops, answer=None):
 DEMOS = {}
 for world in WORLDS:
     demos = []
-    for i in range(14):
+    # v3.1: hops and order fully crossed (4 combos x 4 each), so the demos
+    # carry ZERO information about where the answer family sits in the block.
+    combos = [(h, o) for h in (1, 2) for o in (0, 1)] * 4
+    for i, (hops, order) in enumerate(combos):
         fam = new_family(world)
-        hops = 1 if i % 2 == 0 else 2
-        order = i % 2
         answer = fam['qg']  # both q1 (mother of qm) and q2 (grandmother of qc) resolve to qg
-        demos.append(dict(id=f'{world}/demo/{i}', world=world, hops=hops,
+        demos.append(dict(id=f'{world}/demo/{i}', world=world, hops=hops, order=order,
                           text=block(world, fam, facts_of(world, fam, order), hops, answer=answer),
                           names=[fam[k] for k in ('qc','qm','qg','dc','dm','dg')]))
     DEMOS[world] = demos
 
 def demo_ids_for(world, qseed, shots):
+    # balanced draw over the 4 (hops, order) cells so no cell dominates a prompt
     r = random.Random(qseed)
-    demos = DEMOS[world]
-    ones = [d for d in demos if d['hops'] == 1]; twos = [d for d in demos if d['hops'] == 2]
-    take = r.sample(ones, shots // 2) + r.sample(twos, shots // 2)
+    cells = {}
+    for d in DEMOS[world]:
+        cells.setdefault((d['hops'], d['order']), []).append(d)
+    per = shots // 4
+    take = []
+    for key in ((1,0),(1,1),(2,0),(2,1)):
+        take += r.sample(cells[key], per)
     r.shuffle(take)
     return take
 
@@ -239,7 +245,7 @@ def build():
                         hops=q['hops'], gold=q['gold'], candidates=cands, bridge=q['bridge'],
                         option_order=order, option_pair_id=f'{qid}/order{1 - order}',
                         paired_base_id=f'{fidx:03d}/twohop/base/1' if q['check'] in ('broken', 'robustness') else None,
-                        dataset_version='name_completion_v3', seed=SEED, shots=shots,
+                        dataset_version='name_completion_v3_1', seed=SEED, shots=shots,
                         demo_ids=dids, prompt=prompt,
                         entity_spans=spans(prompt, [q['gold'], q['distractor']] + ([q['bridge']] if q['bridge'] else []))))
                     audit[(world, q['check'], q['variant'], shots)] += 1
