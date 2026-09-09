@@ -1,0 +1,51 @@
+{
+  "direct/base": {
+    "n": 100,
+    "both_free_correct": 0.77,
+    "both_candidate_correct": 0.8,
+    "free_same_name": 0.78,
+    "candidate_same_name": 0.81
+  },
+  "twohop/base": {
+    "n": 100,
+    "both_free_correct": 0.38,
+    "both_candidate_correct": 0.58,
+    "free_same_name": 0.44,
+    "candidate_same_name": 0.58
+  },
+  "broken/first": {
+    "n": 50,
+    "both_free_correct": 0.06,
+    "both_candidate_correct": 0.06,
+    "free_same_name": 0.52,
+    "candidate_same_name": 0.74
+  },
+  "robustness/reorder": {
+    "n": 100,
+    "both_free_correct": 0.11,
+    "both_candidate_correct": 0.26,
+    "free_same_name": 0.44,
+    "candidate_same_name": 0.56
+  },
+  "robustness/distractors": {
+    "n": 100,
+    "both_free_correct": 0.2,
+    "both_candidate_correct": 0.62,
+    "free_same_name": 0.3,
+    "candidate_same_name": 0.67
+  },
+  "robustness/rename": {
+    "n": 100,
+    "both_free_correct": 0.42,
+    "both_candidate_correct": 0.57,
+    "free_same_name": 0.46,
+    "candidate_same_name": 0.59
+  },
+  "broken/second": {
+    "n": 50,
+    "both_free_correct": 0.4,
+    "both_candidate_correct": 0.6,
+    "free_same_name": 0.4,
+    "candidate_same_name": 0.6
+  }
+}

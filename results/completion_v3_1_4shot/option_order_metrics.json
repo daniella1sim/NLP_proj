@@ -1,0 +1,51 @@
+{
+  "direct/base": {
+    "n": 100,
+    "both_free_correct": 0.76,
+    "both_candidate_correct": 0.82,
+    "free_same_name": 0.77,
+    "candidate_same_name": 0.84
+  },
+  "twohop/base": {
+    "n": 100,
+    "both_free_correct": 0.38,
+    "both_candidate_correct": 0.59,
+    "free_same_name": 0.45,
+    "candidate_same_name": 0.61
+  },
+  "broken/first": {
+    "n": 50,
+    "both_free_correct": 0.06,
+    "both_candidate_correct": 0.08,
+    "free_same_name": 0.56,
+    "candidate_same_name": 0.76
+  },
+  "robustness/reorder": {
+    "n": 100,
+    "both_free_correct": 0.08,
+    "both_candidate_correct": 0.23,
+    "free_same_name": 0.32,
+    "candidate_same_name": 0.51
+  },
+  "robustness/distractors": {
+    "n": 100,
+    "both_free_correct": 0.26,
+    "both_candidate_correct": 0.66,
+    "free_same_name": 0.35,
+    "candidate_same_name": 0.71
+  },
+  "robustness/rename": {
+    "n": 100,
+    "both_free_correct": 0.43,
+    "both_candidate_correct": 0.58,
+    "free_same_name": 0.49,
+    "candidate_same_name": 0.63
+  },
+  "broken/second": {
+    "n": 50,
+    "both_free_correct": 0.44,
+    "both_candidate_correct": 0.6,
+    "free_same_name": 0.46,
+    "candidate_same_name": 0.62
+  }
+}

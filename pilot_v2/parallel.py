@@ -65,12 +65,14 @@ def run(args):
     groups=gpu_groups(devices,args.gpus_per_replica,len(families))
     out=pilot.RUNS/args.name
     out.mkdir(parents=True,exist_ok=True)
-    config=dict(model=json.loads((ROOT/'model_lock.json').read_text()),
+    pilot.check_data_model_match(rows, args.model)
+    lock_file = pilot.MODELS[args.model]['lock']
+    config=dict(model=json.loads((ROOT/lock_file).read_text()), model_key=args.model,
                 data_sha256=pilot.digest(dataset), pilot_sha256=pilot.digest(ROOT/'pilot.py'),
                 launcher_sha256=pilot.digest(Path(__file__)), shots=args.shots,
                 limit_families=args.limit_families, gpus=args.gpus,
                 group_sizes=[len(g) for g in groups])
-    if args.prompt_version in ('completion', 'completion_v2'):
+    if args.prompt_version.startswith('completion'):
         config['completion_code_sha256']=pilot.digest(ROOT/'completion_evaluation.py')
     manifest=out/'parallel_manifest.json'
     if manifest.exists() and json.loads(manifest.read_text())!=config:
@@ -91,6 +93,7 @@ def run(args):
             handle=(out/f'worker_{i:03d}.log').open('a',encoding='utf-8')
             handles.append(handle)
             command=[sys.executable,'-u',str(ROOT/'pilot.py'),'run','--name',f'{args.name}_worker_{i:03d}',
+                     '--model',args.model,
                      '--shots',str(args.shots),'--prompt-version',args.prompt_version,'--limit-families',str(args.limit_families),
                      '--shard-index',str(i),'--shard-count',str(len(groups))]
             children.append(subprocess.Popen(command,env=env,stdout=handle,stderr=subprocess.STDOUT))
@@ -124,8 +127,9 @@ def main():
     parser.add_argument('--gpus-per-replica',type=int,default=2,
                         help='Minimum GPUs per model copy; default 2 for 11-12GB GPUs. Use 1 on sufficiently large GPUs.')
     parser.add_argument('--name',required=True)
+    parser.add_argument('--model',choices=sorted(pilot.MODELS),default=pilot.DEFAULT_MODEL)
     parser.add_argument('--shots',type=int,choices=[0,4,12],default=12)
-    parser.add_argument('--prompt-version',choices=['v2','v3','completion','completion_v2'],default='v2')
+    parser.add_argument('--prompt-version',choices=pilot.PROMPT_VERSIONS,default='v2')
     parser.add_argument('--limit-families',type=int,default=0)
     args=parser.parse_args()
     import re

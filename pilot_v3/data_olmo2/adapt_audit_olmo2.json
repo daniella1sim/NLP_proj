@@ -1,0 +1,1222 @@
+{
+ "seed": 20260909,
+ "renamed_entities": 81,
+ "changed_rows": 1498,
+ "renames": [
+  {
+   "family": 0,
+   "world": "kinship",
+   "old": "Tirla",
+   "new": "Weldia",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Herdna"
+  },
+  {
+   "family": 0,
+   "world": "kinship",
+   "old": "Leltra",
+   "new": "Werva",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Juldna"
+  },
+  {
+   "family": 1,
+   "world": "kinship",
+   "old": "Verva",
+   "new": "Zirna",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Bulnla"
+  },
+  {
+   "family": 1,
+   "world": "kinship",
+   "old": "Suntra",
+   "new": "Gindra",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Kuntna"
+  },
+  {
+   "family": 3,
+   "world": "kinship",
+   "old": "Heltna",
+   "new": "Marvla",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Jorda"
+  },
+  {
+   "family": 3,
+   "world": "kinship",
+   "old": "Wontna",
+   "new": "Jalnia",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Jorda"
+  },
+  {
+   "family": 4,
+   "world": "kinship",
+   "old": "Ferdla",
+   "new": "Haltna",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Reltia"
+  },
+  {
+   "family": 5,
+   "world": "kinship",
+   "old": "Velnla",
+   "new": "Pornra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Horda"
+  },
+  {
+   "family": 6,
+   "world": "kinship",
+   "old": "Tolnna",
+   "new": "Jarvla",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Kernra"
+  },
+  {
+   "family": 7,
+   "world": "kinship",
+   "old": "Darnia",
+   "new": "Forvla",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Lentna"
+  },
+  {
+   "family": 8,
+   "world": "kinship",
+   "old": "Nolnna",
+   "new": "Rurdla",
+   "old_sig": [
+    3,
+    4
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Jilna"
+  },
+  {
+   "family": 8,
+   "world": "kinship",
+   "old": "Zandia",
+   "new": "Kiltra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Nastra"
+  },
+  {
+   "family": 10,
+   "world": "kinship",
+   "old": "Zistra",
+   "new": "Galtna",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Wulma"
+  },
+  {
+   "family": 11,
+   "world": "kinship",
+   "old": "Kurlia",
+   "new": "Tarvla",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Rolnia"
+  },
+  {
+   "family": 11,
+   "world": "kinship",
+   "old": "Sastia",
+   "new": "Vorvla",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Rolnia"
+  },
+  {
+   "family": 12,
+   "world": "kinship",
+   "old": "Morda",
+   "new": "Vornia",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Balmna"
+  },
+  {
+   "family": 14,
+   "world": "kinship",
+   "old": "Birla",
+   "new": "Loltra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Hastia"
+  },
+  {
+   "family": 15,
+   "world": "kinship",
+   "old": "Vosmia",
+   "new": "Niltra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Tontra"
+  },
+  {
+   "family": 16,
+   "world": "kinship",
+   "old": "Wundia",
+   "new": "Jelda",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Bordla"
+  },
+  {
+   "family": 19,
+   "world": "kinship",
+   "old": "Valtra",
+   "new": "Bultna",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Wirlra"
+  },
+  {
+   "family": 19,
+   "world": "kinship",
+   "old": "Zordra",
+   "new": "Turvla",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Rundra"
+  },
+  {
+   "family": 21,
+   "world": "kinship",
+   "old": "Laltia",
+   "new": "Kaltra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Pistla"
+  },
+  {
+   "family": 21,
+   "world": "kinship",
+   "old": "Sernia",
+   "new": "Geldia",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Pistla"
+  },
+  {
+   "family": 22,
+   "world": "kinship",
+   "old": "Lontna",
+   "new": "Bantra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Zurvla"
+  },
+  {
+   "family": 23,
+   "world": "kinship",
+   "old": "Dastna",
+   "new": "Warnla",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Herva"
+  },
+  {
+   "family": 23,
+   "world": "kinship",
+   "old": "Vostna",
+   "new": "Konta",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Herva"
+  },
+  {
+   "family": 24,
+   "world": "kinship",
+   "old": "Fondia",
+   "new": "Gostla",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Seltna"
+  },
+  {
+   "family": 26,
+   "world": "kinship",
+   "old": "Gindia",
+   "new": "Vantra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Lentla"
+  },
+  {
+   "family": 27,
+   "world": "kinship",
+   "old": "Balmra",
+   "new": "Tirvla",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Fistra"
+  },
+  {
+   "family": 27,
+   "world": "kinship",
+   "old": "Bolmla",
+   "new": "Hontra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Fistra"
+  },
+  {
+   "family": 29,
+   "world": "kinship",
+   "old": "Zunta",
+   "new": "Nulda",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Rosmna"
+  },
+  {
+   "family": 32,
+   "world": "kinship",
+   "old": "Jordra",
+   "new": "Zontna",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Gosmra"
+  },
+  {
+   "family": 34,
+   "world": "kinship",
+   "old": "Wiltia",
+   "new": "Tulta",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Vendia"
+  },
+  {
+   "family": 37,
+   "world": "kinship",
+   "old": "Gurlra",
+   "new": "Bistra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Lentia"
+  },
+  {
+   "family": 38,
+   "world": "kinship",
+   "old": "Vuldia",
+   "new": "Morvna",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Palnra"
+  },
+  {
+   "family": 39,
+   "world": "kinship",
+   "old": "Vardia",
+   "new": "Nerva",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Liltra"
+  },
+  {
+   "family": 40,
+   "world": "kinship",
+   "old": "Jonta",
+   "new": "Belmra",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Haltia"
+  },
+  {
+   "family": 42,
+   "world": "kinship",
+   "old": "Vundna",
+   "new": "Jolnna",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    4
+   ],
+   "anchor": "Rarlna"
+  },
+  {
+   "family": 43,
+   "world": "kinship",
+   "old": "Berdna",
+   "new": "Vultna",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Mesmla"
+  },
+  {
+   "family": 46,
+   "world": "kinship",
+   "old": "Puntla",
+   "new": "Kirvla",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Tilnia"
+  },
+  {
+   "family": 47,
+   "world": "kinship",
+   "old": "Dildla",
+   "new": "Donta",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Pestla"
+  },
+  {
+   "family": 47,
+   "world": "kinship",
+   "old": "Folmra",
+   "new": "Julta",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Pestla"
+  },
+  {
+   "family": 48,
+   "world": "kinship",
+   "old": "Boltra",
+   "new": "Dulnna",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Bervna"
+  },
+  {
+   "family": 51,
+   "world": "kinship",
+   "old": "Forvna",
+   "new": "Kontra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Kuldia"
+  },
+  {
+   "family": 51,
+   "world": "kinship",
+   "old": "Tintra",
+   "new": "Barlna",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Rerlla"
+  },
+  {
+   "family": 52,
+   "world": "kinship",
+   "old": "Hentna",
+   "new": "Burdna",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Birvla"
+  },
+  {
+   "family": 52,
+   "world": "kinship",
+   "old": "Tintna",
+   "new": "Bolnia",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Jestia"
+  },
+  {
+   "family": 53,
+   "world": "kinship",
+   "old": "Vendla",
+   "new": "Zildra",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Fervra"
+  },
+  {
+   "family": 56,
+   "world": "kinship",
+   "old": "Vulta",
+   "new": "Dirla",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Mornla"
+  },
+  {
+   "family": 59,
+   "world": "kinship",
+   "old": "Pilmla",
+   "new": "Zonta",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Nelna"
+  },
+  {
+   "family": 60,
+   "world": "kinship",
+   "old": "Dildra",
+   "new": "Kontna",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Torda"
+  },
+  {
+   "family": 61,
+   "world": "kinship",
+   "old": "Gostia",
+   "new": "Fultra",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Nunta"
+  },
+  {
+   "family": 62,
+   "world": "kinship",
+   "old": "Terdna",
+   "new": "Merlra",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Nismra"
+  },
+  {
+   "family": 62,
+   "world": "kinship",
+   "old": "Wurla",
+   "new": "Lulta",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "Voltia"
+  },
+  {
+   "family": 63,
+   "world": "kinship",
+   "old": "Morvla",
+   "new": "Nontla",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Fostna"
+  },
+  {
+   "family": 64,
+   "world": "kinship",
+   "old": "Bunta",
+   "new": "Falmla",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Hiltna"
+  },
+  {
+   "family": 66,
+   "world": "kinship",
+   "old": "Sindla",
+   "new": "Zurlia",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "Kolmna"
+  },
+  {
+   "family": 67,
+   "world": "kinship",
+   "old": "Kurlra",
+   "new": "Wuntna",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    4
+   ],
+   "anchor": "Gismla"
+  },
+  {
+   "family": 71,
+   "world": "containment",
+   "old": "blusps",
+   "new": "stosps",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "vrarks"
+  },
+  {
+   "family": 71,
+   "world": "containment",
+   "old": "zlamps",
+   "new": "cremps",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "vrarks"
+  },
+  {
+   "family": 72,
+   "world": "containment",
+   "old": "glifts",
+   "new": "blinks",
+   "old_sig": [
+    2,
+    3
+   ],
+   "target_sig": [
+    2,
+    2
+   ],
+   "anchor": "brarts"
+  },
+  {
+   "family": 72,
+   "world": "containment",
+   "old": "glosps",
+   "new": "blafts",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "klafts"
+  },
+  {
+   "family": 73,
+   "world": "containment",
+   "old": "crorms",
+   "new": "crarks",
+   "old_sig": [
+    2,
+    3
+   ],
+   "target_sig": [
+    2,
+    2
+   ],
+   "anchor": "crofts"
+  },
+  {
+   "family": 78,
+   "world": "containment",
+   "old": "flafts",
+   "new": "blulps",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "spemps"
+  },
+  {
+   "family": 80,
+   "world": "containment",
+   "old": "plorms",
+   "new": "brimps",
+   "old_sig": [
+    2,
+    3
+   ],
+   "target_sig": [
+    2,
+    2
+   ],
+   "anchor": "klends"
+  },
+  {
+   "family": 80,
+   "world": "containment",
+   "old": "skinds",
+   "new": "sturks",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "krulps"
+  },
+  {
+   "family": 84,
+   "world": "location",
+   "old": "lurvul",
+   "new": "rarpar",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "lerpin"
+  },
+  {
+   "family": 87,
+   "world": "location",
+   "old": "faskot",
+   "new": "gostin",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "jantar"
+  },
+  {
+   "family": 87,
+   "world": "location",
+   "old": "jorpar",
+   "new": "kondot",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "jantar"
+  },
+  {
+   "family": 87,
+   "world": "location",
+   "old": "fintul",
+   "new": "jormin",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "ferpul"
+  },
+  {
+   "family": 88,
+   "world": "location",
+   "old": "teskul",
+   "new": "lildel",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "mirmul"
+  },
+  {
+   "family": 89,
+   "world": "location",
+   "old": "jermot",
+   "new": "sondar",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "darmel"
+  },
+  {
+   "family": 89,
+   "world": "location",
+   "old": "vildel",
+   "new": "nalgar",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "darmel"
+  },
+  {
+   "family": 92,
+   "world": "location",
+   "old": "voskel",
+   "new": "dantin",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "tuntar"
+  },
+  {
+   "family": 94,
+   "world": "location",
+   "old": "jondul",
+   "new": "zostul",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "ruskin"
+  },
+  {
+   "family": 94,
+   "world": "location",
+   "old": "rolgin",
+   "new": "vondul",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "nildul"
+  },
+  {
+   "family": 95,
+   "world": "location",
+   "old": "naskel",
+   "new": "sondin",
+   "old_sig": [
+    3,
+    3
+   ],
+   "target_sig": [
+    3,
+    2
+   ],
+   "anchor": "rerpot"
+  },
+  {
+   "family": 97,
+   "world": "location",
+   "old": "rundul",
+   "new": "vuldul",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "jorvar"
+  },
+  {
+   "family": 98,
+   "world": "location",
+   "old": "nirpel",
+   "new": "dervul",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "feskar"
+  },
+  {
+   "family": 98,
+   "world": "location",
+   "old": "zostel",
+   "new": "goskel",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "fildul"
+  },
+  {
+   "family": 99,
+   "world": "location",
+   "old": "gintul",
+   "new": "nendin",
+   "old_sig": [
+    3,
+    2
+   ],
+   "target_sig": [
+    3,
+    3
+   ],
+   "anchor": "veldul"
+  }
+ ]
+}

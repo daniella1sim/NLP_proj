@@ -1,4 +1,9 @@
-"""Pythia-6.9B distinct-name behavioral pilot. Data and reporting need only Python's stdlib."""
+"""Multi-model distinct-name behavioral pilot (Pythia-6.9B / OLMo-2-7B).
+
+Data and reporting need only Python's stdlib. Every dataset is bound to the
+tokenizer(s) it was length-matched for; the runner refuses a model/dataset
+combination that was not audited together (see pilot_v3/audit_tokenizer.py).
+"""
 import argparse
 from collections import defaultdict, deque
 import csv
@@ -20,19 +25,54 @@ STATE = Path(os.environ.get('PILOT_STORAGE', str(ROOT / 'storage'))).resolve()
 RUNS = Path(os.environ.get('PILOT_RUNS', str(STATE / 'runs'))).resolve()
 os.environ.setdefault('HF_HOME', str(STATE / 'hf'))
 os.environ.setdefault('TOKENIZERS_PARALLELISM', 'false')
-MODEL = 'EleutherAI/pythia-6.9b'
+
+MODELS = {
+    'pythia-6.9b': dict(model_id='EleutherAI/pythia-6.9b', lock='model_lock.json'),
+    'olmo2-7b': dict(model_id='allenai/OLMo-2-1124-7B', lock='model_lock_olmo2.json'),
+}
+DEFAULT_MODEL = 'pythia-6.9b'
 LABELS = (' Yes', ' No')
+
+PROMPT_VERSIONS = ['v2', 'v3', 'completion', 'completion_v2',
+                   'completion_v3', 'completion_v3_controls',
+                   'completion_v3_olmo2', 'completion_v3_olmo2_controls']
 
 
 def dataset_path(shots, version):
-    if version == 'completion_v2':
-        return ROOT / 'data' / f'completion_v2_{shots}shot.jsonl'
-    if version == 'completion':
-        return ROOT / 'data' / f'completion_{shots}shot.jsonl'
+    fixed = {
+        'completion_v3_controls': 'controls_v3_4shot.jsonl',
+        'completion_v3_olmo2_controls': 'controls_v3_olmo2_4shot.jsonl',
+    }
+    if version in fixed:
+        if shots != 4:
+            raise ValueError('Control files are built at 4 shots only.')
+        return ROOT / 'data' / fixed[version]
+    per_shot = {
+        'completion': 'completion_{s}shot.jsonl',
+        'completion_v2': 'completion_v2_{s}shot.jsonl',
+        'completion_v3': 'completion_v3_{s}shot.jsonl',
+        'completion_v3_olmo2': 'completion_v3_olmo2_{s}shot.jsonl',
+    }
+    if version in per_shot:
+        return ROOT / 'data' / per_shot[version].format(s=shots)
     if shots == 0:
-        raise ValueError('Zero-shot is supported by the completion dataset only.')
+        raise ValueError('Zero-shot is supported by the completion datasets only.')
     suffix = '_prompt_v3' if version == 'v3' else ''
     return ROOT / 'data' / f'pilot_{shots}shot{suffix}.jsonl'
+
+
+def check_data_model_match(rows, model_key):
+    """A dataset may only be scored by a model whose tokenizer it was
+    length-matched for. Legacy rows (no matched_tokenizers field) were matched
+    for Pythia only."""
+    model_id = MODELS[model_key]['model_id']
+    tags = {tuple(r.get('matched_tokenizers', ['EleutherAI/pythia-6.9b'])) for r in rows}
+    bad = [t for t in tags if model_id not in t]
+    if bad:
+        raise ValueError(
+            f'Dataset was not tokenizer-matched for {model_id} (matched for: {sorted(bad)}). '
+            f'Use the dataset variant built for this model '
+            f'(e.g. --prompt-version completion_v3_olmo2 for olmo2-7b).')
 
 
 def dump(path, value):
@@ -48,30 +88,34 @@ def digest(path):
 
 def download(args):
     from huggingface_hub import HfApi, snapshot_download
-    lock_path = ROOT / 'model_lock.json'
+    spec = MODELS[args.model]
+    lock_path = ROOT / spec['lock']
     if lock_path.exists():
         lock = json.loads(lock_path.read_text())
-        if lock['model_id'] != MODEL:
-            raise ValueError('Model lock does not match this pilot.')
+        if lock['model_id'] != spec['model_id']:
+            raise ValueError(f'{spec["lock"]} does not match {spec["model_id"]}.')
     else:
-        info = HfApi().model_info(MODEL, revision='main')
-        lock = {'model_id': MODEL, 'revision': info.sha, 'requested_revision': 'main'}
+        info = HfApi().model_info(spec['model_id'], revision='main')
+        lock = {'model_id': spec['model_id'], 'revision': info.sha, 'requested_revision': 'main'}
         dump(lock_path, lock)
+        print(f'Pinned {spec["model_id"]} at revision {info.sha}. '
+              f'Commit {spec["lock"]} to git for reproducibility.')
     target = STATE / 'model' / lock['revision']
-    snapshot_download(MODEL, revision=lock['revision'], local_dir=str(target),
+    snapshot_download(spec['model_id'], revision=lock['revision'], local_dir=str(target),
                       allow_patterns=['*.safetensors', '*.safetensors.index.json',
                                       'config.json', 'tokenizer.json', 'tokenizer_config.json',
                                       'special_tokens_map.json', 'generation_config.json'])
-    print(f'Model ready: {target}\nKeep model_lock.json when moving between providers.')
+    print(f'Model ready: {target}\nKeep {spec["lock"]} when moving between providers.')
 
 
-def load_runtime():
+def load_runtime(model_key):
     import torch
     from transformers import AutoTokenizer, AutoModelForCausalLM
     if not torch.cuda.is_available():
         raise RuntimeError('No CUDA GPU. Submit a GPU job first.')
-    lock = json.loads((ROOT / 'model_lock.json').read_text())
-    if lock['model_id'] != MODEL:
+    spec = MODELS[model_key]
+    lock = json.loads((ROOT / spec['lock']).read_text())
+    if lock['model_id'] != spec['model_id']:
         raise ValueError('Wrong model lock.')
     model_dir = STATE / 'model' / lock['revision']
     torch.manual_seed(20260907)
@@ -81,7 +125,7 @@ def load_runtime():
         free, total = torch.cuda.mem_get_info(i)
         memory[i] = max(0, free - 2 * 2**30)
     memory['cpu'] = 0
-    print('Loading Pythia-6.9B; GPU budgets:', memory, flush=True)
+    print(f'Loading {spec["model_id"]}; GPU budgets:', memory, flush=True)
     tokenizer = AutoTokenizer.from_pretrained(model_dir, local_files_only=True)
     model = AutoModelForCausalLM.from_pretrained(
         model_dir, local_files_only=True, torch_dtype=torch.float16,
@@ -118,7 +162,7 @@ def evaluate_one(torch, tokenizer, model, row):
     for label in LABELS:
         prefix_ids, tail = label_tokens(tokenizer, prompt, label)
         if prefix_ids != base or len(tail) != 1:
-            raise ValueError('This Pythia runner requires one-token answer labels.')
+            raise ValueError('This runner requires one-token answer labels.')
         labels[label.strip()] = tail[0]
     input_device = model.get_input_embeddings().weight.device
     ids = torch.tensor([base], device=input_device)
@@ -243,21 +287,23 @@ def run(args):
     rows = read_results(path)
     if not rows:
         raise ValueError('Dataset missing or empty; run data first.')
+    check_data_model_match(rows, args.model)
     if args.limit_families:
         rows = [r for r in rows if r['family'] < args.limit_families]
     rows = [r for r in rows if r['family'] % args.shard_count == args.shard_index]
     if not rows:
         raise ValueError('Empty worker partition; reduce the number of workers.')
-    torch, tokenizer, model, lock = load_runtime()
+    torch, tokenizer, model, lock = load_runtime(args.model)
     out = RUNS / args.name
     out.mkdir(parents=True, exist_ok=True)
     versions = {p: importlib.metadata.version(p) for p in
                 ['torch', 'transformers', 'huggingface-hub', 'safetensors', 'accelerate']}
-    settings = dict(model=lock, data_sha256=digest(path), code_sha256=digest(Path(__file__)),
+    settings = dict(model=lock, model_key=args.model,
+                    data_sha256=digest(path), code_sha256=digest(Path(__file__)),
                     shots=args.shots, limit_families=args.limit_families,
                     shard_index=args.shard_index, shard_count=args.shard_count, dtype='float16',
                     attention='sdpa_math', versions=versions, generation_max_new_tokens=8)
-    if args.prompt_version in ('completion', 'completion_v2'):
+    if args.prompt_version.startswith('completion'):
         settings['completion_code_sha256'] = digest(ROOT / 'completion_evaluation.py')
         settings['candidate_scoring'] = 'sum_logprobs_name_and_period'
     manifest = out / 'manifest.json'
@@ -305,11 +351,13 @@ def run(args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='cmd', required=True)
-    sub.add_parser('download')
+    dl = sub.add_parser('download')
+    dl.add_argument('--model', choices=sorted(MODELS), default=DEFAULT_MODEL)
     eval_parser = sub.add_parser('run')
     eval_parser.add_argument('--name', required=True)
+    eval_parser.add_argument('--model', choices=sorted(MODELS), default=DEFAULT_MODEL)
     eval_parser.add_argument('--shots', type=int, choices=[0,4,12], default=12)
-    eval_parser.add_argument('--prompt-version', choices=['v2','v3','completion','completion_v2'], default='v2')
+    eval_parser.add_argument('--prompt-version', choices=PROMPT_VERSIONS, default='v2')
     eval_parser.add_argument('--limit-families', type=int, default=0)
     eval_parser.add_argument('--shard-index', type=int, default=0)
     eval_parser.add_argument('--shard-count', type=int, default=1)
