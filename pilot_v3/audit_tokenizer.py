@@ -32,30 +32,48 @@ def audit_file(path, enc):
     broken_pairs, broken_boundary = [], []
     n = skipped = 0
     name_len = {}
+
     for line in Path(path).open(encoding='utf-8'):
         row = json.loads(line)
         n += 1
+
         gold = row['gold']
         others = [c for c in row['candidates'] if c != gold]
         assert len(others) == 1, f'{row["id"]}: expected exactly 2 candidates'
         distractor = others[0]
-        if row.get('length_matched') is False:
-            skipped += 1  # verbatim controls: demo-name candidates, unmatched by design
-        else:
-            lg, ld = len(enc(' ' + gold)), len(enc(' ' + distractor))
-            name_len[gold] = lg; name_len[distractor] = ld
-            if lg != ld:
-                broken_pairs.append(dict(id=row['id'], family=row['family'], world=row['world'],
-                                         gold=gold, len_gold=lg, distractor=distractor, len_distractor=ld))
+
         prompt = row['prompt']
         base = enc(prompt)
-        for cand in row['candidates']:
-            full = enc(prompt + ' ' + cand + '.')
+
+        def get_tail(candidate):
+            full = enc(prompt + ' ' + candidate + '.')
+            # The candidate must append cleanly after the prompt.
             if full[:len(base)] != base or len(full) == len(base):
-                broken_boundary.append(dict(id=row['id'], candidate=cand))
-    return dict(file=str(path), rows=n, skipped_unmatched=skipped,
-                broken_pairs=broken_pairs, broken_boundary=broken_boundary,
-                length_histogram=dict(collections.Counter(name_len.values())))
+                return None
+            # tokens scored by completion_evaluation.py.
+            return full[len(base):]
+
+        gold_tail = get_tail(gold)
+        distractor_tail = get_tail(distractor)
+        # Check answer-boundary stability.
+        if gold_tail is None:
+            broken_boundary.append(dict(id=row['id'], candidate=gold))
+        if distractor_tail is None:
+            broken_boundary.append(dict(id=row['id'], candidate=distractor))
+        # Some control examples are intentionally unmatched.
+        if row.get('length_matched') is False:
+            skipped += 1
+        elif gold_tail is not None and distractor_tail is not None:
+            lg = len(gold_tail)
+            ld = len(distractor_tail)
+
+            name_len[gold] = lg
+            name_len[distractor] = ld
+
+            if lg != ld:
+                broken_pairs.append(dict(id=row['id'], family=row['family'], world=row['world'], gold=gold, len_gold=lg, distractor=distractor, len_distractor=ld,))
+
+    return dict(file=str(path), rows=n, skipped_unmatched=skipped, broken_pairs=broken_pairs, broken_boundary=broken_boundary, length_histogram=dict(collections.Counter(name_len.values())),)
 
 
 def main():
