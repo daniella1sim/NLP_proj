@@ -21,6 +21,7 @@ Design (agreed 2026-09-11):
 """
 import json, random, re, collections
 from pathlib import Path
+import hashlib
 
 SEED = 20260911
 HERE = Path(__file__).resolve().parent
@@ -32,6 +33,13 @@ TOK = Tokenizer.from_file(str(HERE.parent / 'pilot_v2' / 'tokenizer_source' / 't
 def ntok(name):
     return len(TOK.encode(' ' + name, add_special_tokens=False).ids)
 
+# ---------- stable seed ----------
+def stable_seed(*parts):
+    text = '|'.join(map(str, parts))
+    return int.from_bytes(
+        hashlib.sha256(text.encode()).digest()[:8],
+        'big'
+    )
 # ---------- name pools ----------
 def make_pool(builder, need):
     seen, buckets = set(), collections.defaultdict(list)
@@ -201,7 +209,7 @@ def questions_for_family(world, fidx):
     def dist(o, f=fam, t=tfam):
         extra = [edge(world, t['qc'], t['qm']), edge(world, t['qm'], t['qg'])]
         fx = facts_of(world, f, o)
-        r = random.Random(2000 + hash((f['qc'], o)) % 1000)
+        r = random.Random(stable_seed('distractors', SEED, f['qc'], o))
         pos = r.randrange(len(fx) + 1)
         return fx[:pos] + extra + fx[pos:]
     add('robustness','distractors',2, fam['qg'], fam['dg'], dist, bridge=fam['qm'])
