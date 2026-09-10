@@ -244,7 +244,7 @@ def build():
                         task='name_completion', check=q['check'], variant=q['variant'],
                         hops=q['hops'], gold=q['gold'], candidates=cands, bridge=q['bridge'],
                         option_order=order, option_pair_id=f'{qid}/order{1 - order}',
-                        paired_base_id=f'{fidx:03d}/twohop/base/1' if q['check'] in ('broken', 'robustness') else None,
+                        paired_base_id=(f'{fidx:03d}/twohop/base/1/order{order}' if q['check'] in ('broken', 'robustness') else None),
                         dataset_version='name_completion_v3_1', seed=SEED, shots=shots,
                         demo_ids=dids, prompt=prompt,
                         entity_spans=spans(prompt, [q['gold'], q['distractor']] + ([q['bridge']] if q['bridge'] else []))))
