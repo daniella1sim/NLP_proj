@@ -230,7 +230,7 @@ def build():
                 if ntok(q['gold']) != ntok(q['distractor']): problems.append(('token_mismatch', qid, q['gold'], q['distractor']))
                 for shots in (0, 4, 12):
                     if shots:
-                        demos = demo_ids_for(world, f'{qid}/{order}/{shots}', shots)
+                        demos = demo_ids_for(world, f'{world}/{fidx}/{shots}', shots)
                         if any(n in demo_name_set[world] for n in (q['gold'], q['distractor'])):
                             problems.append(('demo_name_leak', qid))
                         prompt = '\n\n'.join([d['text'] for d in demos] + [test_block])
